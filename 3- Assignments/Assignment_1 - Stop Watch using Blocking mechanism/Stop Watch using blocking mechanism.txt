@@ -1,0 +1,13 @@
+Stop Watch using blocking mechanism
+
+you have a seven segment and 3 buttons
+
+1- the seven segment shall display the counted number of minutes and the number of seconds
+
+2- Button 0 -> shall be used to set the number of minutes [from 0 min to 9 mins]
+
+3- Button 1 -> shall be used to set the numbner of seconds [from 0 sec to 9 sec]
+
+4- Button 2 -> shall be used to start counting down
+
+The buzzer should announce if the counter reaches zero mins and zero sec  
