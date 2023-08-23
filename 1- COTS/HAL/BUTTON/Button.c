@@ -1,13 +1,13 @@
 /*
- * PORT_LCFG.c
+ * Button.c
  *
- * Created: 8/19/2023 3:48:02 PM
+ * Created: 8/16/2023 9:46:41 PM
  *  Author: Mina
  */ 
 /**********************************************************************************************************************
  *  FILE DESCRIPTION
  *  -----------------------------------------------------------------------------------------------------------------*/
-/**        \file  PORT_LCFG.c
+/**        \file  Button.c
  *        \brief  
  *
  *      \details  
@@ -18,7 +18,9 @@
 /**********************************************************************************************************************
  *  INCLUDES
  *********************************************************************************************************************/
-#include "PORT_LCFG.h"
+#include "button.h"
+
+
 
 /**********************************************************************************************************************
 *  LOCAL MACROS CONSTANT\FUNCTION
@@ -31,38 +33,7 @@
 /**********************************************************************************************************************
  *  GLOBAL DATA
  *********************************************************************************************************************/
-const PIN_PARAMETERS PORT_Initialization[DEFINED_PINS]={
-		/*****PUSH BUTTON 1****/
-	{ PORTD_PIN2, PIN_INPUT  },
-	/*****PUSH BUTTON 2****/
-	{ PORTD_PIN3, PIN_INPUT  },
-		/*****PUSH BUTTON 3****/
-	{ PORTD_PIN4, PIN_INPUT  },
-	/*****Buzzer****/
-	{ PORTC_PIN3, PIN_OUTPUT  },
-	/*****Enable Right 7-Segment****/
-	{ PORTC_PIN6, PIN_OUTPUT  },
-	/*****Enable Left 7-Segment****/
-	{ PORTC_PIN7, PIN_OUTPUT  },
-	/*****Enable PORTA_PIN0 7-Segment****/
-	{ PORTA_PIN0, PIN_OUTPUT  },
-	/*****Enable A 7-Segment****/
-	{ PORTA_PIN1, PIN_OUTPUT  },
-	/*****Enable B 7-Segment****/
-	{ PORTA_PIN2, PIN_OUTPUT  },
-	/*****Enable C 7-Segment****/
-	{ PORTA_PIN3, PIN_OUTPUT  },
-	/*****Enable D 7-Segment****/
-	{ PORTA_PIN4, PIN_OUTPUT  },
-	/*****Enable E 7-Segment****/
-	{ PORTA_PIN5, PIN_OUTPUT  },
-	/*****Enable F 7-Segment****/
-	{ PORTA_PIN6, PIN_OUTPUT  },
-	/*****Enable G 7-Segment****/
-	{ PORTA_PIN7, PIN_OUTPUT  },
-	/*****Enable DOT 7-Segment****/
-	{ PORTB_PIN0, PIN_OUTPUT  }		
-};
+
 /**********************************************************************************************************************
  *  LOCAL FUNCTION PROTOTYPES
  *********************************************************************************************************************/
@@ -76,19 +47,31 @@ const PIN_PARAMETERS PORT_Initialization[DEFINED_PINS]={
  *********************************************************************************************************************/
 
 
+
 /******************************************************************************
-* \Syntax          : Std_ReturnType FunctionName(AnyType parameterName)        
-* \Description     : Describe this service                                    
-*                                                                             
-* \Sync\Async      : Synchronous                                               
-* \Reentrancy      : Non Reentrant                                             
-* \Parameters (in) : parameterName   Parameter Describtion                     
-* \Parameters (out): None                                                      
+* \Syntax          : Uint_8 Button_GetValue(Uint_8 button_num)
+* \Description     : Button GetValue
+*
+* \Sync\Async      : Synchronous
+* \Reentrancy      : Non Reentrant
+* \Parameters (in) : parameterName   Parameter Describtion
+* \Parameters (out): None
 * \Return value:   : Std_ReturnType  E_OK
-*                                    E_NOT_OK                                  
+*                                    E_NOT_OK
 *******************************************************************************/
+Uint_8 Button_GetValue(Uint_8 button_num)
+{
+	Uint_8 button =1,temp=0;
+	DIO_ReadChannel(button_num,&button);
+	while(temp==0)
+	{
+    DIO_ReadChannel(button_num,&temp);
+	}
+	_delay_ms(10);
+	return button;
+}
 
 
 /**********************************************************************************************************************
- *  END OF FILE: PORT_LCFG.c
+ *  END OF FILE: Button.c
  *********************************************************************************************************************/

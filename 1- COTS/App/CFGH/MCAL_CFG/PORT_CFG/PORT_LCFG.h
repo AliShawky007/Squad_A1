@@ -2,7 +2,7 @@
  * PORT_LCFG_.h
  *
  * Created: 8/19/2023 3:47:46 PM
- *  Author: Ali
+ *  Author: Mina
  */ 
 
 
@@ -10,7 +10,7 @@
 
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------
- *         File:  <Write File Name>
+ *         File:  <PORT_LCFG_.h>
  *       Module:  -
  *
  *  Description:  <Write File DESCRIPTION here>     
@@ -48,8 +48,8 @@ PORTA_PIN7 ---> #7    PORTB _PIN7 ---> #15        PORTC_PIN7 ---> #23       PORT
 /**********************************************************************************************************************
  *  GLOBAL CONSTANT MACROS
  *********************************************************************************************************************/
-#define  DEFINED_PINS                 2
-#define  NUMBER_OF_EACH_PORT_PINS     8
+#define  DEFINED_PINS                 15
+#define  NUMBER_OF_EACH_PORT_PINS    8
 
 
 #define PORTA_PIN0  0
@@ -105,7 +105,7 @@ typedef enum
 
 typedef struct
 {
-	uint8 PIN_NUM ;
+	Uint_8 PIN_NUM ;
 	PIN_DIRECTION PIN_DIR ;
 }PIN_PARAMETERS;
 
@@ -123,7 +123,7 @@ extern const PIN_PARAMETERS PORT_Initialization[DEFINED_PINS];
 #endif /* PORT_LCFG _H_ */
 
 /**********************************************************************************************************************
- *  END OF FILE: Std_Types.h
+ *  END OF FILE: PORT_LCFG_.h
  *********************************************************************************************************************/
 
 

@@ -1,8 +1,8 @@
 /*
- * BTN.c
+ * Buzzer.c
  *
- * Created: 8/16/2023 9:53:03 PM
- *  Author: Ali
+ * Created: 8/17/2023 4:53:31 PM
+ *  Author: Mina
  */ 
 /**********************************************************************************************************************
  *  FILE DESCRIPTION
@@ -18,7 +18,7 @@
 /**********************************************************************************************************************
  *  INCLUDES
  *********************************************************************************************************************/
-#include "BTN.h"
+#include "Buzzer.h"
 
 /**********************************************************************************************************************
 *  LOCAL MACROS CONSTANT\FUNCTION
@@ -44,11 +44,9 @@
  *  GLOBAL FUNCTIONS
  *********************************************************************************************************************/
 
- 
-
 /******************************************************************************
-* \Syntax          : Std_ReturnType FunctionName(AnyType parameterName)
-* \Description     : Describe this service
+* \Syntax          : void Buzzer_SetValue(buzzer_value_t buzzer_Value)
+* \Description     : Buzzer OFF
 *
 * \Sync\Async      : Synchronous
 * \Reentrancy      : Non Reentrant
@@ -57,20 +55,26 @@
 * \Return value:   : Std_ReturnType  E_OK
 *                                    E_NOT_OK
 *******************************************************************************/
-uint8 BTN_GetValue(uint8 Button_num)
+void Buzzer_SetValue(buzzer_value_t buzzer_Value)
 {
-	uint8 button = 1, temp = 0;
-	
-	DIO_ReadChennel(Button_num , &button);
-	
-	while(temp == 0)
-	{
-		DIO_ReadChennel(Button_num , &temp);
-	}
-	_delay_ms(10);
-	
-	return button;
+	DIO_WriteChannel(Buzzer, buzzer_Value);
 }
+/******************************************************************************
+* \Syntax          : void Buzzer_Toggle(void)
+* \Description     : Buzzer TOGGLE
+*
+* \Sync\Async      : Synchronous
+* \Reentrancy      : Non Reentrant
+* \Parameters (in) : parameterName   Parameter Describtion
+* \Parameters (out): None
+* \Return value:   : Std_ReturnType  E_OK
+*                                    E_NOT_OK
+*******************************************************************************/
+void Buzzer_Toggle(void)
+{
+	DIO_FlipChannel(Buzzer);
+}
+
 
 /**********************************************************************************************************************
  *  END OF FILE: FileName.c
