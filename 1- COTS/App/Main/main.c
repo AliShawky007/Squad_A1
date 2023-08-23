@@ -65,7 +65,7 @@ int main(void)
 				Sec=0;
 				continue;
 			}
-			/*display the minutes and seconds on digits*/
+			/*display the minutes and seconds on left digit*/
 			Clock=(Min*10)+Sec;
 			SevSeg_Display(Clock);
 		}
@@ -81,13 +81,12 @@ int main(void)
 			}			
 		}
 		/*timer for seconds*/
-		for ( ; Sec>=0 ; Sec-- )
+		for (Sec=Sec*10 ; Sec>=0 ; Sec-- )
 		{
 			if (Sec==0)break;
-			for (i = (10*500) ; i>=0 ; i--) /*loop for delaying the counter by 10 second*/
+			for (i = 500 ; i>=0 ; i--) /*loop for delaying the counter by 1 second and display it on both digits*/
 			{
-				Clock=(Min*10)+Sec;
-				SevSeg_Display(Clock);
+				SevSeg_Display(Sec);
 				if (i==0) break;
 			}
 		}
