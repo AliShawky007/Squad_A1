@@ -1,7 +1,7 @@
 /*
- * Seven_Seg.h
+ * Relay.h
  *
- * Created: 8/18/2023 4:11:29 PM
+ * Created: 8/17/2023 5:34:06 PM
  *  Author: Mina
  */ 
 
@@ -12,19 +12,21 @@
 
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------
- *         File:  <Write File Name>
+ *         File:  <Relay.h>
  *       Module:  -
  *
  *  Description:  <Write File DESCRIPTION here>     
  *  
  *********************************************************************************************************************/
-#ifndef SEVEN_SEG_H_
-#define SEVEN_SEG_H_
+#ifndef RELAY_H_
+#define RELAY_H_
+
 /**********************************************************************************************************************
  * INCLUDES
  *********************************************************************************************************************/
 #include "DIO_CORE.h"
-#include "SEVEN_SEGMENT_CFG.h"
+#include "RELAY_CFG.h"
+
 
 /**********************************************************************************************************************
  *  GLOBAL CONSTANT MACROS
@@ -41,9 +43,9 @@
  *********************************************************************************************************************/
 typedef enum
 {
-	seven_low=0,
-	seven_high
-	}seven_value_t;
+	Relay_low=0,
+	Relay_High
+	}Relay_Value_t;
 
 /**********************************************************************************************************************
  *  GLOBAL DATA PROTOTYPES
@@ -53,18 +55,15 @@ typedef enum
 /**********************************************************************************************************************
  *  GLOBAL FUNCTION PROTOTYPES
  *********************************************************************************************************************/
-void Seven_Seg_Display(Uint_8 value);
-void Seven_Seg_increment_Counter(void);
-void Seven_Seg_Decrement_Counter(void);
-void Seven_Seg_increment_Counter_Start_End(Uint_8 start,Uint_8 end);
-void Seven_Seg_Decrement_Counter_Start_End(Uint_8 start,Uint_8 end);
- 
-#endif /* SEVEN_SEG_H_ */
+
+void Relay_SetValue(Uint_8 Pin_num, Relay_Value_t Relay_Value);
+void Relay_Toggle(Uint_8 Pin_num);
+
+#endif /* RELAY_H_ */
 
 /**********************************************************************************************************************
- *  END OF FILE: Std_Types.h
+ *  END OF FILE: Relay.h
  *********************************************************************************************************************/
-
 
 
 

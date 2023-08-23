@@ -12,6 +12,12 @@ HAL\BUTTON\Button.c
 
 HAL\BUZZER\Buzzer.c
 
+HAL\LCD\LCD_Core.c
+
+HAL\LED\LED.c
+
+HAL\RELAY\Relay.c
+
 MCAL\DIO\DIO_CORE.c
 
 MCAL\PORT\PORT_CORE.c

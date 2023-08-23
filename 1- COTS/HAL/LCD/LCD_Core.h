@@ -1,7 +1,7 @@
 /*
- * Seven_Seg.h
+ * LCD_Core.h
  *
- * Created: 8/18/2023 4:11:29 PM
+ * Created: 8/23/2023 9:28:42 PM
  *  Author: Mina
  */ 
 
@@ -12,19 +12,21 @@
 
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------
- *         File:  <Write File Name>
+ *         File:  <LCD_Core.h>
  *       Module:  -
  *
  *  Description:  <Write File DESCRIPTION here>     
  *  
  *********************************************************************************************************************/
-#ifndef SEVEN_SEG_H_
-#define SEVEN_SEG_H_
+#ifndef LCD_CORE_H_
+#define LCD_CORE_H_
+
 /**********************************************************************************************************************
  * INCLUDES
  *********************************************************************************************************************/
 #include "DIO_CORE.h"
-#include "SEVEN_SEGMENT_CFG.h"
+#include "LCD_CFG.h"
+
 
 /**********************************************************************************************************************
  *  GLOBAL CONSTANT MACROS
@@ -39,11 +41,7 @@
 /**********************************************************************************************************************
  *  GLOBAL DATA TYPES AND STRUCTURES
  *********************************************************************************************************************/
-typedef enum
-{
-	seven_low=0,
-	seven_high
-	}seven_value_t;
+
 
 /**********************************************************************************************************************
  *  GLOBAL DATA PROTOTYPES
@@ -53,16 +51,29 @@ typedef enum
 /**********************************************************************************************************************
  *  GLOBAL FUNCTION PROTOTYPES
  *********************************************************************************************************************/
-void Seven_Seg_Display(Uint_8 value);
-void Seven_Seg_increment_Counter(void);
-void Seven_Seg_Decrement_Counter(void);
-void Seven_Seg_increment_Counter_Start_End(Uint_8 start,Uint_8 end);
-void Seven_Seg_Decrement_Counter_Start_End(Uint_8 start,Uint_8 end);
- 
-#endif /* SEVEN_SEG_H_ */
+void LCD_Init(void);
 
+void LCD_WriteCommand(Uint_8 cmd);
+
+void LCD_WriteChar(Uint_8 chr);
+
+void LCD_WriteString(Uint_8* chr);
+
+void LCD_WriteInt(Uint_32 num);
+
+void LCD_Clear(void);
+
+void LCD_GOTO(Uint_8 ROW , Uint_8 COLUMN);
+
+
+
+
+
+
+
+ #endif /* LCD_CORE_H_ */
 /**********************************************************************************************************************
- *  END OF FILE: Std_Types.h
+ *  END OF FILE: LCD_Core.h
  *********************************************************************************************************************/
 
 

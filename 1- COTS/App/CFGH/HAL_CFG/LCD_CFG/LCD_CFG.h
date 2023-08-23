@@ -1,7 +1,7 @@
 /*
- * Seven_Seg.h
+ * LCD_CFG.h
  *
- * Created: 8/18/2023 4:11:29 PM
+ * Created: 8/23/2023 9:40:51 PM
  *  Author: Mina
  */ 
 
@@ -12,24 +12,43 @@
 
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------
- *         File:  <Write File Name>
+ *         File:  <LCD_CFG.h>
  *       Module:  -
  *
  *  Description:  <Write File DESCRIPTION here>     
  *  
  *********************************************************************************************************************/
-#ifndef SEVEN_SEG_H_
-#define SEVEN_SEG_H_
+#ifndef LCD_CFG_H_
+#define LCD_CFG_H_
+
 /**********************************************************************************************************************
  * INCLUDES
  *********************************************************************************************************************/
-#include "DIO_CORE.h"
-#include "SEVEN_SEGMENT_CFG.h"
+
 
 /**********************************************************************************************************************
  *  GLOBAL CONSTANT MACROS
  *********************************************************************************************************************/
 
+#define LCD_4BIT_MODE 4
+#define LCD_8BIT_MODE 8
+
+
+#define lCD_MODS  LCD_4BIT_MODE
+
+/*****CMD MACROS*********/
+#define LCD_RS_PIN  PORTA_PIN1
+#define LCD_E_PIN   PORTA_PIN2
+
+/*****DATA MACROS*******/
+#define LCD_D4_PIN   PORTA_PIN3				
+#define LCD_D5_PIN	 PORTA_PIN4
+#define LCD_D6_PIN	 PORTA_PIN5
+#define LCD_D7_PIN	 PORTA_PIN6
+
+/********IMPORTANT PINS**/
+#define DATA_PORT_MASK  0X87
+#define DATA_MASK       0X78
 
 /**********************************************************************************************************************
  *  GLOBAL FUNCTION MACROS
@@ -39,11 +58,7 @@
 /**********************************************************************************************************************
  *  GLOBAL DATA TYPES AND STRUCTURES
  *********************************************************************************************************************/
-typedef enum
-{
-	seven_low=0,
-	seven_high
-	}seven_value_t;
+
 
 /**********************************************************************************************************************
  *  GLOBAL DATA PROTOTYPES
@@ -53,16 +68,14 @@ typedef enum
 /**********************************************************************************************************************
  *  GLOBAL FUNCTION PROTOTYPES
  *********************************************************************************************************************/
-void Seven_Seg_Display(Uint_8 value);
-void Seven_Seg_increment_Counter(void);
-void Seven_Seg_Decrement_Counter(void);
-void Seven_Seg_increment_Counter_Start_End(Uint_8 start,Uint_8 end);
-void Seven_Seg_Decrement_Counter_Start_End(Uint_8 start,Uint_8 end);
- 
-#endif /* SEVEN_SEG_H_ */
+
+
+
+
+#endif /* LCD_CFG_H_ */
 
 /**********************************************************************************************************************
- *  END OF FILE: Std_Types.h
+ *  END OF FILE: LCD_CFG.h
  *********************************************************************************************************************/
 
 

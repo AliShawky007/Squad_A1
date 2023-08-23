@@ -32,36 +32,56 @@
  *  GLOBAL DATA
  *********************************************************************************************************************/
 const PIN_PARAMETERS PORT_Initialization[DEFINED_PINS]={
-		/*****PUSH BUTTON 1****/
-	{ PORTD_PIN2, PIN_INPUT  },
-	/*****PUSH BUTTON 2****/
-	{ PORTD_PIN3, PIN_INPUT  },
-		/*****PUSH BUTTON 3****/
-	{ PORTD_PIN4, PIN_INPUT  },
-	/*****Buzzer****/
-	{ PORTC_PIN3, PIN_OUTPUT  },
-	/*****Enable Right 7-Segment****/
-	{ PORTC_PIN6, PIN_OUTPUT  },
-	/*****Enable Left 7-Segment****/
-	{ PORTC_PIN7, PIN_OUTPUT  },
-	/*****Enable PORTA_PIN0 7-Segment****/
-	{ PORTA_PIN0, PIN_OUTPUT  },
-	/*****Enable A 7-Segment****/
-	{ PORTA_PIN1, PIN_OUTPUT  },
-	/*****Enable B 7-Segment****/
+	/*****GREEN LED***
+	{ PORTC_PIN1, PIN_OUTPUT  },*/
+		/*****PUSH BUTTON 1***
+	{ PORTD_PIN2, PIN_INPUT  },*/
+		/*****BLUE LED***
+	{ PORTC_PIN2, PIN_OUTPUT  },*/
+	/*****PUSH BUTTON 2***
+	{ PORTD_PIN3, PIN_INPUT  },*/
+		/*****PUSH BUTTON 3***
+	{ PORTD_PIN4, PIN_INPUT  },*/
+	/*****PUSH BUTTON 4***
+	{ PORTD_PIN5, PIN_INPUT  },*/
+	/*****Relay 1***
+	{ PORTC_PIN4, PIN_OUTPUT  },*/
+	/*****Buzzer***
+	{ PORTC_PIN3, PIN_OUTPUT  },*/
+	/*****Enable Right 7-Segment***
+	{ PORTC_PIN6, PIN_OUTPUT  },*/
+	/*****Enable Left 7-Segment***
+	{ PORTC_PIN7, PIN_OUTPUT  },*/
+	/*****Enable PORTA_PIN0 7-Segment**
+	{ PORTA_PIN1, PIN_OUTPUT  },*/
+	/*****Enable B 7-Segment***
 	{ PORTA_PIN2, PIN_OUTPUT  },
-	/*****Enable C 7-Segment****/
+	/*****Enable C 7-Segment***
+	{ PORTA_PIN3, PIN_OUTPUT  },*/
+	/*****Enable D 7-Segment***
+	{ PORTA_PIN4, PIN_OUTPUT  },*/
+	/*****Enable E 7-Segment***
+	{ PORTA_PIN5, PIN_OUTPUT  },*/
+	/*****Enable F 7-Segment***
+	{ PORTA_PIN6, PIN_OUTPUT  },*/
+	/*****Enable G 7-Segment***
+	{ PORTA_PIN7, PIN_OUTPUT  },*/
+	/*****Enable DOT 7-Segment***
+	{ PORTB_PIN0, PIN_OUTPUT  },*/
+	/*****LCD E PIN******/
+	{ PORTA_PIN2, PIN_OUTPUT  },
+	/*****LCD RS PIN******/
+	{ PORTA_PIN1, PIN_OUTPUT  },
+	/*****LCD D4 PIN******/
 	{ PORTA_PIN3, PIN_OUTPUT  },
-	/*****Enable D 7-Segment****/
+	/*****LCD D5 PIN******/
 	{ PORTA_PIN4, PIN_OUTPUT  },
-	/*****Enable E 7-Segment****/
+	/*****LCD D6 PIN******/
 	{ PORTA_PIN5, PIN_OUTPUT  },
-	/*****Enable F 7-Segment****/
-	{ PORTA_PIN6, PIN_OUTPUT  },
-	/*****Enable G 7-Segment****/
-	{ PORTA_PIN7, PIN_OUTPUT  },
-	/*****Enable DOT 7-Segment****/
-	{ PORTB_PIN0, PIN_OUTPUT  }		
+	/*****LCD D7 PIN******/
+	{ PORTA_PIN6, PIN_OUTPUT  }	
+		
+		
 };
 /**********************************************************************************************************************
  *  LOCAL FUNCTION PROTOTYPES

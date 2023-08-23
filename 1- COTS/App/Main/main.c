@@ -1,78 +1,127 @@
 /*
- * Stop Watch.c
+ * COTS.c
  *
- * Created: 8/20/2023 7:03:02 PM
+ * Created: 8/12/2023 3:32:34 PM
  * Author : Mina
  */ 
-
-/**********************************************************************************************************************
- *  FILE DESCRIPTION
- *  -----------------------------------------------------------------------------------------------------------------*/
-/**        \file  Stop Watch.c
- *        
- *           \brief A stopwatch is a handheld timepiece used to measure the amount of time elapsed
- *            from a particular time when it is started, to the time when the piece is stopped. 
- *
- *      \details  
- *
- *
- *********************************************************************************************************************/
-
-/**********************************************************************************************************************
- *  INCLUDES
- *********************************************************************************************************************/
-#include "Buzzer.h"
+#include "LED.h"
 #include "Button.h"
+#include "Relay.h"
+#include "Buzzer.h"
 #include "Seven_Seg.h"
 #include "PORT_CORE.h"
+#include "LCD_Core.h"
 #define F_CPU 16000000U
 #include <util/delay.h>
 
-/**********************************************************************************************************************
- *  LOCAL FUNCTIONS
- *********************************************************************************************************************/
+
+
+
+
 
 int main(void)
 {
-	/* Replace with your application code */
-	PORT_Init();
-	Uint_8 b1 = 0 , b2 = 0 , b3 = 0 , minute = 0 , second = 0 ;
-	while (1)
-	{
-		b1=Button_GetValue(Button_0);
-		if (b1==0)
-		{
-			minute++;
-			if(minute == 10)
-			{
-				minute = 0;
-			}
-		}
-		Seven_Seg_Display_minute(minute);
-		b2=Button_GetValue(Button_1);
-		if (b2==0)
-		{
-			second++;
-			if(second == 7)
-			{
-				second = 0;
-			}
-		}
-		Seven_Seg_Display_second(second);
-		b3=Button_GetValue(Button_2);
-		if (b3==0)
-		{
-		Seven_Seg_Decrement_Counter_Start_End(minute,second);
-		minute = 0 , second = 0 ;
-		Buzzer_Toggle();		
-		}	
-		}
+    /* Replace with your application code */
+	//PHYSICAL_GPIO_ACCESS(GPIOC_BASE_ADDRESS + GPIO_DIRECTION_REGISTER_DDR) = 0x02; //bit //0b00000010
+	//PHYSICAL_GPIO_ACCESS(GPIOC_BASE_ADDRESS + GPIO_OUTPUT_REGISTER_PORT)=0x02; //pin
+	//SET_BIT( PHYSICAL_GPIO_ACCESS(GPIOC_BASE_ADDRESS + GPIO_DIRECTION_REGISTER_DDR) , 1);
+	//SET_BIT( PHYSICAL_GPIO_ACCESS(GPIOC_BASE_ADDRESS + GPIO_OUTPUT_REGISTER_PORT) , 1);
+	//SET_BIT( PHYSICAL_GPIO_ACCESS(GPIOC_BASE_ADDRESS + GPIO_DIRECTION_REGISTER_DDR) , 2);
+	//SET_BIT( PHYSICAL_GPIO_ACCESS(GPIOC_BASE_ADDRESS + GPIO_OUTPUT_REGISTER_PORT) , 2);
+	
+	//Uint_8 button =1, button1 =1, button2 =1 , button3 =1 ;
+	//Uint_8 seven_seg[10]={0X7E,0X0C,0XB6,0X9E,0XCC,0XDA,0XFA,0X0E,0XFE,0XCE};
+	//	SET_BIT( PHYSICAL_GPIO_ACCESS(GPIOC_BASE_ADDRESS + GPIO_DIRECTION_REGISTER_DDR) , 6);
+	//	SET_BIT( PHYSICAL_GPIO_ACCESS(GPIOC_BASE_ADDRESS + GPIO_DIRECTION_REGISTER_DDR) , 7);
+	//	PHYSICAL_GPIO_ACCESS(GPIOA_BASE_ADDRESS + GPIO_DIRECTION_REGISTER_DDR) = 0xFF;
 		
 	
+	//LED_Init();
+	//Button_Init();
+	//Button1_Init();
+	//Button2_Init();
+	//Button3_Init();
+	//Buzzer_Init();
+	//Relay1_Init();
+	//Relay2_Init();
+	//Seven_Seg_Init();
+	//LED_On();
 	
+	//Uint_8 val=0,va=0,b3=0,b4=0;
+	PORT_Init();
+	LCD_Init();
+	LCD_WriteString("Mina");
+	
+	
+	
+    while (1) 
+    {
+		//button=Button_GetValue();
+		//
+		//if(button==0)
+		//{
+		//	LED_Toggle();
+		//}
+		//
+		//button1=Button1_GetValue();
+		//
+		//if(button1==0)
+		//{
+		//	Buzzer_Toggle();
+		//}
+		//button2=Button2_GetValue();
+		//if(button2==0)
+		//{
+		//	Relay1_Toggle();
+		//}
+		//button3=Button3_GetValue();
+		//if(button3==0)
+		//{
+		//	Relay2_Toggle();
+		//}
+		
+		//_delay_ms(1000);
+		//SET_BIT( PHYSICAL_GPIO_ACCESS(GPIOC_BASE_ADDRESS + GPIO_OUTPUT_REGISTER_PORT) , 6);
+		//SET_BIT( PHYSICAL_GPIO_ACCESS(GPIOC_BASE_ADDRESS + GPIO_OUTPUT_REGISTER_PORT) , 7);
+		//PHYSICAL_GPIO_ACCESS(GPIOA_BASE_ADDRESS+GPIO_OUTPUT_REGISTER_PORT)=seven_seg[8];
+		
+		//SET_BIT( PHYSICAL_GPIO_ACCESS(GPIOC_BASE_ADDRESS + GPIO_OUTPUT_REGISTER_PORT) , 6);
+		//CLR_BIT( PHYSICAL_GPIO_ACCESS(GPIOC_BASE_ADDRESS + GPIO_OUTPUT_REGISTER_PORT) , 7);
+		//PHYSICAL_GPIO_ACCESS(GPIOA_BASE_ADDRESS+GPIO_OUTPUT_REGISTER_PORT)=seven_seg[93%10];
+		//_delay_ms(1);
+		//CLR_BIT( PHYSICAL_GPIO_ACCESS(GPIOC_BASE_ADDRESS + GPIO_OUTPUT_REGISTER_PORT) , 6);
+		//SET_BIT( PHYSICAL_GPIO_ACCESS(GPIOC_BASE_ADDRESS + GPIO_OUTPUT_REGISTER_PORT) , 7);
+		//PHYSICAL_GPIO_ACCESS(GPIOA_BASE_ADDRESS+GPIO_OUTPUT_REGISTER_PORT)=seven_seg[93/10];
+		//_delay_ms(1);
+		//Seven_Seg_Display(45);
+		//Seven_Seg_increment_Counter();
+		//Seven_Seg_Decrement_Counter();
+	    //Seven_Seg_increment_Counter_Start_End(12,20);
+		//Seven_Seg_Decrement_Counter_Start_End(10,00);
+		//val=Button_GetValue(Button_0);
+		//if (val==0)
+		//{
+		//	
+		//}
+		//va=Button1_GetValue(Button_1);
+		//if (va==0)
+		//{
+		//	LED_Toggle(LED_GREEN);
+		//}
+		//b3=Button2_GetValue(Button_2);
+		//if (b3==0)
+		//{
+		//	Relay_Toggle(Relay1);
+		//}
+		//b4=Button3_GetValue(Button_3);
+		//if (b4==0)
+		//{
+		//	Relay_Toggle(Relay2);
+		//}
+		
+		
+		
+    }
 	
 }
 
-/**********************************************************************************************************************
- *  END OF FILE: Stop Watch.c
- *********************************************************************************************************************/

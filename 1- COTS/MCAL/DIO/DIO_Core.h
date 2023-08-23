@@ -95,7 +95,7 @@ void DIO_ReadChannel(Uint_8 Pin_Num , PIN_VALUE_t *Pin_Value);
 void DIO_FlipChannel(Uint_8 Pin_Num);
 void DIO_WritePort(Uint_8 Pin_Num , Uint_8  PORT_Value);
 void DIO_ReadPort(Uint_8 Pin_Num , Uint_8  *PORT_Value);
-
+void DIO_ReadOutputPort(Uint_8 Pin_Num , Uint_8 *PORT_Value);
 
  
 #endif /* DIO_CORE_H_ */
