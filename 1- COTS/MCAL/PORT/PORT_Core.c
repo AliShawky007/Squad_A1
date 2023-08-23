@@ -1,13 +1,13 @@
 /*
- * PORT_Core.c
+ * PORT_CORE.c
  *
- * Created: 8/19/2023 3:52:43 PM
- *  Author: Ali
+ * Created: 8/19/2023 3:52:30 PM
+ *  Author: Mina
  */ 
 /**********************************************************************************************************************
  *  FILE DESCRIPTION
  *  -----------------------------------------------------------------------------------------------------------------*/
-/**        \file  FileName.c
+/**        \file  PORT_CORE.c
  *        \brief  
  *
  *      \details  
@@ -18,7 +18,8 @@
 /**********************************************************************************************************************
  *  INCLUDES
  *********************************************************************************************************************/
-#include "PORT_Core.h"
+#include "PORT_CORE.h"
+
 
 /**********************************************************************************************************************
 *  LOCAL MACROS CONSTANT\FUNCTION
@@ -46,8 +47,8 @@
 
 
 /******************************************************************************
-* \Syntax          : Std_ReturnType FunctionName(AnyType parameterName)        
-* \Description     : Describe this service                                    
+* \Syntax          : void PORT_Init(void)        
+* \Description     : PORT Initialization                                    
 *                                                                             
 * \Sync\Async      : Synchronous                                               
 * \Reentrancy      : Non Reentrant                                             
@@ -58,79 +59,73 @@
 *******************************************************************************/
 void PORT_Init(void)
 {
-	uint8 Cnt = 0 , Port = 0 , Pin = 0 , Dir = 0 ;
-	
-	for(Cnt = 0 ; Cnt < DEFINED_PINS ; Cnt++)
+	Uint_8 port=0,pin=0,dir=0,cnt=0;
+	for (cnt=0;cnt< DEFINED_PINS ;cnt++)
 	{
-		Port = PORT_Initialization[Cnt].PIN_NUM / NUMBER_OF_EACH_PORT_PINS ;
-		Pin = PORT_Initialization[Cnt].PIN_NUM % NUMBER_OF_EACH_PORT_PINS  ;
-		Dir = PORT_Initialization[Cnt].PIN_DIR ;
+		port=PORT_Initialization[cnt].PIN_NUM / NUMBER_OF_EACH_PORT_PINS;
+		pin=PORT_Initialization[cnt].PIN_NUM % NUMBER_OF_EACH_PORT_PINS;
+		dir = PORT_Initialization[cnt].PIN_DIR;
 		
-		switch(Dir)
+		switch(dir)
 		{
 			case PIN_OUTPUT :
-			
-			switch(Port)
+			switch (port)
 			{
 				case 0:
-				SET_BIT(PHYSICAL_GPIO_ACCESS(GPIOA_BASE_ADDRRESS + GPIO_DIRCETION_REGISTER_DDR) ,Pin );
-
+				SET_BIT(PHYSICAL_GPIO_ACCESS(GPIOA_BASE_ADDRESS+GPIO_DIRECTION_REGISTER_DDR),pin);
 				break;
 				
 				case 1:
-				SET_BIT(PHYSICAL_GPIO_ACCESS(GPIOB_BASE_ADDRRESS + GPIO_DIRCETION_REGISTER_DDR) ,Pin );
-				
+				SET_BIT(PHYSICAL_GPIO_ACCESS(GPIOB_BASE_ADDRESS+GPIO_DIRECTION_REGISTER_DDR),pin);
 				break;
 				
 				case 2:
-				SET_BIT(PHYSICAL_GPIO_ACCESS(GPIOC_BASE_ADDRRESS + GPIO_DIRCETION_REGISTER_DDR) ,Pin );
-				
+				SET_BIT(PHYSICAL_GPIO_ACCESS(GPIOC_BASE_ADDRESS+GPIO_DIRECTION_REGISTER_DDR),pin);
 				break;
 				
 				case 3:
-				SET_BIT(PHYSICAL_GPIO_ACCESS(GPIOD_BASE_ADDRRESS + GPIO_DIRCETION_REGISTER_DDR) ,Pin );
-				
+				SET_BIT(PHYSICAL_GPIO_ACCESS(GPIOD_BASE_ADDRESS+GPIO_DIRECTION_REGISTER_DDR),pin);
 				break;
 				
 				default:
+				
 				break;
 			}
 			break;
 			
-			case PIN_INPUT :
-			switch(Port)
+			case  PIN_INPUT :
+			switch (port)
 			{
 				case 0:
-				CLR_BIT(PHYSICAL_GPIO_ACCESS(GPIOA_BASE_ADDRRESS + GPIO_DIRCETION_REGISTER_DDR) ,Pin );
-
+				CLR_BIT(PHYSICAL_GPIO_ACCESS(GPIOA_BASE_ADDRESS+GPIO_DIRECTION_REGISTER_DDR),pin);
 				break;
 				
 				case 1:
-				CLR_BIT(PHYSICAL_GPIO_ACCESS(GPIOB_BASE_ADDRRESS + GPIO_DIRCETION_REGISTER_DDR) ,Pin );
-				
-				break;
-				
-				case 2:
-				CLR_BIT(PHYSICAL_GPIO_ACCESS(GPIOC_BASE_ADDRRESS + GPIO_DIRCETION_REGISTER_DDR) ,Pin );
-				
-				break;
-				
-				case 3:
-				CLR_BIT(PHYSICAL_GPIO_ACCESS(GPIOD_BASE_ADDRRESS + GPIO_DIRCETION_REGISTER_DDR) ,Pin );
-				
+				CLR_BIT(PHYSICAL_GPIO_ACCESS(GPIOB_BASE_ADDRESS+GPIO_DIRECTION_REGISTER_DDR),pin);
+				break;																	   
+																						   
+				case 2:																	   
+				CLR_BIT(PHYSICAL_GPIO_ACCESS(GPIOC_BASE_ADDRESS+GPIO_DIRECTION_REGISTER_DDR),pin);
+				break;																	   
+																						   
+				case 3:																	   
+				CLR_BIT(PHYSICAL_GPIO_ACCESS(GPIOD_BASE_ADDRESS+GPIO_DIRECTION_REGISTER_DDR),pin);
 				break;
 				
 				default:
+				
 				break;
 			}
 			break;
 			
 			default:
+			
 			break;
 		}
 	}
+	
 }
 
 /**********************************************************************************************************************
- *  END OF FILE: FileName.c
+ *  END OF FILE: PORT_CORE.c
  *********************************************************************************************************************/

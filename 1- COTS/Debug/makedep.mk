@@ -4,15 +4,15 @@
 
 App\CFGH\MCAL_CFG\PORT_CFG\PORT_LCFG.c
 
-App\Main\main.c
+App\MAIN\main.c
 
-HAL\BTN\BTN.c
+HAL\7-SEGMENT\Seven_Seg.c
 
-HAL\LED\LED.c
+HAL\BUTTON\Button.c
 
-HAL\SevSeg\SevSeg_Core.c
+HAL\BUZZER\Buzzer.c
 
-MCAL\DIO\DIO_Core.c
+MCAL\DIO\DIO_CORE.c
 
-MCAL\PORT\PORT_Core.c
+MCAL\PORT\PORT_CORE.c
 

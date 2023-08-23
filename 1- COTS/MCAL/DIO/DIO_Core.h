@@ -1,13 +1,9 @@
 /*
- * DIO_Core.h
+ * DIO_CORE.h
  *
- * Created: 8/19/2023 5:45:00 PM
- *  Author: Ali
+ * Created: 8/19/2023 5:44:28 PM
+ *  Author: Mina
  */ 
-
-
-
-
 
 
 /**********************************************************************************************************************
@@ -22,18 +18,17 @@
  *********************************************************************************************************************/
 #ifndef DIO_CORE_H_
 #define DIO_CORE_H_
-
 /**********************************************************************************************************************
  * INCLUDES
  *********************************************************************************************************************/
 #include "MCU.h"
+#include "BIT_MATH.h"
 #include "STD.h"
-#include "BIT_Math.h"
+
 /**********************************************************************************************************************
  *  GLOBAL CONSTANT MACROS
  *********************************************************************************************************************/
-#define  NUMBER_OF_EACH_PORT_PINS     8
-
+#define  NUMBER_OF_EACH_PORT_PINS    8
 
 #define PORTA_PIN0  0
 #define PORTA_PIN1  1
@@ -82,11 +77,10 @@
  *********************************************************************************************************************/
 typedef enum
 {
-	PIN_LOW = 0,
+	PIN_LOW=0,
 	PIN_HIGH
-}PIN_VALUE_t;
-
-
+	}PIN_VALUE_t;
+	
 
 /**********************************************************************************************************************
  *  GLOBAL DATA PROTOTYPES
@@ -96,16 +90,19 @@ typedef enum
 /**********************************************************************************************************************
  *  GLOBAL FUNCTION PROTOTYPES
  *********************************************************************************************************************/
-void DIO_WriteChennel(uint8 Pin_Num , PIN_VALUE_t Pin_value );
-void DIO_ReadChennel(uint8 Pin_Num , PIN_VALUE_t * Pin_value );
-void DIO_FlipChennel(uint8 Pin_Num);
-void DIO_WritePort(uint8 Pin_Num , uint8 Port_value );
-void DIO_ReadPort(uint8 Pin_Num , uint8 * Port_value );
+void DIO_WriteChannel(Uint_8 Pin_Num , PIN_VALUE_t Pin_Value);
+void DIO_ReadChannel(Uint_8 Pin_Num , PIN_VALUE_t *Pin_Value);
+void DIO_FlipChannel(Uint_8 Pin_Num);
+void DIO_WritePort(Uint_8 Pin_Num , Uint_8  PORT_Value);
+void DIO_ReadPort(Uint_8 Pin_Num , Uint_8  *PORT_Value);
+
+
  
 #endif /* DIO_CORE_H_ */
 
 /**********************************************************************************************************************
  *  END OF FILE: Std_Types.h
  *********************************************************************************************************************/
+
 
 
