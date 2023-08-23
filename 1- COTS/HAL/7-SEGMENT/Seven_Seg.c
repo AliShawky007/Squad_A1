@@ -119,7 +119,7 @@ void Seven_Seg_Decrement_Counter_Start_End(Sint_8 minute,Sint_8 second)
 		      DIO_WritePort(A , seven_seg[j]);
 		      _delay_ms(1);
 		      }		
-			second=9;
+			second=6;
 		}	
 
 	}

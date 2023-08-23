@@ -53,7 +53,7 @@ int main(void)
 		if (b2==0)
 		{
 			second++;
-			if(second == 10)
+			if(second == 7)
 			{
 				second = 0;
 			}
