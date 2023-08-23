@@ -14,6 +14,8 @@ HAL\LED\LED.c
 
 HAL\SevSeg\SevSeg_Core.c
 
+HAL\Timer\Timer.c
+
 MCAL\DIO\DIO_Core.c
 
 MCAL\PORT\PORT_Core.c

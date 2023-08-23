@@ -113,6 +113,7 @@
       <Value>../App/CFGH/HAL_CFG/BUZZER_CFG</Value>
       <Value>../App/CFGH/HAL_CFG/SevSeg_Cfg</Value>
       <Value>../HAL/BUZZER</Value>
+      <Value>../HAL/Timer</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.level>Optimize debugging experience (-Og)</avrgcc.compiler.optimization.level>
@@ -150,6 +151,7 @@
     <Folder Include="HAL\BTN\" />
     <Folder Include="HAL\BUZZER\" />
     <Folder Include="HAL\LED\" />
+    <Folder Include="HAL\Timer" />
     <Folder Include="HAL\SevSeg\" />
     <Folder Include="MCAL" />
     <Folder Include="MCAL\DIO" />
@@ -208,6 +210,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="HAL\SevSeg\SevSeg_Core.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\Timer\Timer.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\Timer\Timer.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="MCAL\DIO\DIO_Core.c">
