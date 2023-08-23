@@ -9,7 +9,10 @@ App/Main/main.d App/Main/main.o: ../App/Main/main.c ../HAL/LED/LED.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdint.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
- ../MCAL/PORT/PORT_Core.h ../App/CFGH/MCAL_CFG/PORT_CFG/PORT_LCFG.h
+ ../MCAL/PORT/PORT_Core.h ../App/CFGH/MCAL_CFG/PORT_CFG/PORT_LCFG.h \
+ ../HAL/SevSeg/SevSeg_Core.h ../App/CFGH/HAL_CFG/SevSeg_Cfg/SevSeg_Cfg.h \
+ ../HAL/BUZZER/BUZZER.h ../MCAL/DIO/DIO_core.h \
+ ../App/CFGH/HAL_CFG/BUZZER_CFG/BUZZER_CFG.h
 
 ../HAL/LED/LED.h:
 
@@ -48,3 +51,13 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 ../MCAL/PORT/PORT_Core.h:
 
 ../App/CFGH/MCAL_CFG/PORT_CFG/PORT_LCFG.h:
+
+../HAL/SevSeg/SevSeg_Core.h:
+
+../App/CFGH/HAL_CFG/SevSeg_Cfg/SevSeg_Cfg.h:
+
+../HAL/BUZZER/BUZZER.h:
+
+../MCAL/DIO/DIO_core.h:
+
+../App/CFGH/HAL_CFG/BUZZER_CFG/BUZZER_CFG.h:

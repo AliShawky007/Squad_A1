@@ -8,6 +8,8 @@ App\Main\main.c
 
 HAL\BTN\BTN.c
 
+HAL\BUZZER\BUZZER.c
+
 HAL\LED\LED.c
 
 HAL\SevSeg\SevSeg_Core.c

@@ -1,17 +1,12 @@
-/*
- * PORT_LCFG.c
- *
- * Created: 8/19/2023 3:47:25 PM
- *  Author: Ali
- */ 
 /**********************************************************************************************************************
  *  FILE DESCRIPTION
  *  -----------------------------------------------------------------------------------------------------------------*/
-/**        \file  FileName.c
- *        \brief  
+/**        \file  PORT_LCFG.c
+ *        \brief  identify the inputs and outputs in Micro controller
  *
- *      \details  
- *
+ *      \details  lists the used pins in projects and set direction of each as i/o.
+ *	 Created: 8/19/2023 3:47:25 PM
+ *  Author: Ali
  *
  *********************************************************************************************************************/
 
@@ -32,10 +27,25 @@
  *  GLOBAL DATA
  *********************************************************************************************************************/
 const PIN_PARAMETERS PORT_Initialization[DEFINED_PINS] = {
-	/*Green LED Pins*/
-	{ PORTC_PIN1 , PIN_OUTPUT },
-	/*BTN0 Pins*/
-	{ PORTD_PIN2 , PIN_INPUT  }	
+	/*7seg dig1 and dig2 as outputs*/
+	{PORTC_PIN6 , PIN_OUTPUT},
+	{PORTC_PIN7 , PIN_OUTPUT},
+	/*output pins to the 7seg digits as outputs*/
+	{PORTA_PIN0 , PIN_OUTPUT},
+	{PORTA_PIN1 , PIN_OUTPUT},
+	{PORTA_PIN2 , PIN_OUTPUT},
+	{PORTA_PIN3 , PIN_OUTPUT},
+	{PORTA_PIN4 , PIN_OUTPUT},
+	{PORTA_PIN5 , PIN_OUTPUT},
+	{PORTA_PIN6 , PIN_OUTPUT},
+	{PORTA_PIN7 , PIN_OUTPUT},
+	/*BUZZER as output	*/
+	{PORTC_PIN5 , PIN_OUTPUT},
+	/*buttons as inputs*/	
+	{PORTD_PIN2 , PIN_INPUT},
+	{PORTD_PIN3 , PIN_INPUT},
+	{PORTD_PIN4 , PIN_INPUT},
+	{PORTD_PIN5 , PIN_INPUT}	
 };
 /**********************************************************************************************************************
  *  LOCAL FUNCTION PROTOTYPES
@@ -51,5 +61,5 @@ const PIN_PARAMETERS PORT_Initialization[DEFINED_PINS] = {
 
 
 /**********************************************************************************************************************
- *  END OF FILE: FileName.c
+ *  END OF FILE: PORT_LCFG.c
  *********************************************************************************************************************/

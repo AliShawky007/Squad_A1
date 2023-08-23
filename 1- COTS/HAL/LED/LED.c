@@ -1,18 +1,12 @@
-/*
- * LED.c
- *
- * Created: 8/16/2023 7:13:38 PM
- *  Author: Ali
- */ 
 /**********************************************************************************************************************
  *  FILE DESCRIPTION
  *  -----------------------------------------------------------------------------------------------------------------*/
-/**        \file  FileName.c
- *        \brief  
- *
- *      \details  
- *
- *
+/**        \file  LED.c
+ *        \brief  trun of/off and toggle the LED
+ *		  \Created: 8/17/2023 4:41:52 PM
+ *		  \Author: Ali
+ *		  \details  LED_SetValue -> turn off/on led
+ *					LED_toggle -> 	toggle LED
  *********************************************************************************************************************/
 
 /**********************************************************************************************************************
@@ -44,17 +38,15 @@
  *  GLOBAL FUNCTIONS
  *********************************************************************************************************************/
 
-
-
 /******************************************************************************
-* \Syntax          : void LED_On(void)
-* \Description     : Led on
+* \Syntax          : void LED_SetValue(uint8 LED_Num ,uint8 LED_Value)
+* \Description     : Led on/off
 *
 * \Sync\Async      : Synchronous
 * \Reentrancy      : Non Reentrant
 * \Parameters (in) : parameterName   Parameter Describtion
 * \Parameters (out): None
-* \Return value:   : Std_ReturnType  E_OK
+* \Return value:   : void  E_OK
 *                                    E_NOT_OK
 *******************************************************************************/
 void LED_SetValue(uint8 LED_Num ,uint8 LED_Value)
@@ -69,7 +61,7 @@ void LED_SetValue(uint8 LED_Num ,uint8 LED_Value)
 * \Reentrancy      : Non Reentrant
 * \Parameters (in) : parameterName   Parameter Describtion
 * \Parameters (out): None
-* \Return value:   : Std_ReturnType  E_OK
+* \Return value:   : void  E_OK
 *                                    E_NOT_OK
 *******************************************************************************/
 
@@ -79,5 +71,5 @@ void LED_Toggle(uint8 LED_Num)
 }
 
 /**********************************************************************************************************************
- *  END OF FILE: FileName.c
+ *  END OF FILE: LED.c
  *********************************************************************************************************************/

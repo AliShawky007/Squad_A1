@@ -1,16 +1,11 @@
-/*
- * DIO_Core.c
- *
- * Created: 8/19/2023 5:44:42 PM
- *  Author: Ali
- */ 
 /**********************************************************************************************************************
  *  FILE DESCRIPTION
  *  -----------------------------------------------------------------------------------------------------------------*/
-/**        \file  FileName.c
- *        \brief  
- *
- *      \details  
+/**        \file  DIO_Core.c
+ *        \brief  DIO operation
+ *		Created: 8/19/2023 5:44:42 PM
+ *		Author: Ali
+ *     \details  Read/Write on ports and pins
  *
  *
  *********************************************************************************************************************/
@@ -46,14 +41,14 @@
 
 
 /******************************************************************************
-* \Syntax          : Std_ReturnType FunctionName(AnyType parameterName)        
-* \Description     : Describe this service                                    
+* \Syntax          : void DIO_WriteChennel(uint8 Pin_Num , PIN_VALUE_t Pin_value )    
+* \Description     : write on pins                                 
 *                                                                             
 * \Sync\Async      : Synchronous                                               
 * \Reentrancy      : Non Reentrant                                             
 * \Parameters (in) : parameterName   Parameter Describtion                     
 * \Parameters (out): None                                                      
-* \Return value:   : Std_ReturnType  E_OK
+* \Return value:   : void  E_OK
 *                                    E_NOT_OK                                  
 *******************************************************************************/
 void DIO_WriteChennel(uint8 Pin_Num , PIN_VALUE_t Pin_value )
@@ -122,14 +117,14 @@ void DIO_WriteChennel(uint8 Pin_Num , PIN_VALUE_t Pin_value )
 
 
 /******************************************************************************
-* \Syntax          : Std_ReturnType FunctionName(AnyType parameterName)
-* \Description     : Describe this service
+* \Syntax          : void DIO_ReadChennel(uint8 Pin_Num , PIN_VALUE_t * Pin_value )
+* \Description     : read from pins
 *
 * \Sync\Async      : Synchronous
 * \Reentrancy      : Non Reentrant
 * \Parameters (in) : parameterName   Parameter Describtion
 * \Parameters (out): None
-* \Return value:   : Std_ReturnType  E_OK
+* \Return value:   : void  E_OK
 *                                    E_NOT_OK
 *******************************************************************************/
 void DIO_ReadChennel(uint8 Pin_Num , PIN_VALUE_t * Pin_value )
@@ -163,14 +158,14 @@ void DIO_ReadChennel(uint8 Pin_Num , PIN_VALUE_t * Pin_value )
 
 
 /******************************************************************************
-* \Syntax          : Std_ReturnType FunctionName(AnyType parameterName)
-* \Description     : Describe this service
+* \Syntax          : void DIO_FlipChennel(uint8 Pin_Num)
+* \Description     : toggle the output on pins
 *
 * \Sync\Async      : Synchronous
 * \Reentrancy      : Non Reentrant
 * \Parameters (in) : parameterName   Parameter Describtion
 * \Parameters (out): None
-* \Return value:   : Std_ReturnType  E_OK
+* \Return value:   : void  E_OK
 *                                    E_NOT_OK
 *******************************************************************************/
 void DIO_FlipChennel(uint8 Pin_Num)
@@ -205,14 +200,14 @@ void DIO_FlipChennel(uint8 Pin_Num)
 
 
 /******************************************************************************
-* \Syntax          : Std_ReturnType FunctionName(AnyType parameterName)
-* \Description     : Describe this service
+* \Syntax          : void DIO_WritePort(uint8 Pin_Num , uint8 Port_value )
+* \Description     : write on ports
 *
 * \Sync\Async      : Synchronous
 * \Reentrancy      : Non Reentrant
 * \Parameters (in) : parameterName   Parameter Describtion
 * \Parameters (out): None
-* \Return value:   : Std_ReturnType  E_OK
+* \Return value:   : void  E_OK
 *                                    E_NOT_OK
 *******************************************************************************/
 void DIO_WritePort(uint8 Pin_Num , uint8 Port_value )
@@ -246,14 +241,14 @@ void DIO_WritePort(uint8 Pin_Num , uint8 Port_value )
 
 
 /******************************************************************************
-* \Syntax          : Std_ReturnType FunctionName(AnyType parameterName)
-* \Description     : Describe this service
+* \Syntax          : void DIO_ReadPort(uint8 Pin_Num , uint8 * Port_value )
+* \Description     : read from ports
 *
 * \Sync\Async      : Synchronous
 * \Reentrancy      : Non Reentrant
 * \Parameters (in) : parameterName   Parameter Describtion
 * \Parameters (out): None
-* \Return value:   : Std_ReturnType  E_OK
+* \Return value:   : void  E_OK
 *                                    E_NOT_OK
 *******************************************************************************/
 void DIO_ReadPort(uint8 Pin_Num , uint8 * Port_value )
@@ -285,5 +280,5 @@ void DIO_ReadPort(uint8 Pin_Num , uint8 * Port_value )
 }
 
 /**********************************************************************************************************************
- *  END OF FILE: FileName.c
+ *  END OF FILE: DIO_Core.c
  *********************************************************************************************************************/

@@ -1,10 +1,11 @@
-/*
- * SevSeg_Core.c
- *
- * Created: 7/25/2023 11:54:27 AM
- *  Author: Ali
- */ 
-
+/**********************************************************************************************************************
+ *  FILE DESCRIPTION
+ *  -----------------------------------------------------------------------------------------------------------------*/
+/**        \file  SevSeg_Core.c
+ *        \brief  display numbers on the 7seg digits
+ *		  \Created: 8/17/2023 4:41:52 PM
+ *		  \Author: Ali
+ *********************************************************************************************************************/
 /**********************************************************************************************************************
  *  INCLUDES
  *********************************************************************************************************************/
@@ -37,25 +38,10 @@ static const uint8 Seven_Segment_Values_g[10] = { 0x7E , 0x0C , 0xB6 , 0x9E , 0x
  *********************************************************************************************************************/
 
 
-/******************************************************************************
-* \Syntax          : Std_ReturnType FunctionName(AnyType parameterName)        
-* \Description     : Describe this service                                    
-*                                                                             
-* \Sync\Async      : Synchronous                                               
-* \Reentrancy      : Non Reentrant                                             
-* \Parameters (in) : parameterName   Parameter Describtion                     
-* \Parameters (out): None                                                      
-* \Return value:   : Std_ReturnType  E_OK
-*                                    E_NOT_OK                                  
-*******************************************************************************/
-void SevSeg_Init(void)
-{
-
-}
 
 /******************************************************************************
-* \Syntax          : Std_ReturnType FunctionName(AnyType parameterName)
-* \Description     : Describe this service
+* \Syntax          : void SevSeg_Display(uint8 Value)
+* \Description     : takes the value and displays it on digits
 *
 * \Sync\Async      : Synchronous
 * \Reentrancy      : Non Reentrant
@@ -66,16 +52,16 @@ void SevSeg_Init(void)
 *******************************************************************************/
 void SevSeg_Display(uint8 Value)
 {
-// 	DIO_WriteChannel(DIO_PORTC_PIN6,PIN_HIGH);
-// 	DIO_WriteChannel(DIO_PORTC_PIN7,PIN_LOW);
-// 	DIO_WritePORTValue(DIO_PORTA_PIN0 ,Seven_Segment_Values_g[Value%10]);
-// 	_delay_ms(1);
-// 	DIO_WriteChannel(DIO_PORTC_PIN6,PIN_LOW);
-// 	DIO_WriteChannel(DIO_PORTC_PIN7,PIN_HIGH);
-// 	DIO_WritePORTValue(DIO_PORTA_PIN0 ,Seven_Segment_Values_g[Value/10]);
-// 	_delay_ms(1);
+	DIO_WriteChennel(DIG1,PIN_HIGH);
+	DIO_WriteChennel(PORTC_PIN7,PIN_LOW);
+	DIO_WritePort(SevSeg ,Seven_Segment_Values_g[Value%10]);
+	_delay_ms(1);
+	DIO_WriteChennel(DIG1,PIN_LOW);
+	DIO_WriteChennel(DIG2,PIN_HIGH);
+	DIO_WritePort(SevSeg ,Seven_Segment_Values_g[Value/10]);
+	_delay_ms(1);	
 }
 
 /**********************************************************************************************************************
- *  END OF FILE: FileName.c
+ *  END OF FILE: SevSeg_Core.c
  *********************************************************************************************************************/
