@@ -6,13 +6,19 @@ App\CFGH\MCAL_CFG\PORT_CFG\PORT_LCFG.c
 
 App\Main\main.c
 
-HAL\BTN\BTN.c
+HAL\BUTTON\Button.c
 
-HAL\LED\LED.c
+HAL\BUZZER\Buzzer.c
 
-HAL\SevSeg\SevSeg_Core.c
+HAL\LCD\LCD_Core.c
 
-MCAL\DIO\DIO_Core.c
+HAL\LED\Led.c
 
-MCAL\PORT\PORT_Core.c
+HAL\RELAY\Relay.c
+
+HAL\SEVEN_SEG\SEVEN_SEG.c
+
+MCAL\DIO\DIO_CORE.c
+
+MCAL\PORT\PORT_CORE.c
 

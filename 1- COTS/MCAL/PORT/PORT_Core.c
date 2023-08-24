@@ -1,9 +1,3 @@
-/*
- * PORT_Core.c
- *
- * Created: 8/19/2023 3:52:43 PM
- *  Author: Ali
- */ 
 /**********************************************************************************************************************
  *  FILE DESCRIPTION
  *  -----------------------------------------------------------------------------------------------------------------*/
@@ -18,7 +12,7 @@
 /**********************************************************************************************************************
  *  INCLUDES
  *********************************************************************************************************************/
-#include "PORT_Core.h"
+#include "PORT_CORE.h"
 
 /**********************************************************************************************************************
 *  LOCAL MACROS CONSTANT\FUNCTION
@@ -56,76 +50,49 @@
 * \Return value:   : Std_ReturnType  E_OK
 *                                    E_NOT_OK                                  
 *******************************************************************************/
-void PORT_Init(void)
+void PORT_INIT(void)
 {
-	uint8 Cnt = 0 , Port = 0 , Pin = 0 , Dir = 0 ;
-	
-	for(Cnt = 0 ; Cnt < DEFINED_PINS ; Cnt++)
+	uint8 cnt=0,port=0,pin=0,dir=0;
+	for(cnt=0;cnt<DEFINED_PINS;cnt++)
 	{
-		Port = PORT_Initialization[Cnt].PIN_NUM / NUMBER_OF_EACH_PORT_PINS ;
-		Pin = PORT_Initialization[Cnt].PIN_NUM % NUMBER_OF_EACH_PORT_PINS  ;
-		Dir = PORT_Initialization[Cnt].PIN_DIR ;
-		
-		switch(Dir)
+		port=PORT_Initialization[cnt].PIN_NUM/NUMBER_OF_EACH_PORT_PINSS;
+		pin=PORT_Initialization[cnt].PIN_NUM%NUMBER_OF_EACH_PORT_PINSS;
+		dir=PORT_Initialization[cnt].PIN_DIR;
+		switch(dir)
 		{
-			case PIN_OUTPUT :
-			
-			switch(Port)
+			case PIN_OUTPUT:
+			switch(port)
 			{
 				case 0:
-				SET_BIT(PHYSICAL_GPIO_ACCESS(GPIOA_BASE_ADDRRESS + GPIO_DIRCETION_REGISTER_DDR) ,Pin );
-
+				SET_BIT(PHYSICAL_GPIO_ACCESS(GPIOA_BASE_ADDRRESS+GPIO_DIRCETION_REGISTER_DDR),pin);
 				break;
-				
 				case 1:
-				SET_BIT(PHYSICAL_GPIO_ACCESS(GPIOB_BASE_ADDRRESS + GPIO_DIRCETION_REGISTER_DDR) ,Pin );
-				
+				SET_BIT(PHYSICAL_GPIO_ACCESS(GPIOB_BASE_ADDRRESS+GPIO_DIRCETION_REGISTER_DDR),pin);
 				break;
-				
 				case 2:
-				SET_BIT(PHYSICAL_GPIO_ACCESS(GPIOC_BASE_ADDRRESS + GPIO_DIRCETION_REGISTER_DDR) ,Pin );
-				
+				SET_BIT(PHYSICAL_GPIO_ACCESS(GPIOC_BASE_ADDRRESS+GPIO_DIRCETION_REGISTER_DDR),pin);
 				break;
-				
 				case 3:
-				SET_BIT(PHYSICAL_GPIO_ACCESS(GPIOD_BASE_ADDRRESS + GPIO_DIRCETION_REGISTER_DDR) ,Pin );
-				
-				break;
-				
-				default:
+				SET_BIT(PHYSICAL_GPIO_ACCESS(GPIOD_BASE_ADDRRESS+GPIO_DIRCETION_REGISTER_DDR),pin);
 				break;
 			}
 			break;
-			
-			case PIN_INPUT :
-			switch(Port)
+			case PIN_INPUT:
+			switch(port)
 			{
 				case 0:
-				CLR_BIT(PHYSICAL_GPIO_ACCESS(GPIOA_BASE_ADDRRESS + GPIO_DIRCETION_REGISTER_DDR) ,Pin );
-
+				CLR_BIT(PHYSICAL_GPIO_ACCESS(GPIOA_BASE_ADDRRESS+GPIO_DIRCETION_REGISTER_DDR),pin);
 				break;
-				
 				case 1:
-				CLR_BIT(PHYSICAL_GPIO_ACCESS(GPIOB_BASE_ADDRRESS + GPIO_DIRCETION_REGISTER_DDR) ,Pin );
-				
+				CLR_BIT(PHYSICAL_GPIO_ACCESS(GPIOB_BASE_ADDRRESS+GPIO_DIRCETION_REGISTER_DDR),pin);
 				break;
-				
 				case 2:
-				CLR_BIT(PHYSICAL_GPIO_ACCESS(GPIOC_BASE_ADDRRESS + GPIO_DIRCETION_REGISTER_DDR) ,Pin );
-				
+				CLR_BIT(PHYSICAL_GPIO_ACCESS(GPIOC_BASE_ADDRRESS+GPIO_DIRCETION_REGISTER_DDR),pin);
 				break;
-				
 				case 3:
-				CLR_BIT(PHYSICAL_GPIO_ACCESS(GPIOD_BASE_ADDRRESS + GPIO_DIRCETION_REGISTER_DDR) ,Pin );
-				
-				break;
-				
-				default:
+				CLR_BIT(PHYSICAL_GPIO_ACCESS(GPIOD_BASE_ADDRRESS+GPIO_DIRCETION_REGISTER_DDR),pin);
 				break;
 			}
-			break;
-			
-			default:
 			break;
 		}
 	}

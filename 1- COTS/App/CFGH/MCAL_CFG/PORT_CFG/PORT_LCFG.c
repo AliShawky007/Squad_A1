@@ -1,9 +1,3 @@
-/*
- * PORT_LCFG.c
- *
- * Created: 8/19/2023 3:47:25 PM
- *  Author: Ali
- */ 
 /**********************************************************************************************************************
  *  FILE DESCRIPTION
  *  -----------------------------------------------------------------------------------------------------------------*/
@@ -31,11 +25,19 @@
 /**********************************************************************************************************************
  *  GLOBAL DATA
  *********************************************************************************************************************/
-const PIN_PARAMETERS PORT_Initialization[DEFINED_PINS] = {
-	/*Green LED Pins*/
-	{ PORTC_PIN1 , PIN_OUTPUT },
-	/*BTN0 Pins*/
-	{ PORTD_PIN2 , PIN_INPUT  }	
+const PIN_PARAMETERS PORT_Initialization[DEFINED_PINS]={
+	{PORTD_PIN2,PIN_INPUT},
+	{PORTD_PIN3,PIN_INPUT},
+	{PORTD_PIN4,PIN_INPUT},
+	{PORTC_PIN5,PIN_OUTPUT},
+	{PORTC_PIN6,PIN_OUTPUT},
+	{PORTC_PIN7,PIN_OUTPUT},
+	{PORTA_PIN1,PIN_OUTPUT},
+	{PORTA_PIN2,PIN_OUTPUT},
+	{PORTA_PIN3,PIN_OUTPUT},
+	{PORTA_PIN4,PIN_OUTPUT},
+	{PORTA_PIN5,PIN_OUTPUT},
+	{PORTA_PIN6,PIN_OUTPUT}
 };
 /**********************************************************************************************************************
  *  LOCAL FUNCTION PROTOTYPES
@@ -48,6 +50,19 @@ const PIN_PARAMETERS PORT_Initialization[DEFINED_PINS] = {
 /**********************************************************************************************************************
  *  GLOBAL FUNCTIONS
  *********************************************************************************************************************/
+
+
+/******************************************************************************
+* \Syntax          : Std_ReturnType FunctionName(AnyType parameterName)        
+* \Description     : Describe this service                                    
+*                                                                             
+* \Sync\Async      : Synchronous                                               
+* \Reentrancy      : Non Reentrant                                             
+* \Parameters (in) : parameterName   Parameter Describtion                     
+* \Parameters (out): None                                                      
+* \Return value:   : Std_ReturnType  E_OK
+*                                    E_NOT_OK                                  
+*******************************************************************************/
 
 
 /**********************************************************************************************************************

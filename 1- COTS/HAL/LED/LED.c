@@ -1,13 +1,7 @@
-/*
- * LED.c
- *
- * Created: 8/16/2023 7:13:38 PM
- *  Author: Ali
- */ 
 /**********************************************************************************************************************
  *  FILE DESCRIPTION
  *  -----------------------------------------------------------------------------------------------------------------*/
-/**        \file  FileName.c
+/**        \file  Led.c
  *        \brief  
  *
  *      \details  
@@ -18,8 +12,7 @@
 /**********************************************************************************************************************
  *  INCLUDES
  *********************************************************************************************************************/
-#include "LED.h"
-
+#include "Led.h"
 /**********************************************************************************************************************
 *  LOCAL MACROS CONSTANT\FUNCTION
 *********************************************************************************************************************/
@@ -45,39 +38,37 @@
  *********************************************************************************************************************/
 
 
-
 /******************************************************************************
-* \Syntax          : void LED_On(void)
-* \Description     : Led on
-*
-* \Sync\Async      : Synchronous
-* \Reentrancy      : Non Reentrant
-* \Parameters (in) : parameterName   Parameter Describtion
-* \Parameters (out): None
-* \Return value:   : Std_ReturnType  E_OK
-*                                    E_NOT_OK
+* \Syntax          : void LED_Init(uint8)
+* \Description     : Initialize led
+*                                                                             
+* \Sync\Async      : Synchronous                                               
+* \Reentrancy      : Non Reentrant                                             
+* \Parameters (in) : parameterName   Parameter Describtion                     
+* \Parameters (out): None                                                      
+* \Return value:   : void
+*                                    E_NOT_OK                                  
 *******************************************************************************/
-void LED_SetValue(uint8 LED_Num ,uint8 LED_Value)
+void LED_SetValue(uint8 LED_Num,uint8 LED_Value)
 {
-	DIO_WriteChennel(LED_Num , LED_Value);
+	DIO_WriteChannel(LED_Num,LED_Value);
 }
+
 /******************************************************************************
-* \Syntax          : void LED_Toggle(void)
-* \Description     : Led Toggle
+* \Syntax          : void LED_Toggle(uint8)
+* \Description     : Toggle Led
 *
 * \Sync\Async      : Synchronous
 * \Reentrancy      : Non Reentrant
 * \Parameters (in) : parameterName   Parameter Describtion
 * \Parameters (out): None
-* \Return value:   : Std_ReturnType  E_OK
+* \Return value:   : void
 *                                    E_NOT_OK
 *******************************************************************************/
-
 void LED_Toggle(uint8 LED_Num)
 {
-	DIO_FlipChennel(LED_Num);
+	DIO_FlipChannel(LED_Num);
 }
-
 /**********************************************************************************************************************
- *  END OF FILE: FileName.c
+ *  END OF FILE: Led.c
  *********************************************************************************************************************/

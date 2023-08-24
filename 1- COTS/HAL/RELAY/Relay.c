@@ -1,13 +1,7 @@
-/*
- * BTN.c
- *
- * Created: 8/16/2023 9:53:03 PM
- *  Author: Ali
- */ 
 /**********************************************************************************************************************
  *  FILE DESCRIPTION
  *  -----------------------------------------------------------------------------------------------------------------*/
-/**        \file  FileName.c
+/**        \file  Relay.c
  *        \brief  
  *
  *      \details  
@@ -18,7 +12,8 @@
 /**********************************************************************************************************************
  *  INCLUDES
  *********************************************************************************************************************/
-#include "BTN.h"
+#include "STD.h"
+#include "Relay.h"
 
 /**********************************************************************************************************************
 *  LOCAL MACROS CONSTANT\FUNCTION
@@ -44,34 +39,54 @@
  *  GLOBAL FUNCTIONS
  *********************************************************************************************************************/
 
- 
 
 /******************************************************************************
-* \Syntax          : Std_ReturnType FunctionName(AnyType parameterName)
-* \Description     : Describe this service
+* \Syntax          : void RELY_INIT(uint8)
+* \Description     : initialize relay
+*                                                                             
+* \Sync\Async      : Synchronous                                               
+* \Reentrancy      : Non Reentrant                                             
+* \Parameters (in) : parameterName   Parameter Describtion                     
+* \Parameters (out): None                                                      
+* \Return value:   : void  E_OK
+*                                    E_NOT_OK                                  
+*******************************************************************************/
+void RELY_INIT(uint8 rely)
+{
+	SET_BIT(PHYSICAL_GPIO_ACCESS(GPIOC_BASE_ADDRRESS+GPIO_DIRCETION_REGISTER_DDR),rely);
+}
+
+/******************************************************************************
+* \Syntax          : void RELY_ON(uint8)
+* \Description     : ON relay
 *
 * \Sync\Async      : Synchronous
 * \Reentrancy      : Non Reentrant
 * \Parameters (in) : parameterName   Parameter Describtion
 * \Parameters (out): None
-* \Return value:   : Std_ReturnType  E_OK
+* \Return value:   : void  E_OK
 *                                    E_NOT_OK
 *******************************************************************************/
-uint8 BTN_GetValue(uint8 Button_num)
+void RELY_ON(uint8 rely)
 {
-	uint8 button = 1, temp = 0;
-	
-	DIO_ReadChennel(Button_num , &button);
-	
-	while(temp == 0)
-	{
-		DIO_ReadChennel(Button_num , &temp);
-	}
-	_delay_ms(10);
-	
-	return button;
+	SET_BIT(PHYSICAL_GPIO_ACCESS(GPIOC_BASE_ADDRRESS+GPIO_OUTPUT_REGISTER_PORT),rely);
 }
 
+/******************************************************************************
+* \Syntax          : void RELY_OFF(uint8)
+* \Description     : OFF relay
+*
+* \Sync\Async      : Synchronous
+* \Reentrancy      : Non Reentrant
+* \Parameters (in) : parameterName   Parameter Describtion
+* \Parameters (out): None
+* \Return value:   : void  E_OK
+*                                    E_NOT_OK
+*******************************************************************************/
+void RELY_OFF(uint8 rely)
+{
+	CLR_BIT(PHYSICAL_GPIO_ACCESS(GPIOC_BASE_ADDRRESS+GPIO_OUTPUT_REGISTER_PORT),rely);
+}
 /**********************************************************************************************************************
- *  END OF FILE: FileName.c
+ *  END OF FILE: Relay.c
  *********************************************************************************************************************/

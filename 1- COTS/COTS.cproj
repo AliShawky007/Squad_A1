@@ -30,53 +30,53 @@
     <EraseKey />
     <AsfFrameworkConfig>
       <framework-data xmlns="">
-  <options />
-  <configurations />
-  <files />
-  <documentation help="" />
-  <offline-documentation help="" />
-  <dependencies>
-    <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.52.0" />
-  </dependencies>
-</framework-data>
+        <options />
+        <configurations />
+        <files />
+        <documentation help="" />
+        <offline-documentation help="" />
+        <dependencies>
+          <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.52.0" />
+        </dependencies>
+      </framework-data>
     </AsfFrameworkConfig>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <ToolchainSettings>
       <AvrGcc>
-  <avrgcc.common.Device>-mmcu=atmega32 -B "%24(PackRepoDir)\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32"</avrgcc.common.Device>
-  <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
-  <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
-  <avrgcc.common.outputfiles.eep>True</avrgcc.common.outputfiles.eep>
-  <avrgcc.common.outputfiles.srec>True</avrgcc.common.outputfiles.srec>
-  <avrgcc.common.outputfiles.usersignatures>False</avrgcc.common.outputfiles.usersignatures>
-  <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
-  <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
-  <avrgcc.compiler.symbols.DefSymbols>
-    <ListValues>
-      <Value>NDEBUG</Value>
-    </ListValues>
-  </avrgcc.compiler.symbols.DefSymbols>
-  <avrgcc.compiler.directories.IncludePaths>
-    <ListValues>
-      <Value>%24(PackRepoDir)\atmel\ATmega_DFP\1.7.374\include\</Value>
-    </ListValues>
-  </avrgcc.compiler.directories.IncludePaths>
-  <avrgcc.compiler.optimization.level>Optimize for size (-Os)</avrgcc.compiler.optimization.level>
-  <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
-  <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
-  <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
-  <avrgcc.linker.libraries.Libraries>
-    <ListValues>
-      <Value>libm</Value>
-    </ListValues>
-  </avrgcc.linker.libraries.Libraries>
-  <avrgcc.assembler.general.IncludePaths>
-    <ListValues>
-      <Value>%24(PackRepoDir)\atmel\ATmega_DFP\1.7.374\include\</Value>
-    </ListValues>
-  </avrgcc.assembler.general.IncludePaths>
-</AvrGcc>
+        <avrgcc.common.Device>-mmcu=atmega32 -B "%24(PackRepoDir)\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32"</avrgcc.common.Device>
+        <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
+        <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
+        <avrgcc.common.outputfiles.eep>True</avrgcc.common.outputfiles.eep>
+        <avrgcc.common.outputfiles.srec>True</avrgcc.common.outputfiles.srec>
+        <avrgcc.common.outputfiles.usersignatures>False</avrgcc.common.outputfiles.usersignatures>
+        <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
+        <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
+        <avrgcc.compiler.symbols.DefSymbols>
+          <ListValues>
+            <Value>NDEBUG</Value>
+          </ListValues>
+        </avrgcc.compiler.symbols.DefSymbols>
+        <avrgcc.compiler.directories.IncludePaths>
+          <ListValues>
+            <Value>%24(PackRepoDir)\atmel\ATmega_DFP\1.7.374\include\</Value>
+          </ListValues>
+        </avrgcc.compiler.directories.IncludePaths>
+        <avrgcc.compiler.optimization.level>Optimize for size (-Os)</avrgcc.compiler.optimization.level>
+        <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
+        <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
+        <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+        <avrgcc.linker.libraries.Libraries>
+          <ListValues>
+            <Value>libm</Value>
+          </ListValues>
+        </avrgcc.linker.libraries.Libraries>
+        <avrgcc.assembler.general.IncludePaths>
+          <ListValues>
+            <Value>%24(PackRepoDir)\atmel\ATmega_DFP\1.7.374\include\</Value>
+          </ListValues>
+        </avrgcc.assembler.general.IncludePaths>
+      </AvrGcc>
     </ToolchainSettings>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -98,18 +98,25 @@
   <avrgcc.compiler.directories.IncludePaths>
     <ListValues>
       <Value>%24(PackRepoDir)\atmel\ATmega_DFP\1.7.374\include\</Value>
-      <Value>../App</Value>
       <Value>../Common</Value>
-      <Value>../HAL/BTN</Value>
+      <Value>../App</Value>
+      <Value>..</Value>
+      <Value>../HAL/BUTTON</Value>
+      <Value>../HAL/BUZZER</Value>
       <Value>../HAL/LED</Value>
-      <Value>../HAL/SevSeg</Value>
+      <Value>../HAL/RELAY</Value>
+      <Value>../HAL/SEVEN_SEG</Value>
       <Value>../MCAL/PORT</Value>
       <Value>../App/Main</Value>
       <Value>../App/CFGH/HAL_CFG</Value>
       <Value>../App/CFGH/MCAL_CFG/PORT_CFG</Value>
       <Value>../MCAL/DIO</Value>
-      <Value>../App/CFGH/HAL_CFG/LED_Cfg</Value>
-      <Value>../App/CFGH/HAL_CFG/BTN_Cfg</Value>
+      <Value>../App/CFGH/HAL_CFG/BUTTON_CFG</Value>
+      <Value>../App/CFGH/HAL_CFG/LED_CFG</Value>
+      <Value>../App/CFGH/HAL_CFG/SEVEN_SEG_CFG</Value>
+      <Value>../App/CFGH/HAL_CFG/BUZZER_CFG</Value>
+      <Value>../HAL/LCD</Value>
+      <Value>../App/CFGH/HAL_CFG/LCD_CFG</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.level>Optimize debugging experience (-Og)</avrgcc.compiler.optimization.level>
@@ -132,34 +139,25 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="App\" />
-    <Folder Include="App\CFGH" />
-    <Folder Include="App\CFGH\HAL_CFG" />
-    <Folder Include="App\CFGH\HAL_CFG\LED_Cfg" />
-    <Folder Include="App\CFGH\HAL_CFG\BTN_Cfg" />
-    <Folder Include="App\CFGH\MCAL_CFG" />
-    <Folder Include="App\CFGH\MCAL_CFG\PORT_CFG" />
-    <Folder Include="App\Main" />
-    <Folder Include="Common\" />
-    <Folder Include="HAL\" />
-    <Folder Include="HAL\BTN\" />
-    <Folder Include="HAL\LED\" />
-    <Folder Include="HAL\SevSeg\" />
-    <Folder Include="MCAL" />
-    <Folder Include="MCAL\DIO" />
-    <Folder Include="MCAL\PORT" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="App\CFGH\HAL_CFG\BTN_Cfg\BTN_Cfg.h">
+    <Compile Include="App\CFGH\HAL_CFG\BUTTON_CFG\BUTTON_CFG.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="App\CFGH\HAL_CFG\LED_Cfg\LED_Cfg.h">
+    <Compile Include="App\CFGH\HAL_CFG\BUZZER_CFG\BUZZER_CFG.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="App\CFGH\MCAL_CFG\PORT_CFG\PORT_LCFG.h">
+    <Compile Include="App\CFGH\HAL_CFG\LCD_CFG\LCD_CFG.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="App\CFGH\HAL_CFG\LED_CFG\LED_CFG.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="App\CFGH\HAL_CFG\SEVEN_SEG_CFG\SEVEN_SEG_CFG.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="App\CFGH\MCAL_CFG\PORT_CFG\PORT_LCFG.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="App\CFGH\MCAL_CFG\PORT_CFG\PORT_LCFG.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="App\Main\main.c">
@@ -174,36 +172,78 @@
     <Compile Include="Common\STD.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="HAL\BTN\BTN.c">
+    <Compile Include="HAL\BUTTON\Button.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="HAL\BTN\BTN.h">
+    <Compile Include="HAL\BUTTON\Button.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="HAL\LED\LED.c">
+    <Compile Include="HAL\BUZZER\Buzzer.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="HAL\LED\LED.h">
+    <Compile Include="HAL\BUZZER\Buzzer.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="HAL\SevSeg\SevSeg_Core.c">
+    <Compile Include="HAL\LCD\LCD_Core.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="HAL\SevSeg\SevSeg_Core.h">
+    <Compile Include="HAL\LCD\LCD_Core.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL\DIO\DIO_Core.c">
+    <Compile Include="HAL\LED\Led.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL\DIO\DIO_Core.h">
+    <Compile Include="HAL\LED\Led.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL\PORT\PORT_Core.c">
+    <Compile Include="HAL\RELAY\Relay.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL\PORT\PORT_Core.h">
+    <Compile Include="HAL\RELAY\Relay.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="HAL\SEVEN_SEG\SEVEN_SEG.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\SEVEN_SEG\SEVEN_SEG.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\DIO\DIO_CORE.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\DIO\DIO_CORE.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\PORT\PORT_CORE.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\PORT\PORT_CORE.h">
+      <SubType>compile</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App" />
+    <Folder Include="App\CFGH" />
+    <Folder Include="App\CFGH\HAL_CFG\LED_CFG" />
+    <Folder Include="App\CFGH\HAL_CFG\BUTTON_CFG" />
+    <Folder Include="App\CFGH\HAL_CFG\BUZZER_CFG" />
+    <Folder Include="App\CFGH\HAL_CFG\LCD_CFG" />
+    <Folder Include="App\CFGH\HAL_CFG\SEVEN_SEG_CFG" />
+    <Folder Include="App\CFGH\MCAL_CFG" />
+    <Folder Include="App\CFGH\HAL_CFG" />
+    <Folder Include="App\CFGH\MCAL_CFG\PORT_CFG" />
+    <Folder Include="App\Main" />
+    <Folder Include="Common" />
+    <Folder Include="HAL" />
+    <Folder Include="HAL\LED" />
+    <Folder Include="HAL\BUTTON" />
+    <Folder Include="HAL\BUZZER" />
+    <Folder Include="HAL\LCD" />
+    <Folder Include="HAL\SEVEN_SEG" />
+    <Folder Include="HAL\RELAY" />
+    <Folder Include="MCAL" />
+    <Folder Include="MCAL\DIO" />
+    <Folder Include="MCAL\PORT" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>
