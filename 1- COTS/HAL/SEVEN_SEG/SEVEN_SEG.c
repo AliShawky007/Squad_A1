@@ -1,8 +1,8 @@
 /**********************************************************************************************************************
  *  FILE DESCRIPTION
  *  -----------------------------------------------------------------------------------------------------------------*/
-/**        \file   BTN.c
- *        \brief  push button module driver 
+/**        \file   SEVEN_SEG.c
+ *        \brief  7_SEG module driver 
  *
  *      \details  
  *
@@ -12,7 +12,8 @@
 /**********************************************************************************************************************
  *  INCLUDES
  *********************************************************************************************************************/
-#include "BTN.h"
+#include "SEVEN_SEG.h"
+
 /**********************************************************************************************************************
 *  LOCAL MACROS CONSTANT\FUNCTION
 *********************************************************************************************************************/
@@ -24,7 +25,8 @@
 /**********************************************************************************************************************
  *  GLOBAL DATA
  *********************************************************************************************************************/
-
+/**7-seg array*****/
+static uint8 const seven_seg[10]={0x7E,0x0C,0xB6,0x9E,0xCC,0xDA,0XFA,0x0E,0xFE,0xCE};
 /**********************************************************************************************************************
  *  LOCAL FUNCTION PROTOTYPES
  *********************************************************************************************************************/
@@ -37,30 +39,27 @@
  *  GLOBAL FUNCTIONS
  *********************************************************************************************************************/
 
-
 /******************************************************************************
-* \Syntax          : uint8 BTN_GetValue(void)
-* \Description     : read the value of the push button
+* \Syntax          : void SEVEN_SEG_DISPLAY(uint8 val)
+* \Description     : Display number on 7-segment
 *
 * \Sync\Async      : Synchronous
 * \Reentrancy      : Non Reentrant
 * \Parameters (in) : parameterName   Parameter Describtion
 * \Parameters (out): None
-* \Return value:   : Std_ReturnType  E_OK
-*                                    E_NOT_OK
+* \Return value:   : void
 *******************************************************************************/
-uint8 BTN_GetValue(uint8 Button_Num)
+void SEVEN_SEG_DISPLAY(uint8 val)
 {
-	uint8 button=1 ,temp=0;
-   DIO_ReadChannel(Button_Num,&button);
-	while(temp==BUTTON_PRESSED){
-	DIO_ReadChannel(Button_Num,&temp);
-	}
-	_delay_ms(10);
-	return button;
+	DIO_WriteChannel(SEVEN_SEG2_EN,PIN_LOW);
+	DIO_WriteChannel(SEVEN_SEG1_EN,PIN_HIGH);
+	DIO_WritePort(SEVEN_SEG_PORT,seven_seg[val%10]);
+	_delay_ms(1);
+	DIO_WriteChannel(SEVEN_SEG1_EN,PIN_LOW);
+	DIO_WriteChannel(SEVEN_SEG2_EN,PIN_HIGH);
+	DIO_WritePort(SEVEN_SEG_PORT,seven_seg[val/10]);
+	_delay_ms(1);
 }
-
-
 /**********************************************************************************************************************
- *  END OF FILE: BTN.c
+ *  END OF FILE: SEVEN_SEG.c
  *********************************************************************************************************************/

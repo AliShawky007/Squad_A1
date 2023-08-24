@@ -1,8 +1,8 @@
 /**********************************************************************************************************************
  *  FILE DESCRIPTION
  *  -----------------------------------------------------------------------------------------------------------------*/
-/**        \file   BTN.c
- *        \brief  push button module driver 
+/**        \file   BUZZ.c
+ *        \brief  BUZZER module driver 
  *
  *      \details  
  *
@@ -12,7 +12,7 @@
 /**********************************************************************************************************************
  *  INCLUDES
  *********************************************************************************************************************/
-#include "BTN.h"
+#include "BUZZ.h"
 /**********************************************************************************************************************
 *  LOCAL MACROS CONSTANT\FUNCTION
 *********************************************************************************************************************/
@@ -36,31 +36,35 @@
 /**********************************************************************************************************************
  *  GLOBAL FUNCTIONS
  *********************************************************************************************************************/
-
-
 /******************************************************************************
-* \Syntax          : uint8 BTN_GetValue(void)
-* \Description     : read the value of the push button
+* \Syntax          : void BUZZ_ON(void)
+* \Description     : Turn the Buzzer on
 *
 * \Sync\Async      : Synchronous
 * \Reentrancy      : Non Reentrant
 * \Parameters (in) : parameterName   Parameter Describtion
 * \Parameters (out): None
-* \Return value:   : Std_ReturnType  E_OK
-*                                    E_NOT_OK
+* \Return value:   : void
 *******************************************************************************/
-uint8 BTN_GetValue(uint8 Button_Num)
+void BUZZ_ON(void)
 {
-	uint8 button=1 ,temp=0;
-   DIO_ReadChannel(Button_Num,&button);
-	while(temp==BUTTON_PRESSED){
-	DIO_ReadChannel(Button_Num,&temp);
-	}
-	_delay_ms(10);
-	return button;
+	DIO_WriteChannel(BUZZ_PIN,PIN_HIGH);
 }
-
-
 /**********************************************************************************************************************
- *  END OF FILE: BTN.c
+******************************************************************************
+* \Syntax          : void BUZZ_OFF(void)
+* \Description     : Turn the Buzzer off
+*
+* \Sync\Async      : Synchronous
+* \Reentrancy      : Non Reentrant
+* \Parameters (in) : parameterName   Parameter Describtion
+* \Parameters (out): None
+* \Return value:   : void
+*******************************************************************************/
+void BUZZ_OFF(void)
+{
+DIO_WriteChannel(BUZZ_PIN,PIN_LOW);
+}
+/**********************************************************************************************************************
+ *  END OF FILE: BUZZ.c
  *********************************************************************************************************************/

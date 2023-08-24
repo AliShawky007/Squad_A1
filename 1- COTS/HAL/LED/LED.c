@@ -1,14 +1,8 @@
-/*
- * LED.c
- *
- * Created: 8/16/2023 7:13:38 PM
- *  Author: Ali
- */ 
 /**********************************************************************************************************************
  *  FILE DESCRIPTION
  *  -----------------------------------------------------------------------------------------------------------------*/
-/**        \file  FileName.c
- *        \brief  
+/**        \file  LED.c 
+ *        \brief  has the basic functions of led module
  *
  *      \details  
  *
@@ -43,12 +37,9 @@
 /**********************************************************************************************************************
  *  GLOBAL FUNCTIONS
  *********************************************************************************************************************/
-
-
-
 /******************************************************************************
 * \Syntax          : void LED_On(void)
-* \Description     : Led on
+* \Description     : write logic high to the led pin
 *
 * \Sync\Async      : Synchronous
 * \Reentrancy      : Non Reentrant
@@ -57,13 +48,15 @@
 * \Return value:   : Std_ReturnType  E_OK
 *                                    E_NOT_OK
 *******************************************************************************/
-void LED_SetValue(uint8 LED_Num ,uint8 LED_Value)
+void LED_SetValue(uint8 LED_Num , LED_VALUE_t LED_Value)
 {
-	DIO_WriteChennel(LED_Num , LED_Value);
+	DIO_WriteChannel(LED_Num,LED_Value);
 }
+
+
 /******************************************************************************
 * \Syntax          : void LED_Toggle(void)
-* \Description     : Led Toggle
+* \Description     : toggle the logic of led pin
 *
 * \Sync\Async      : Synchronous
 * \Reentrancy      : Non Reentrant
@@ -72,12 +65,11 @@ void LED_SetValue(uint8 LED_Num ,uint8 LED_Value)
 * \Return value:   : Std_ReturnType  E_OK
 *                                    E_NOT_OK
 *******************************************************************************/
-
 void LED_Toggle(uint8 LED_Num)
 {
-	DIO_FlipChennel(LED_Num);
+	DIO_FlipChannel(LED_Num);
 }
-
+/******************************************************************************/
 /**********************************************************************************************************************
  *  END OF FILE: FileName.c
  *********************************************************************************************************************/

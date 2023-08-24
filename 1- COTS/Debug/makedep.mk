@@ -4,13 +4,17 @@
 
 App\CFGH\MCAL_CFG\PORT_CFG\PORT_LCFG.c
 
-App\Main\main.c
+App\Main\App.c
 
 HAL\BTN\BTN.c
 
+HAL\BUZZ\BUZZ.c
+
 HAL\LED\LED.c
 
-HAL\SevSeg\SevSeg_Core.c
+HAL\RELAY\RELAY.c
+
+HAL\SEVEN_SEG\SEVEN_SEG.c
 
 MCAL\DIO\DIO_Core.c
 

@@ -38,6 +38,8 @@ SUBDIRS :=  \
 ../App/CFGH/HAL_CFG \
 ../App/CFGH/HAL_CFG/LED_Cfg \
 ../App/CFGH/HAL_CFG/BTN_Cfg \
+../App/CFGH/HAL_CFG/BUZZ_Cfg \
+../App/CFGH/HAL_CFG/SEVEN_SEG_Cfg \
 ../App/CFGH/MCAL_CFG \
 ../App/CFGH/MCAL_CFG/PORT_CFG \
 ../App/Main \
@@ -45,7 +47,9 @@ SUBDIRS :=  \
 ../HAL/ \
 ../HAL/BTN/ \
 ../HAL/LED/ \
-../HAL/SevSeg/ \
+../HAL/BUZZ \
+../HAL/RELAY \
+../HAL/SEVEN_SEG \
 ../MCAL \
 ../MCAL/DIO \
 ../MCAL/PORT
@@ -54,10 +58,12 @@ SUBDIRS :=  \
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
 ../App/CFGH/MCAL_CFG/PORT_CFG/PORT_LCFG.c \
-../App/Main/main.c \
+../App/Main/App.c \
 ../HAL/BTN/BTN.c \
+../HAL/BUZZ/BUZZ.c \
 ../HAL/LED/LED.c \
-../HAL/SevSeg/SevSeg_Core.c \
+../HAL/RELAY/RELAY.c \
+../HAL/SEVEN_SEG/SEVEN_SEG.c \
 ../MCAL/DIO/DIO_Core.c \
 ../MCAL/PORT/PORT_Core.c
 
@@ -70,37 +76,45 @@ ASM_SRCS +=
 
 OBJS +=  \
 App/CFGH/MCAL_CFG/PORT_CFG/PORT_LCFG.o \
-App/Main/main.o \
+App/Main/App.o \
 HAL/BTN/BTN.o \
+HAL/BUZZ/BUZZ.o \
 HAL/LED/LED.o \
-HAL/SevSeg/SevSeg_Core.o \
+HAL/RELAY/RELAY.o \
+HAL/SEVEN_SEG/SEVEN_SEG.o \
 MCAL/DIO/DIO_Core.o \
 MCAL/PORT/PORT_Core.o
 
 OBJS_AS_ARGS +=  \
 App/CFGH/MCAL_CFG/PORT_CFG/PORT_LCFG.o \
-App/Main/main.o \
+App/Main/App.o \
 HAL/BTN/BTN.o \
+HAL/BUZZ/BUZZ.o \
 HAL/LED/LED.o \
-HAL/SevSeg/SevSeg_Core.o \
+HAL/RELAY/RELAY.o \
+HAL/SEVEN_SEG/SEVEN_SEG.o \
 MCAL/DIO/DIO_Core.o \
 MCAL/PORT/PORT_Core.o
 
 C_DEPS +=  \
 App/CFGH/MCAL_CFG/PORT_CFG/PORT_LCFG.d \
-App/Main/main.d \
+App/Main/App.d \
 HAL/BTN/BTN.d \
+HAL/BUZZ/BUZZ.d \
 HAL/LED/LED.d \
-HAL/SevSeg/SevSeg_Core.d \
+HAL/RELAY/RELAY.d \
+HAL/SEVEN_SEG/SEVEN_SEG.d \
 MCAL/DIO/DIO_Core.d \
 MCAL/PORT/PORT_Core.d
 
 C_DEPS_AS_ARGS +=  \
 App/CFGH/MCAL_CFG/PORT_CFG/PORT_LCFG.d \
-App/Main/main.d \
+App/Main/App.d \
 HAL/BTN/BTN.d \
+HAL/BUZZ/BUZZ.d \
 HAL/LED/LED.d \
-HAL/SevSeg/SevSeg_Core.d \
+HAL/RELAY/RELAY.d \
+HAL/SEVEN_SEG/SEVEN_SEG.d \
 MCAL/DIO/DIO_Core.d \
 MCAL/PORT/PORT_Core.d
 
@@ -121,49 +135,63 @@ LINKER_SCRIPT_DEP+=
 App/CFGH/MCAL_CFG/PORT_CFG/PORT_LCFG.o: ../App/CFGH/MCAL_CFG/PORT_CFG/PORT_LCFG.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../Common" -I"../HAL/BTN" -I"../HAL/LED" -I"../HAL/SevSeg" -I"../MCAL/PORT" -I"../App/Main" -I"../App/CFGH/HAL_CFG" -I"../App/CFGH/MCAL_CFG/PORT_CFG" -I"../MCAL/DIO" -I"../App/CFGH/HAL_CFG/LED_Cfg" -I"../App/CFGH/HAL_CFG/BTN_Cfg"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)D:\AVR\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"D:\AVR\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../Common" -I"../HAL/BTN" -I"../HAL/LED" -I"../HAL/SevSeg" -I"../MCAL/PORT" -I"../App/Main" -I"../App/CFGH/HAL_CFG" -I"../App/CFGH/MCAL_CFG/PORT_CFG" -I"../MCAL/DIO" -I"../App/CFGH/HAL_CFG/LED_Cfg" -I"../App/CFGH/HAL_CFG/BTN_Cfg" -I"../App/CFGH/HAL_CFG/BUZZ_Cfg" -I"../App/CFGH/HAL_CFG/SEVEN_SEG_Cfg" -I".." -I"../HAL/BUZZ" -I"../HAL/SEVEN_SEG"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "D:\AVR\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-App/Main/main.o: ../App/Main/main.c
+App/Main/App.o: ../App/Main/App.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../Common" -I"../HAL/BTN" -I"../HAL/LED" -I"../HAL/SevSeg" -I"../MCAL/PORT" -I"../App/Main" -I"../App/CFGH/HAL_CFG" -I"../App/CFGH/MCAL_CFG/PORT_CFG" -I"../MCAL/DIO" -I"../App/CFGH/HAL_CFG/LED_Cfg" -I"../App/CFGH/HAL_CFG/BTN_Cfg"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)D:\AVR\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"D:\AVR\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../Common" -I"../HAL/BTN" -I"../HAL/LED" -I"../HAL/SevSeg" -I"../MCAL/PORT" -I"../App/Main" -I"../App/CFGH/HAL_CFG" -I"../App/CFGH/MCAL_CFG/PORT_CFG" -I"../MCAL/DIO" -I"../App/CFGH/HAL_CFG/LED_Cfg" -I"../App/CFGH/HAL_CFG/BTN_Cfg" -I"../App/CFGH/HAL_CFG/BUZZ_Cfg" -I"../App/CFGH/HAL_CFG/SEVEN_SEG_Cfg" -I".." -I"../HAL/BUZZ" -I"../HAL/SEVEN_SEG"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "D:\AVR\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 HAL/BTN/BTN.o: ../HAL/BTN/BTN.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../Common" -I"../HAL/BTN" -I"../HAL/LED" -I"../HAL/SevSeg" -I"../MCAL/PORT" -I"../App/Main" -I"../App/CFGH/HAL_CFG" -I"../App/CFGH/MCAL_CFG/PORT_CFG" -I"../MCAL/DIO" -I"../App/CFGH/HAL_CFG/LED_Cfg" -I"../App/CFGH/HAL_CFG/BTN_Cfg"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)D:\AVR\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"D:\AVR\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../Common" -I"../HAL/BTN" -I"../HAL/LED" -I"../HAL/SevSeg" -I"../MCAL/PORT" -I"../App/Main" -I"../App/CFGH/HAL_CFG" -I"../App/CFGH/MCAL_CFG/PORT_CFG" -I"../MCAL/DIO" -I"../App/CFGH/HAL_CFG/LED_Cfg" -I"../App/CFGH/HAL_CFG/BTN_Cfg" -I"../App/CFGH/HAL_CFG/BUZZ_Cfg" -I"../App/CFGH/HAL_CFG/SEVEN_SEG_Cfg" -I".." -I"../HAL/BUZZ" -I"../HAL/SEVEN_SEG"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "D:\AVR\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+HAL/BUZZ/BUZZ.o: ../HAL/BUZZ/BUZZ.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)D:\AVR\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"D:\AVR\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../Common" -I"../HAL/BTN" -I"../HAL/LED" -I"../HAL/SevSeg" -I"../MCAL/PORT" -I"../App/Main" -I"../App/CFGH/HAL_CFG" -I"../App/CFGH/MCAL_CFG/PORT_CFG" -I"../MCAL/DIO" -I"../App/CFGH/HAL_CFG/LED_Cfg" -I"../App/CFGH/HAL_CFG/BTN_Cfg" -I"../App/CFGH/HAL_CFG/BUZZ_Cfg" -I"../App/CFGH/HAL_CFG/SEVEN_SEG_Cfg" -I".." -I"../HAL/BUZZ" -I"../HAL/SEVEN_SEG"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "D:\AVR\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 HAL/LED/LED.o: ../HAL/LED/LED.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../Common" -I"../HAL/BTN" -I"../HAL/LED" -I"../HAL/SevSeg" -I"../MCAL/PORT" -I"../App/Main" -I"../App/CFGH/HAL_CFG" -I"../App/CFGH/MCAL_CFG/PORT_CFG" -I"../MCAL/DIO" -I"../App/CFGH/HAL_CFG/LED_Cfg" -I"../App/CFGH/HAL_CFG/BTN_Cfg"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)D:\AVR\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"D:\AVR\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../Common" -I"../HAL/BTN" -I"../HAL/LED" -I"../HAL/SevSeg" -I"../MCAL/PORT" -I"../App/Main" -I"../App/CFGH/HAL_CFG" -I"../App/CFGH/MCAL_CFG/PORT_CFG" -I"../MCAL/DIO" -I"../App/CFGH/HAL_CFG/LED_Cfg" -I"../App/CFGH/HAL_CFG/BTN_Cfg" -I"../App/CFGH/HAL_CFG/BUZZ_Cfg" -I"../App/CFGH/HAL_CFG/SEVEN_SEG_Cfg" -I".." -I"../HAL/BUZZ" -I"../HAL/SEVEN_SEG"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "D:\AVR\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-HAL/SevSeg/SevSeg_Core.o: ../HAL/SevSeg/SevSeg_Core.c
+HAL/RELAY/RELAY.o: ../HAL/RELAY/RELAY.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../Common" -I"../HAL/BTN" -I"../HAL/LED" -I"../HAL/SevSeg" -I"../MCAL/PORT" -I"../App/Main" -I"../App/CFGH/HAL_CFG" -I"../App/CFGH/MCAL_CFG/PORT_CFG" -I"../MCAL/DIO" -I"../App/CFGH/HAL_CFG/LED_Cfg" -I"../App/CFGH/HAL_CFG/BTN_Cfg"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)D:\AVR\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"D:\AVR\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../Common" -I"../HAL/BTN" -I"../HAL/LED" -I"../HAL/SevSeg" -I"../MCAL/PORT" -I"../App/Main" -I"../App/CFGH/HAL_CFG" -I"../App/CFGH/MCAL_CFG/PORT_CFG" -I"../MCAL/DIO" -I"../App/CFGH/HAL_CFG/LED_Cfg" -I"../App/CFGH/HAL_CFG/BTN_Cfg" -I"../App/CFGH/HAL_CFG/BUZZ_Cfg" -I"../App/CFGH/HAL_CFG/SEVEN_SEG_Cfg" -I".." -I"../HAL/BUZZ" -I"../HAL/SEVEN_SEG"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "D:\AVR\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+HAL/SEVEN_SEG/SEVEN_SEG.o: ../HAL/SEVEN_SEG/SEVEN_SEG.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)D:\AVR\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"D:\AVR\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../Common" -I"../HAL/BTN" -I"../HAL/LED" -I"../HAL/SevSeg" -I"../MCAL/PORT" -I"../App/Main" -I"../App/CFGH/HAL_CFG" -I"../App/CFGH/MCAL_CFG/PORT_CFG" -I"../MCAL/DIO" -I"../App/CFGH/HAL_CFG/LED_Cfg" -I"../App/CFGH/HAL_CFG/BTN_Cfg" -I"../App/CFGH/HAL_CFG/BUZZ_Cfg" -I"../App/CFGH/HAL_CFG/SEVEN_SEG_Cfg" -I".." -I"../HAL/BUZZ" -I"../HAL/SEVEN_SEG"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "D:\AVR\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 MCAL/DIO/DIO_Core.o: ../MCAL/DIO/DIO_Core.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../Common" -I"../HAL/BTN" -I"../HAL/LED" -I"../HAL/SevSeg" -I"../MCAL/PORT" -I"../App/Main" -I"../App/CFGH/HAL_CFG" -I"../App/CFGH/MCAL_CFG/PORT_CFG" -I"../MCAL/DIO" -I"../App/CFGH/HAL_CFG/LED_Cfg" -I"../App/CFGH/HAL_CFG/BTN_Cfg"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)D:\AVR\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"D:\AVR\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../Common" -I"../HAL/BTN" -I"../HAL/LED" -I"../HAL/SevSeg" -I"../MCAL/PORT" -I"../App/Main" -I"../App/CFGH/HAL_CFG" -I"../App/CFGH/MCAL_CFG/PORT_CFG" -I"../MCAL/DIO" -I"../App/CFGH/HAL_CFG/LED_Cfg" -I"../App/CFGH/HAL_CFG/BTN_Cfg" -I"../App/CFGH/HAL_CFG/BUZZ_Cfg" -I"../App/CFGH/HAL_CFG/SEVEN_SEG_Cfg" -I".." -I"../HAL/BUZZ" -I"../HAL/SEVEN_SEG"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "D:\AVR\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 MCAL/PORT/PORT_Core.o: ../MCAL/PORT/PORT_Core.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../Common" -I"../HAL/BTN" -I"../HAL/LED" -I"../HAL/SevSeg" -I"../MCAL/PORT" -I"../App/Main" -I"../App/CFGH/HAL_CFG" -I"../App/CFGH/MCAL_CFG/PORT_CFG" -I"../MCAL/DIO" -I"../App/CFGH/HAL_CFG/LED_Cfg" -I"../App/CFGH/HAL_CFG/BTN_Cfg"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)D:\AVR\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"D:\AVR\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../Common" -I"../HAL/BTN" -I"../HAL/LED" -I"../HAL/SevSeg" -I"../MCAL/PORT" -I"../App/Main" -I"../App/CFGH/HAL_CFG" -I"../App/CFGH/MCAL_CFG/PORT_CFG" -I"../MCAL/DIO" -I"../App/CFGH/HAL_CFG/LED_Cfg" -I"../App/CFGH/HAL_CFG/BTN_Cfg" -I"../App/CFGH/HAL_CFG/BUZZ_Cfg" -I"../App/CFGH/HAL_CFG/SEVEN_SEG_Cfg" -I".." -I"../HAL/BUZZ" -I"../HAL/SEVEN_SEG"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "D:\AVR\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
@@ -193,13 +221,13 @@ all: $(OUTPUT_FILE_PATH) $(ADDITIONAL_DEPENDENCIES)
 $(OUTPUT_FILE_PATH): $(OBJS) $(USER_OBJS) $(OUTPUT_FILE_DEP) $(LIB_DEP) $(LINKER_SCRIPT_DEP)
 	@echo Building target: $@
 	@echo Invoking: AVR/GNU Linker : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE) -o$(OUTPUT_FILE_PATH_AS_ARGS) $(OBJS_AS_ARGS) $(USER_OBJS) $(LIBS) -Wl,-Map="COTS.map" -Wl,--start-group -Wl,-lm  -Wl,--end-group -Wl,--gc-sections -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32"  
+	$(QUOTE)D:\AVR\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE) -o$(OUTPUT_FILE_PATH_AS_ARGS) $(OBJS_AS_ARGS) $(USER_OBJS) $(LIBS) -Wl,-Map="COTS.map" -Wl,--start-group -Wl,-lm  -Wl,--end-group -Wl,--gc-sections -mmcu=atmega32 -B "D:\AVR\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32"  
 	@echo Finished building target: $@
-	"C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objcopy.exe" -O ihex -R .eeprom -R .fuse -R .lock -R .signature -R .user_signatures  "COTS.elf" "COTS.hex"
-	"C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objcopy.exe" -j .eeprom  --set-section-flags=.eeprom=alloc,load --change-section-lma .eeprom=0  --no-change-warnings -O ihex "COTS.elf" "COTS.eep" || exit 0
-	"C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objdump.exe" -h -S "COTS.elf" > "COTS.lss"
-	"C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objcopy.exe" -O srec -R .eeprom -R .fuse -R .lock -R .signature -R .user_signatures "COTS.elf" "COTS.srec"
-	"C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-size.exe" "COTS.elf"
+	"D:\AVR\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objcopy.exe" -O ihex -R .eeprom -R .fuse -R .lock -R .signature -R .user_signatures  "COTS.elf" "COTS.hex"
+	"D:\AVR\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objcopy.exe" -j .eeprom  --set-section-flags=.eeprom=alloc,load --change-section-lma .eeprom=0  --no-change-warnings -O ihex "COTS.elf" "COTS.eep" || exit 0
+	"D:\AVR\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objdump.exe" -h -S "COTS.elf" > "COTS.lss"
+	"D:\AVR\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objcopy.exe" -O srec -R .eeprom -R .fuse -R .lock -R .signature -R .user_signatures "COTS.elf" "COTS.srec"
+	"D:\AVR\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-size.exe" "COTS.elf"
 	
 	
 

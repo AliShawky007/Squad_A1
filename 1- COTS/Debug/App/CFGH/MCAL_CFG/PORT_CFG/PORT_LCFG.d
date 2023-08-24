@@ -1,15 +1,20 @@
 App/CFGH/MCAL_CFG/PORT_CFG/PORT_LCFG.d \
  App/CFGH/MCAL_CFG/PORT_CFG/PORT_LCFG.o: \
  ../App/CFGH/MCAL_CFG/PORT_CFG/PORT_LCFG.c \
- ../App/CFGH/MCAL_CFG/PORT_CFG/PORT_LCFG.h ../Common/STD.h \
- ../Common/MCU.h ../Common/STD.h ../Common/Bit_Math.h
+ ../App/CFGH/MCAL_CFG/PORT_CFG/PORT_LCFG.h ../Common/std_types.h \
+ ../App/CFGH/HAL_CFG/BTN_Cfg/BTN_Cfg.h \
+ ../App/CFGH/HAL_CFG/SEVEN_SEG_Cfg/SEVEN_SEG_Cfg.h \
+ ../App/CFGH/HAL_CFG/BUZZ_Cfg/BUZZ_Cfg.h \
+ ../App/CFGH/HAL_CFG/LED_Cfg/LED_Cfg.h
 
 ../App/CFGH/MCAL_CFG/PORT_CFG/PORT_LCFG.h:
 
-../Common/STD.h:
+../Common/std_types.h:
 
-../Common/MCU.h:
+../App/CFGH/HAL_CFG/BTN_Cfg/BTN_Cfg.h:
 
-../Common/STD.h:
+../App/CFGH/HAL_CFG/SEVEN_SEG_Cfg/SEVEN_SEG_Cfg.h:
 
-../Common/Bit_Math.h:
+../App/CFGH/HAL_CFG/BUZZ_Cfg/BUZZ_Cfg.h:
+
+../App/CFGH/HAL_CFG/LED_Cfg/LED_Cfg.h:

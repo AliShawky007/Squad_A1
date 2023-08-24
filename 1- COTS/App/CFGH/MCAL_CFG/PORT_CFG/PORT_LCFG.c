@@ -1,14 +1,8 @@
-/*
- * PORT_LCFG.c
- *
- * Created: 8/19/2023 3:47:25 PM
- *  Author: Ali
- */ 
-/**********************************************************************************************************************
+ /**********************************************************************************************************************
  *  FILE DESCRIPTION
  *  -----------------------------------------------------------------------------------------------------------------*/
-/**        \file  FileName.c
- *        \brief  
+/**        \file  PORT_LCFG.c
+ *        \brief  contains the configuration of the pins direction
  *
  *      \details  
  *
@@ -31,12 +25,28 @@
 /**********************************************************************************************************************
  *  GLOBAL DATA
  *********************************************************************************************************************/
-const PIN_PARAMETERS PORT_Initialization[DEFINED_PINS] = {
-	/*Green LED Pins*/
-	{ PORTC_PIN1 , PIN_OUTPUT },
-	/*BTN0 Pins*/
-	{ PORTD_PIN2 , PIN_INPUT  }	
-};
+const PIN_PARAMETERS PORT_Initialization[DEFINED_PINS]={
+	/*Green Led  pins 
+	{PORTC_PIN2,PIN_OUTPUT},*/
+	 /*BTN0 PIN */
+	{BUTTON_0,PIN_INPUT},
+	 /*BTN1 PIN */
+	{BUTTON_1,PIN_INPUT},
+	 /*BTN2 PIN */
+	{BUTTON_2,PIN_INPUT},
+	/* SEVEN_SEG PINS */
+	{SEVEN_SEG_PIN1,PIN_OUTPUT},
+	{SEVEN_SEG_PIN2,PIN_OUTPUT},
+	{SEVEN_SEG_PIN3,PIN_OUTPUT},
+	{SEVEN_SEG_PIN4,PIN_OUTPUT},
+	{SEVEN_SEG_PIN5,PIN_OUTPUT},
+	{SEVEN_SEG_PIN6,PIN_OUTPUT},
+	{SEVEN_SEG_PIN7,PIN_OUTPUT},
+	{SEVEN_SEG1_EN,PIN_OUTPUT},
+	{SEVEN_SEG2_EN,PIN_OUTPUT},
+	/* BUZZ PIN */
+	{BUZZ_PIN,PIN_OUTPUT}
+	};
 /**********************************************************************************************************************
  *  LOCAL FUNCTION PROTOTYPES
  *********************************************************************************************************************/
@@ -50,6 +60,7 @@ const PIN_PARAMETERS PORT_Initialization[DEFINED_PINS] = {
  *********************************************************************************************************************/
 
 
+
 /**********************************************************************************************************************
- *  END OF FILE: FileName.c
+ *  END OF FILE: PORT_LCFG.c
  *********************************************************************************************************************/

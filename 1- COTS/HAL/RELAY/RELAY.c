@@ -1,8 +1,8 @@
 /**********************************************************************************************************************
  *  FILE DESCRIPTION
  *  -----------------------------------------------------------------------------------------------------------------*/
-/**        \file   BTN.c
- *        \brief  push button module driver 
+/**        \file   RELAY.c
+ *        \brief  RELAY module driver 
  *
  *      \details  
  *
@@ -12,7 +12,7 @@
 /**********************************************************************************************************************
  *  INCLUDES
  *********************************************************************************************************************/
-#include "BTN.h"
+#include "RELAY.h"
 /**********************************************************************************************************************
 *  LOCAL MACROS CONSTANT\FUNCTION
 *********************************************************************************************************************/
@@ -39,8 +39,23 @@
 
 
 /******************************************************************************
-* \Syntax          : uint8 BTN_GetValue(void)
-* \Description     : read the value of the push button
+* \Syntax          : void RELAY_Init(void)      
+* \Description     : initialize the RELAY pin PC4 to be OUTPUT                                 
+*                                                                             
+* \Sync\Async      : Synchronous                                               
+* \Reentrancy      : Non Reentrant                                             
+* \Parameters (in) : parameterName   Parameter Describtion                     
+* \Parameters (out): None                                                      
+* \Return value:   : Std_ReturnType  E_OK
+*                                    E_NOT_OK                                  
+*******************************************************************************/
+void RELAY_Init(void)
+{
+SET_BIT(PHYSICAL_GPIO_ACCESS(GPIOC_BASE_ADDRRESS+GPIO_DIRCETION_REGISTER_DDR),4);
+}
+/******************************************************************************
+* \Syntax          : void RELAY_ON(void)
+* \Description     : close the circuit of the relay
 *
 * \Sync\Async      : Synchronous
 * \Reentrancy      : Non Reentrant
@@ -49,18 +64,26 @@
 * \Return value:   : Std_ReturnType  E_OK
 *                                    E_NOT_OK
 *******************************************************************************/
-uint8 BTN_GetValue(uint8 Button_Num)
+void RELAY_ON(void)
 {
-	uint8 button=1 ,temp=0;
-   DIO_ReadChannel(Button_Num,&button);
-	while(temp==BUTTON_PRESSED){
-	DIO_ReadChannel(Button_Num,&temp);
-	}
-	_delay_ms(10);
-	return button;
+	SET_BIT( PHYSICAL_GPIO_ACCESS(GPIOC_BASE_ADDRRESS + GPIO_OUTPUT_REGISTER_PORT )  , 4);
 }
-
-
 /**********************************************************************************************************************
- *  END OF FILE: BTN.c
+******************************************************************************
+* \Syntax          : void RELAY_OFF(void)
+* \Description     : open the circuit of the relay
+*
+* \Sync\Async      : Synchronous
+* \Reentrancy      : Non Reentrant
+* \Parameters (in) : parameterName   Parameter Describtion
+* \Parameters (out): None
+* \Return value:   : Std_ReturnType  E_OK
+*                                    E_NOT_OK
+*******************************************************************************/
+void RELAY_OFF(void)
+{
+	CLR_BIT( PHYSICAL_GPIO_ACCESS(GPIOC_BASE_ADDRRESS + GPIO_OUTPUT_REGISTER_PORT )  , 4);
+}
+/**********************************************************************************************************************
+ *  END OF FILE: FileName.c
  *********************************************************************************************************************/

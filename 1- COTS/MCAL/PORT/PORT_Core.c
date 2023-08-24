@@ -1,17 +1,8 @@
-/*
- * PORT_Core.c
- *
- * Created: 8/19/2023 3:52:43 PM
- *  Author: Ali
- */ 
-/**********************************************************************************************************************
+ /**********************************************************************************************************************
  *  FILE DESCRIPTION
  *  -----------------------------------------------------------------------------------------------------------------*/
-/**        \file  FileName.c
- *        \brief  
- *
- *      \details  
- *
+/**        \file  PORT_Core.c
+ *        \brief  responsible for ports initialization
  *
  *********************************************************************************************************************/
 
@@ -27,7 +18,7 @@
 /**********************************************************************************************************************
  *  LOCAL DATA 
  *********************************************************************************************************************/
-
+volatile static uint8* Direction_Registers[]={&GPIOA_DIRECTION_REGISTER,&GPIOB_DIRECTION_REGISTER,&GPIOC_DIRECTION_REGISTER,&GPIOD_DIRECTION_REGISTER};
 /**********************************************************************************************************************
  *  GLOBAL DATA
  *********************************************************************************************************************/
@@ -44,93 +35,39 @@
  *  GLOBAL FUNCTIONS
  *********************************************************************************************************************/
 
-
 /******************************************************************************
-* \Syntax          : Std_ReturnType FunctionName(AnyType parameterName)        
-* \Description     : Describe this service                                    
+* \Syntax          : void PORT_Init(void)        
+* \Description     : initializes all the pins directions                                    
 *                                                                             
 * \Sync\Async      : Synchronous                                               
 * \Reentrancy      : Non Reentrant                                             
-* \Parameters (in) : parameterName   Parameter Describtion                     
-* \Parameters (out): None                                                      
-* \Return value:   : Std_ReturnType  E_OK
-*                                    E_NOT_OK                                  
+* \Parameters (in) : void                     
+* \Parameters (out): void                                                      
+* \Return value:   : void                                 
 *******************************************************************************/
 void PORT_Init(void)
 {
-	uint8 Cnt = 0 , Port = 0 , Pin = 0 , Dir = 0 ;
-	
-	for(Cnt = 0 ; Cnt < DEFINED_PINS ; Cnt++)
-	{
-		Port = PORT_Initialization[Cnt].PIN_NUM / NUMBER_OF_EACH_PORT_PINS ;
-		Pin = PORT_Initialization[Cnt].PIN_NUM % NUMBER_OF_EACH_PORT_PINS  ;
-		Dir = PORT_Initialization[Cnt].PIN_DIR ;
+	uint8 Cnt=0 , Port = 0 , Pin = 0 , Dir = 0;
+	for(Cnt = 0; Cnt<DEFINED_PINS ; Cnt++){
+		Port=PORT_Initialization[Cnt].PIN_NUM / NUMBER_OF_EACH_PORT_PINS;
+		Pin=PORT_Initialization[Cnt].PIN_NUM % NUMBER_OF_EACH_PORT_PINS;
+		Dir=PORT_Initialization[Cnt].PIN_DIR;
 		
-		switch(Dir)
+		switch (Dir)
 		{
-			case PIN_OUTPUT :
-			
-			switch(Port)
-			{
-				case 0:
-				SET_BIT(PHYSICAL_GPIO_ACCESS(GPIOA_BASE_ADDRRESS + GPIO_DIRCETION_REGISTER_DDR) ,Pin );
-
-				break;
-				
-				case 1:
-				SET_BIT(PHYSICAL_GPIO_ACCESS(GPIOB_BASE_ADDRRESS + GPIO_DIRCETION_REGISTER_DDR) ,Pin );
-				
-				break;
-				
-				case 2:
-				SET_BIT(PHYSICAL_GPIO_ACCESS(GPIOC_BASE_ADDRRESS + GPIO_DIRCETION_REGISTER_DDR) ,Pin );
-				
-				break;
-				
-				case 3:
-				SET_BIT(PHYSICAL_GPIO_ACCESS(GPIOD_BASE_ADDRRESS + GPIO_DIRCETION_REGISTER_DDR) ,Pin );
-				
-				break;
-				
-				default:
-				break;
-			}
+		case PIN_OUTPUT :
+			SET_BIT(*Direction_Registers[Port],Pin);
 			break;
-			
-			case PIN_INPUT :
-			switch(Port)
-			{
-				case 0:
-				CLR_BIT(PHYSICAL_GPIO_ACCESS(GPIOA_BASE_ADDRRESS + GPIO_DIRCETION_REGISTER_DDR) ,Pin );
-
-				break;
-				
-				case 1:
-				CLR_BIT(PHYSICAL_GPIO_ACCESS(GPIOB_BASE_ADDRRESS + GPIO_DIRCETION_REGISTER_DDR) ,Pin );
-				
-				break;
-				
-				case 2:
-				CLR_BIT(PHYSICAL_GPIO_ACCESS(GPIOC_BASE_ADDRRESS + GPIO_DIRCETION_REGISTER_DDR) ,Pin );
-				
-				break;
-				
-				case 3:
-				CLR_BIT(PHYSICAL_GPIO_ACCESS(GPIOD_BASE_ADDRRESS + GPIO_DIRCETION_REGISTER_DDR) ,Pin );
-				
-				break;
-				
-				default:
-				break;
-			}
+		case  PIN_INPUT :
+			CLR_BIT(*Direction_Registers[Port],Pin);
 			break;
-			
-			default:
-			break;
+		default:
+				break;
 		}
 	}
+	
 }
 
 /**********************************************************************************************************************
- *  END OF FILE: FileName.c
+ *  END OF FILE: PORT_Core.c
  *********************************************************************************************************************/

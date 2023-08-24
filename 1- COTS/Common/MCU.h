@@ -1,22 +1,11 @@
-/*
- * MCU.h
- *
- * Created: 8/16/2023 6:21:50 PM
- *  Author: Ali
- */ 
-
-
-
-
-
 /**********************************************************************************************************************
 
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------
- *         File:  <Write File Name>
- *       Module:  -
+ *         File:  MCU.h
+ *       Module: MCU Register Definitions
  *
- *  Description:  <Write File DESCRIPTION here>     
+ *  Description: has the definition of all the registers in the MCU  
  *  
  *********************************************************************************************************************/
 
@@ -25,7 +14,7 @@
 /**********************************************************************************************************************
  * INCLUDES
  *********************************************************************************************************************/
-#include "STD.h"
+#include "std_types.h"
 
 /**********************************************************************************************************************
  *  GLOBAL CONSTANT MACROS
@@ -40,6 +29,24 @@
 #define GPIO_INPUT_REGISTER_PIN         (0X00)
 #define GPIO_DIRCETION_REGISTER_DDR     (0X01)
 #define GPIO_OUTPUT_REGISTER_PORT       (0X02)
+
+/*Direction Registers*/
+#define GPIOA_DIRECTION_REGISTER PHYSICAL_GPIO_ACCESS(GPIOA_BASE_ADDRRESS+GPIO_DIRCETION_REGISTER_DDR)
+#define GPIOB_DIRECTION_REGISTER PHYSICAL_GPIO_ACCESS(GPIOB_BASE_ADDRRESS+GPIO_DIRCETION_REGISTER_DDR)
+#define GPIOC_DIRECTION_REGISTER PHYSICAL_GPIO_ACCESS(GPIOC_BASE_ADDRRESS+GPIO_DIRCETION_REGISTER_DDR)
+#define GPIOD_DIRECTION_REGISTER PHYSICAL_GPIO_ACCESS(GPIOD_BASE_ADDRRESS+GPIO_DIRCETION_REGISTER_DDR)
+
+/*Output Registers*/
+#define GPIOA_OUTPUT_REGISTER PHYSICAL_GPIO_ACCESS(GPIOA_BASE_ADDRRESS+GPIO_OUTPUT_REGISTER_PORT)
+#define GPIOB_OUTPUT_REGISTER PHYSICAL_GPIO_ACCESS(GPIOB_BASE_ADDRRESS+GPIO_OUTPUT_REGISTER_PORT)
+#define GPIOC_OUTPUT_REGISTER PHYSICAL_GPIO_ACCESS(GPIOC_BASE_ADDRRESS+GPIO_OUTPUT_REGISTER_PORT)
+#define GPIOD_OUTPUT_REGISTER PHYSICAL_GPIO_ACCESS(GPIOD_BASE_ADDRRESS+GPIO_OUTPUT_REGISTER_PORT)
+
+/*Input Registers*/
+#define GPIOA_INPUT_REGISTER PHYSICAL_GPIO_ACCESS(GPIOA_BASE_ADDRRESS+GPIO_INPUT_REGISTER_PIN)
+#define GPIOB_INPUT_REGISTER PHYSICAL_GPIO_ACCESS(GPIOB_BASE_ADDRRESS+GPIO_INPUT_REGISTER_PIN)
+#define GPIOC_INPUT_REGISTER PHYSICAL_GPIO_ACCESS(GPIOC_BASE_ADDRRESS+GPIO_INPUT_REGISTER_PIN)
+#define GPIOD_INPUT_REGISTER PHYSICAL_GPIO_ACCESS(GPIOD_BASE_ADDRRESS+GPIO_INPUT_REGISTER_PIN)
 /*******************************************************************************************************/
 
 /**********************************************************************************************************************
