@@ -1,7 +1,7 @@
 /*
- * DIO_CORE.c
+ * LCD_CORE.c
  *
- * Created: 8/19/2023 5:45:34 PM
+ * Created: 8/23/2023 9:28:54 PM
  *  Author: pc
  */ 
 /**********************************************************************************************************************
@@ -18,7 +18,7 @@
 /**********************************************************************************************************************
  *  INCLUDES
  *********************************************************************************************************************/
-#include "DIO_CORE.h"
+#include "LCD_CORE.h"
 
 /**********************************************************************************************************************
 *  LOCAL MACROS CONSTANT\FUNCTION
@@ -45,101 +45,8 @@
  *********************************************************************************************************************/
 
 
-
 /******************************************************************************
-* \Syntax          : void DIO_WRITECHANNEL(uint8 pin_NUM,PIN_VALUE_T pin_value)
-* \Description     : DIO_WRITECHANNEL
-*
-* \Sync\Async      : Synchronous
-* \Reentrancy      : Non Reentrant
-* \Parameters (in) : parameterName   Parameter Describtion
-* \Parameters (out): None
-* \Return value:   : Std_ReturnType  E_OK
-*                                    E_NOT_OK
-*******************************************************************************/
-void DIO_WRITECHANNEL(uint8 pin_NUM,PIN_VALUE_T pin_value)
-{
-	uint8 port=0, pin=0 ;
-	port=pin_NUM / NUMBER_OF_EACH_PORT_PINSS;
-	 pin =pin_NUM % NUMBER_OF_EACH_PORT_PINSS;
-	switch(pin_value){
-		case PIN_HIGH :
-		switch(port){
-			case 0:
-			SET_BIT(PHYSICAL_GPIO_ACCESS(GPIOA_BASE_ADDRRESS+GPIO_OUTPUT_REGISTER_PORT),pin);
-			break;
-			case 1:
-			SET_BIT(PHYSICAL_GPIO_ACCESS(GPIOB_BASE_ADDRRESS+GPIO_OUTPUT_REGISTER_PORT),pin);
-			break;
-			case 2:
-			SET_BIT(PHYSICAL_GPIO_ACCESS(GPIOC_BASE_ADDRRESS+GPIO_OUTPUT_REGISTER_PORT),pin);
-			break;
-			case 3:
-			SET_BIT(PHYSICAL_GPIO_ACCESS(GPIOD_BASE_ADDRRESS+GPIO_OUTPUT_REGISTER_PORT),pin);
-			break;
-			default:
-			break;
-		}
-		break;
-		case PIN_LOW :
-		switch(port){
-			case 0:
-			CLR_BIT(PHYSICAL_GPIO_ACCESS(GPIOA_BASE_ADDRRESS+GPIO_OUTPUT_REGISTER_PORT),pin);
-			break;
-			case 1:
-			CLR_BIT(PHYSICAL_GPIO_ACCESS(GPIOB_BASE_ADDRRESS+GPIO_OUTPUT_REGISTER_PORT),pin);
-			break;
-			case 2:
-			CLR_BIT(PHYSICAL_GPIO_ACCESS(GPIOC_BASE_ADDRRESS+GPIO_OUTPUT_REGISTER_PORT),pin);
-			break;
-			case 3:
-			CLR_BIT(PHYSICAL_GPIO_ACCESS(GPIOD_BASE_ADDRRESS+GPIO_OUTPUT_REGISTER_PORT),pin);
-			break;
-			default:
-			break;
-		}
-		break;
-		default:
-		break;
-	}
-}
-
-/******************************************************************************
-* \Syntax          : void DIO_READCHANNEL(uint8 pin_NUM,uint8 *pin_value)
-* \Description     : DIO_READCHANNEL
-*
-* \Sync\Async      : Synchronous
-* \Reentrancy      : Non Reentrant
-* \Parameters (in) : parameterName   Parameter Describtion
-* \Parameters (out): None
-* \Return value:   : Std_ReturnType  E_OK
-*                                    E_NOT_OK
-*******************************************************************************/
-void DIO_READCHANNEL(uint8 pin_NUM,uint8 *pin_value)
-{
-	uint8 Port=0 ,Pin=0;
-	Port=pin_NUM/(NUMBER_OF_EACH_PORT_PINSS);
-	Pin=pin_NUM % (NUMBER_OF_EACH_PORT_PINSS);
-	switch(Port){
-		case 0:
-		*pin_value=GET_BIT(PHYSICAL_GPIO_ACCESS(GPIOA_BASE_ADDRRESS+GPIO_INPUT_REGISTER_PIN),Pin);
-		break;
-		case 1:
-		*pin_value=GET_BIT(PHYSICAL_GPIO_ACCESS(GPIOB_BASE_ADDRRESS+GPIO_INPUT_REGISTER_PIN),Pin);
-		break;
-		case 2:
-		*pin_value=GET_BIT(PHYSICAL_GPIO_ACCESS(GPIOC_BASE_ADDRRESS+GPIO_INPUT_REGISTER_PIN),Pin);
-		break;
-		case 3:
-		*pin_value=GET_BIT(PHYSICAL_GPIO_ACCESS(GPIOD_BASE_ADDRRESS+GPIO_INPUT_REGISTER_PIN),Pin);
-		break;
-		default:
-		break;
-	}
-}
-
-/******************************************************************************
-* \Syntax          : void DIO_FLIPCHANNEL(uint8 pin_NUM)
+* \Syntax          : void LED_Toggle(void)
 * \Description     : Led Toggle
 *
 * \Sync\Async      : Synchronous
@@ -149,32 +56,27 @@ void DIO_READCHANNEL(uint8 pin_NUM,uint8 *pin_value)
 * \Return value:   : Std_ReturnType  E_OK
 *                                    E_NOT_OK
 *******************************************************************************/
-void DIO_FLIPCHANNEL(uint8 pin_NUM)
+
+void LCD_INIT(void)
 {
-	uint8 Port=0 ,Pin=0;
-	Port=pin_NUM/(NUMBER_OF_EACH_PORT_PINSS);
-	Pin=pin_NUM % (NUMBER_OF_EACH_PORT_PINSS);
-	switch(Port){
-		case 0:
-		Toggle_BIT(PHYSICAL_GPIO_ACCESS(GPIOA_BASE_ADDRRESS+GPIO_OUTPUT_REGISTER_PORT),Pin);
-		break;
-		case 1:
-		Toggle_BIT(PHYSICAL_GPIO_ACCESS(GPIOB_BASE_ADDRRESS+GPIO_OUTPUT_REGISTER_PORT),Pin);
-		break;
-		case 2:
-		Toggle_BIT(PHYSICAL_GPIO_ACCESS(GPIOC_BASE_ADDRRESS+GPIO_OUTPUT_REGISTER_PORT),Pin);
-		break;
-		case 3:
-		Toggle_BIT(PHYSICAL_GPIO_ACCESS(GPIOD_BASE_ADDRRESS+GPIO_OUTPUT_REGISTER_PORT),Pin);
-		break;
-		default:
-		break;
-	}
+	#if (LCD_MODE == LCD_4BIT_MODE)
+	
+	LCD_write_command(0x33);
+	LCD_write_command(0x32);
+	LCD_write_command(0x28);
+	
+	LCD_write_command(0x0C);
+	LCD_write_command(0x01);
+	LCD_write_command(0x06);
+	LCD_write_command(0x02);
+	
+	#endif
 }
 
+
 /******************************************************************************
-* \Syntax          : void DIO_WRITEPORT(uint8 pin_NUM,uint8 PORT_value)
-* \Description     : DIO_WRITEPORT
+* \Syntax          : void LED_Toggle(void)
+* \Description     : Led Toggle
 *
 * \Sync\Async      : Synchronous
 * \Reentrancy      : Non Reentrant
@@ -183,27 +85,46 @@ void DIO_FLIPCHANNEL(uint8 pin_NUM)
 * \Return value:   : Std_ReturnType  E_OK
 *                                    E_NOT_OK
 *******************************************************************************/
-void DIO_WRITEPORT(PORT_NUM_T PORT,uint8 PORT_value)
+
+
+void LCD_write_command(uint8 cmd)
 {
+	uint8 old_val=0 ,new_val=0;
+	DIO_WRITECHANNEL(LCD_RS_PIN,PIN_LOW);
+	DIO_WRITECHANNEL(LCD_E_PIN,PIN_LOW);
+	#if (LCD_MODE==LCD_4BIT_MODE)
+
+   DIO_ReadOUTPUTPort(PORT_A,&old_val);
+
+	new_val=((cmd>>1)&DATA_MASK)|(old_val&DATA_PORT_MASK);
+	DIO_WRITEPORT(PORT_A,new_val);
 	
-	//Port=pin_NUM/(NUMBER_OF_EACH_PORT_PINSS);
-	switch(PORT){
-		case 0:
-		PHYSICAL_GPIO_ACCESS(GPIOA_BASE_ADDRRESS+GPIO_OUTPUT_REGISTER_PORT)=PORT_value;
-		break;
-		case 1:
-		PHYSICAL_GPIO_ACCESS(GPIOB_BASE_ADDRRESS+GPIO_OUTPUT_REGISTER_PORT)=PORT_value;
-		break;
-		case 2:
-		PHYSICAL_GPIO_ACCESS(GPIOC_BASE_ADDRRESS+GPIO_OUTPUT_REGISTER_PORT)=PORT_value;
-		break;
-		case 3:
-		PHYSICAL_GPIO_ACCESS(GPIOD_BASE_ADDRRESS+GPIO_OUTPUT_REGISTER_PORT)=PORT_value;
-		break;
-		default:
-		break;
-	}
 	
+	/*DIO_WRITECHANNEL(LCD_D4_PIN,GET_BIT(cmd,4));
+	DIO_WRITECHANNEL(LCD_D5_PIN,GET_BIT(cmd,5));
+	DIO_WRITECHANNEL(LCD_D6_PIN,GET_BIT(cmd,6));
+	DIO_WRITECHANNEL(LCD_D7_PIN,GET_BIT(cmd,7));*/
+	
+	DIO_WRITECHANNEL(LCD_E_PIN,PIN_HIGH);
+	_delay_ms(1);
+	DIO_WRITECHANNEL(LCD_E_PIN,PIN_LOW);
+	
+	DIO_ReadOUTPUTPort(LCD_D4_PIN,&old_val);
+
+	new_val=((cmd<<3)&DATA_MASK)|(old_val&DATA_PORT_MASK);
+	DIO_WRITEPORT(PORT_A,new_val);
+	
+	/*DIO_WRITECHANNEL(LCD_D4_PIN,GET_BIT(cmd,0));
+	DIO_WRITECHANNEL(LCD_D5_PIN,GET_BIT(cmd,1));
+	DIO_WRITECHANNEL(LCD_D6_PIN,GET_BIT(cmd,2));
+	DIO_WRITECHANNEL(LCD_D7_PIN,GET_BIT(cmd,3));*/
+	
+	DIO_WRITECHANNEL(LCD_E_PIN,PIN_HIGH);
+	_delay_ms(1);
+	DIO_WRITECHANNEL(LCD_E_PIN,PIN_LOW);
+	
+	_delay_ms(5);
+	#endif
 }
 
 /******************************************************************************
@@ -217,26 +138,86 @@ void DIO_WRITEPORT(PORT_NUM_T PORT,uint8 PORT_value)
 * \Return value:   : Std_ReturnType  E_OK
 *                                    E_NOT_OK
 *******************************************************************************/
-void DIO_READPORT(uint8 pin_NUM,uint8 *PORT_value)
+
+
+
+void LCD_write_char(uint8 chr)
 {
-	uint8 Port=0 ;
-	Port=pin_NUM/(NUMBER_OF_EACH_PORT_PINSS);
-	switch(Port){
-		case 0:
-	    *PORT_value=PHYSICAL_GPIO_ACCESS(GPIOA_BASE_ADDRRESS+GPIO_OUTPUT_REGISTER_PORT);
-		break;
-		case 1:
-		*PORT_value=PHYSICAL_GPIO_ACCESS(GPIOB_BASE_ADDRRESS+GPIO_OUTPUT_REGISTER_PORT);
-		break;
-		case 2:
-		*PORT_value=PHYSICAL_GPIO_ACCESS(GPIOC_BASE_ADDRRESS+GPIO_OUTPUT_REGISTER_PORT);
-		break;
-		case 3:
-		*PORT_value=PHYSICAL_GPIO_ACCESS(GPIOD_BASE_ADDRRESS+GPIO_OUTPUT_REGISTER_PORT);
-		break;
-		default:
-		break;
+	uint8 old_val=0 ,new_val=0;
+	DIO_WRITECHANNEL(LCD_RS_PIN,PIN_HIGH);
+	DIO_WRITECHANNEL(LCD_E_PIN,PIN_LOW);
+	
+	#if (LCD_MODE==LCD_4BIT_MODE)
+
+    DIO_ReadOUTPUTPort(PORT_A,&old_val);
+
+	new_val=((chr>>1)&DATA_MASK)|(old_val&DATA_PORT_MASK);
+	DIO_WRITEPORT(LCD_D4_PIN,new_val);
+	
+	
+	/*DIO_WRITECHANNEL(LCD_D4_PIN,GET_BIT(chr,4));
+	DIO_WRITECHANNEL(LCD_D5_PIN,GET_BIT(chr,5));
+	DIO_WRITECHANNEL(LCD_D6_PIN,GET_BIT(chr,6));
+	DIO_WRITECHANNEL(LCD_D7_PIN,GET_BIT(chr,7));*/
+	
+	DIO_WRITECHANNEL(LCD_E_PIN,PIN_HIGH);
+	_delay_ms(1);
+	DIO_WRITECHANNEL(LCD_E_PIN,PIN_LOW);
+	
+	DIO_ReadOUTPUTPort(PORT_A,&old_val);
+
+	new_val=((chr<<3)&DATA_MASK)|(old_val&DATA_PORT_MASK);
+	DIO_WRITEPORT(PORT_A,new_val);
+	
+	/*DIO_WRITECHANNEL(LCD_D4_PIN,GET_BIT(chr,0));
+	DIO_WRITECHANNEL(LCD_D5_PIN,GET_BIT(chr,1));
+	DIO_WRITECHANNEL(LCD_D6_PIN,GET_BIT(chr,2));
+	DIO_WRITECHANNEL(LCD_D7_PIN,GET_BIT(chr,3));*/
+	
+	DIO_WRITECHANNEL(LCD_E_PIN,PIN_HIGH);
+	_delay_ms(1);
+	DIO_WRITECHANNEL(LCD_E_PIN,PIN_LOW);
+	
+	_delay_ms(5);
+	#endif
+
+}
+
+/******************************************************************************
+* \Syntax          : void LED_Toggle(void)
+* \Description     : Led Toggle
+*
+* \Sync\Async      : Synchronous
+* \Reentrancy      : Non Reentrant
+* \Parameters (in) : parameterName   Parameter Describtion
+* \Parameters (out): None
+* \Return value:   : Std_ReturnType  E_OK
+*                                    E_NOT_OK
+*******************************************************************************/
+void LCD_write_STRING(uint8 *chr)
+{
+	uint8 cnt=0;
+	while(chr[cnt]!='\0')
+	{
+		LCD_write_char(chr[cnt]);
+		cnt++;
 	}
+}
+
+/******************************************************************************
+* \Syntax          : void LED_Toggle(void)
+* \Description     : Led Toggle
+*
+* \Sync\Async      : Synchronous
+* \Reentrancy      : Non Reentrant
+* \Parameters (in) : parameterName   Parameter Describtion
+* \Parameters (out): None
+* \Return value:   : Std_ReturnType  E_OK
+*                                    E_NOT_OK
+*******************************************************************************/
+void LCD_CLR(void)
+{
+	LCD_write_command(0x01);
 }
 /******************************************************************************
 * \Syntax          : void LED_Toggle(void)
@@ -249,24 +230,12 @@ void DIO_READPORT(uint8 pin_NUM,uint8 *PORT_value)
 * \Return value:   : Std_ReturnType  E_OK
 *                                    E_NOT_OK
 *******************************************************************************/
-void DIO_ReadOUTPUTPort(PORT_NUM_T PORT,uint8 *PORT_value)
+
+void LCD_GOTO(uint8 ROW,uint8 col)
 {
-	switch(PORT){
-		case 0:
-		*PORT_value=PHYSICAL_GPIO_ACCESS(GPIOA_BASE_ADDRRESS+GPIO_OUTPUT_REGISTER_PORT);
-		break;
-		case 1:
-		*PORT_value=PHYSICAL_GPIO_ACCESS(GPIOB_BASE_ADDRRESS+GPIO_OUTPUT_REGISTER_PORT);
-		break;
-		case 2:
-		*PORT_value=PHYSICAL_GPIO_ACCESS(GPIOC_BASE_ADDRRESS+GPIO_OUTPUT_REGISTER_PORT);
-		break;
-		case 3:
-		*PORT_value=PHYSICAL_GPIO_ACCESS(GPIOD_BASE_ADDRRESS+GPIO_OUTPUT_REGISTER_PORT);
-		break;
-		default:
-		break;
-	}
+	uint8 arr[2]={0x80,0x0c};
+		LCD_write_command(arr[ROW]+col);
+		
 }
 /**********************************************************************************************************************
  *  END OF FILE: FileName.c

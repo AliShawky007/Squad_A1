@@ -2,7 +2,7 @@
  * PORT_LCFG_.h
  *
  * Created: 8/19/2023 3:47:46 PM
- *  Author: Ali
+ *  Author: Omar
  */ 
 
 
@@ -48,8 +48,8 @@ PORTA_PIN7 ---> #7    PORTB _PIN7 ---> #15        PORTC_PIN7 ---> #23       PORT
 /**********************************************************************************************************************
  *  GLOBAL CONSTANT MACROS
  *********************************************************************************************************************/
-#define  DEFINED_PINS                 2
-#define  NUMBER_OF_EACH_PORT_PINS     8
+#define  DEFINED_PINS                 7
+#define  NUMBER_OF_EACH_PORT_PINSS    8
 
 
 #define PORTA_PIN0  0

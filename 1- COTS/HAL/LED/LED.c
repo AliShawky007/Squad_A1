@@ -46,9 +46,11 @@
 
 
 
+
+
 /******************************************************************************
-* \Syntax          : void LED_On(void)
-* \Description     : Led on
+* \Syntax          : void LED_SETVALUE(uint8 LED_NUM, uint8 LED_VALUE)
+* \Description     : Led on OR OFF
 *
 * \Sync\Async      : Synchronous
 * \Reentrancy      : Non Reentrant
@@ -57,10 +59,13 @@
 * \Return value:   : Std_ReturnType  E_OK
 *                                    E_NOT_OK
 *******************************************************************************/
-void LED_SetValue(uint8 LED_Num ,uint8 LED_Value)
+void LED_SETVALUE(uint8 LED_NUM, uint8 LED_VALUE)
 {
-	DIO_WriteChennel(LED_Num , LED_Value);
+	DIO_WRITECHANNEL(LED_NUM,LED_VALUE);
 }
+
+
+
 /******************************************************************************
 * \Syntax          : void LED_Toggle(void)
 * \Description     : Led Toggle
@@ -73,9 +78,9 @@ void LED_SetValue(uint8 LED_Num ,uint8 LED_Value)
 *                                    E_NOT_OK
 *******************************************************************************/
 
-void LED_Toggle(uint8 LED_Num)
+void LED_Toggle(uint8 LED_NUM)
 {
-	DIO_FlipChennel(LED_Num);
+	DIO_FLIPCHANNEL(LED_NUM);
 }
 
 /**********************************************************************************************************************

@@ -1,8 +1,14 @@
 /*
- * PORT_CORE.c
+ * Button.c
  *
- * Created: 8/19/2023 3:55:47 PM
+ * Created: 8/16/2023 9:48:16 PM
  *  Author: pc
+ */ 
+/*
+ * LED.c
+ *
+ * Created: 8/16/2023 7:13:38 PM
+ *  Author: Ali
  */ 
 /**********************************************************************************************************************
  *  FILE DESCRIPTION
@@ -18,7 +24,7 @@
 /**********************************************************************************************************************
  *  INCLUDES
  *********************************************************************************************************************/
-#include "PORT_CORE.h"
+#include "Button.h"
 
 /**********************************************************************************************************************
 *  LOCAL MACROS CONSTANT\FUNCTION
@@ -45,10 +51,9 @@
  *********************************************************************************************************************/
 
 
-
 /******************************************************************************
-* \Syntax          : void PORT_INIT(void)
-* \Description     : port init
+* \Syntax          : void LED_Off(void)
+* \Description     : Led off
 *
 * \Sync\Async      : Synchronous
 * \Reentrancy      : Non Reentrant
@@ -57,69 +62,33 @@
 * \Return value:   : Std_ReturnType  E_OK
 *                                    E_NOT_OK
 *******************************************************************************/
-void PORT_INIT(void)
+uint8 BTN_GET(uint8 Button_num)
 {
-	uint8  cnt=0, port=0,pin=0,Dir=0;
-	for(cnt=0;cnt<DEFINED_PINS;cnt++)
+	uint8 button=1,temp=0;
+	DIO_READCHANNEL(Button_num,&button);
+	
+	while(temp==0)
 	{
-		port=PORT_Initialization[cnt].PIN_NUM / NUMBER_OF_EACH_PORT_PINSS ;
-		pin=PORT_Initialization[cnt].PIN_NUM % NUMBER_OF_EACH_PORT_PINSS ;
-		Dir=PORT_Initialization[cnt].PIN_DIR;
-		
-		switch(Dir)
-		{
-			case PIN_OUTPUT:
-			
-			switch(port)
-			{
-				case 0:
-				SET_BIT(PHYSICAL_GPIO_ACCESS(GPIOA_BASE_ADDRRESS+GPIO_DIRCETION_REGISTER_DDR),pin);
-				
-				break;
-				
-				case 1:
-				SET_BIT(PHYSICAL_GPIO_ACCESS(GPIOB_BASE_ADDRRESS+GPIO_DIRCETION_REGISTER_DDR),pin);
-				break;
-				
-				case 2:
-				SET_BIT(PHYSICAL_GPIO_ACCESS(GPIOC_BASE_ADDRRESS+GPIO_DIRCETION_REGISTER_DDR),pin);
-				break;
-				
-				case 3:
-				SET_BIT(PHYSICAL_GPIO_ACCESS(GPIOD_BASE_ADDRRESS+GPIO_DIRCETION_REGISTER_DDR),pin);
-				break;
-			}
-			break;
-			
-			case PIN_INPUT:
-			
-			switch(pin)
-			{
-				case 0:
-				CLR_BIT(PHYSICAL_GPIO_ACCESS(GPIOA_BASE_ADDRRESS+GPIO_DIRCETION_REGISTER_DDR),pin);
-				
-				break;
-				
-				case 1:
-				CLR_BIT(PHYSICAL_GPIO_ACCESS(GPIOB_BASE_ADDRRESS+GPIO_DIRCETION_REGISTER_DDR),pin);
-				break;
-				
-				case 2:
-				CLR_BIT(PHYSICAL_GPIO_ACCESS(GPIOC_BASE_ADDRRESS+GPIO_DIRCETION_REGISTER_DDR),pin);
-				break;
-				
-				case 3:
-				CLR_BIT(PHYSICAL_GPIO_ACCESS(GPIOD_BASE_ADDRRESS+GPIO_DIRCETION_REGISTER_DDR),pin);
-				break;
-			}
-			
-			break;
-			
-			default:
-			
-			break;
-		}
+		DIO_READCHANNEL(Button_num,&temp);
 	}
+	_delay_ms(10);
+	return button;
+}
+/******************************************************************************
+* \Syntax          : void LED_Toggle(void)
+* \Description     : Led Toggle
+*
+* \Sync\Async      : Synchronous
+* \Reentrancy      : Non Reentrant
+* \Parameters (in) : parameterName   Parameter Describtion
+* \Parameters (out): None
+* \Return value:   : Std_ReturnType  E_OK
+*                                    E_NOT_OK
+*******************************************************************************/
+
+void BTN_Toggle(void)
+{
+	Toggle_BIT( PHYSICAL_GPIO_ACCESS(GPIOC_BASE_ADDRRESS + GPIO_OUTPUT_REGISTER_PORT )  , 1);
 }
 
 /**********************************************************************************************************************

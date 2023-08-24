@@ -2,7 +2,7 @@
  * LED.h
  *
  * Created: 8/16/2023 7:13:52 PM
- *  Author: Ali
+ *  Author: OMAR
  */ 
 
 
@@ -26,8 +26,8 @@
  * INCLUDES
  *********************************************************************************************************************/
 
-#include "DIO_Core.h"
-#include "LED_Cfg.h"
+#include "DIO_CORE.h"
+#include "LED_CFG.h"
 
 /**********************************************************************************************************************
  *  GLOBAL CONSTANT MACROS
@@ -49,16 +49,15 @@
  *********************************************************************************************************************/
 typedef enum
 {
-	LED_LOW = 0,
-	LED_HIGH 
-}LED_VALUE_t;
- 
+	LED_LOW=0,
+	LED_HIGH
+}LED_VALUE_T;
 /**********************************************************************************************************************
  *  GLOBAL FUNCTION PROTOTYPES
  *********************************************************************************************************************/
-void LED_SetValue(uint8 LED_Num ,LED_VALUE_t LED_Value);
+void LED_Toggle(uint8 LED_NUM);
+void LED_SETVALUE(uint8 LED_NUM, LED_VALUE_T LED_VALUE);
 
-void LED_Toggle(uint8 LED_Num);
  
 
 #endif /* LED_H_ */

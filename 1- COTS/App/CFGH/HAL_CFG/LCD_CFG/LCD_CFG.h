@@ -1,7 +1,7 @@
 /*
- * BTN_CFG.h
+ * LCD_CFG.h
  *
- * Created: 8/19/2023 6:51:19 PM
+ * Created: 8/23/2023 9:41:03 PM
  *  Author: pc
  */ 
 
@@ -22,9 +22,8 @@
  *  Description:  <Write File DESCRIPTION here>     
  *  
  *********************************************************************************************************************/
-#ifndef BTN_CFG_H_
-#define BTN_CFG_H_
-
+#ifndef LCD_CFG_H_
+#define LCD_CFG_H_
 
 /**********************************************************************************************************************
  * INCLUDES
@@ -37,10 +36,23 @@
 /**********************************************************************************************************************
  *  GLOBAL CONSTANT MACROS
  *********************************************************************************************************************/
-#define  Button_0   PORTD_PIN2
-#define  Button_1   PORTD_PIN3
-#define  Button_2   PORTD_PIN4
-#define  Button_3   PORTD_PIN5  
+#define  LCD_4BIT_MODE   4
+#define  LCD_8BIT_MODE   8
+
+#define  LCD_MODE          LCD_4BIT_MODE 
+
+
+#define  LCD_RS_PIN              PORTA_PIN1
+#define  LCD_E_PIN               PORTA_PIN2
+
+#define  LCD_D4_PIN              PORTA_PIN3
+#define  LCD_D5_PIN              PORTA_PIN4
+#define  LCD_D6_PIN              PORTA_PIN5
+#define  LCD_D7_PIN              PORTA_PIN6
+
+#define  DATA_PORT_MASK           0X87
+#define  DATA_MASK                0X78
+
 
 /**********************************************************************************************************************
  *  GLOBAL FUNCTION MACROS
@@ -63,8 +75,7 @@
 
 
 
-#endif /* BTN_CFG_H_ */
-
+#endif /* LCD_CFG_H_ */
 
 /**********************************************************************************************************************
  *  END OF FILE: Std_Types.h

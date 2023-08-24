@@ -1,8 +1,8 @@
 /*
- * BTN.c
+ * Relay.c
  *
- * Created: 8/16/2023 9:53:03 PM
- *  Author: Ali
+ * Created: 8/17/2023 4:36:48 PM
+ *  Author: pc
  */ 
 /**********************************************************************************************************************
  *  FILE DESCRIPTION
@@ -18,7 +18,7 @@
 /**********************************************************************************************************************
  *  INCLUDES
  *********************************************************************************************************************/
-#include "BTN.h"
+#include "Relay.h"
 
 /**********************************************************************************************************************
 *  LOCAL MACROS CONSTANT\FUNCTION
@@ -44,11 +44,10 @@
  *  GLOBAL FUNCTIONS
  *********************************************************************************************************************/
 
- 
 
 /******************************************************************************
-* \Syntax          : Std_ReturnType FunctionName(AnyType parameterName)
-* \Description     : Describe this service
+* \Syntax          : void LED_SETVALUE(uint8 LED_NUM, uint8 LED_VALUE)
+* \Description     : Led on OR OFF
 *
 * \Sync\Async      : Synchronous
 * \Reentrancy      : Non Reentrant
@@ -57,19 +56,29 @@
 * \Return value:   : Std_ReturnType  E_OK
 *                                    E_NOT_OK
 *******************************************************************************/
-uint8 BTN_GetValue(uint8 Button_num)
+void REL_SETVALUE(uint8 REL_NUM, uint8 REL_VALUE)
 {
-	uint8 button = 1, temp = 0;
-	
-	DIO_ReadChennel(Button_num , &button);
-	
-	while(temp == 0)
-	{
-		DIO_ReadChennel(Button_num , &temp);
-	}
-	_delay_ms(10);
-	
-	return button;
+	DIO_WRITECHANNEL(REL_NUM,REL_VALUE);
+}
+
+
+
+
+/******************************************************************************
+* \Syntax          : void LED_Toggle(void)
+* \Description     : Led Toggle
+*
+* \Sync\Async      : Synchronous
+* \Reentrancy      : Non Reentrant
+* \Parameters (in) : parameterName   Parameter Describtion
+* \Parameters (out): None
+* \Return value:   : Std_ReturnType  E_OK
+*                                    E_NOT_OK
+*******************************************************************************/
+
+void REL_Toggle(uint8 REL_NUM)
+{
+	DIO_FLIPCHANNEL(REL_NUM);
 }
 
 /**********************************************************************************************************************

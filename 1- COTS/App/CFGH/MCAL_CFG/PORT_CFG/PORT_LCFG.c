@@ -1,8 +1,8 @@
 /*
  * PORT_LCFG.c
  *
- * Created: 8/19/2023 3:47:25 PM
- *  Author: Ali
+ * Created: 8/19/2023 3:48:14 PM
+ *  Author: OMAR
  */ 
 /**********************************************************************************************************************
  *  FILE DESCRIPTION
@@ -31,11 +31,20 @@
 /**********************************************************************************************************************
  *  GLOBAL DATA
  *********************************************************************************************************************/
-const PIN_PARAMETERS PORT_Initialization[DEFINED_PINS] = {
-	/*Green LED Pins*/
-	{ PORTC_PIN1 , PIN_OUTPUT },
-	/*BTN0 Pins*/
-	{ PORTD_PIN2 , PIN_INPUT  }	
+const PIN_PARAMETERS PORT_Initialization[DEFINED_PINS]={
+	/*GREEN LED*/
+/*{ PORTC_PIN1 ,PIN_OUTPUT},
+	/*BTN0 PINS*/
+//{ PORTD_PIN2 ,PIN_INPUT }
+	{PORTA_PIN2,PIN_OUTPUT},
+	{PORTA_PIN1,PIN_OUTPUT},
+	{PORTA_PIN3,PIN_OUTPUT},
+	{PORTA_PIN4,PIN_OUTPUT},
+	{PORTA_PIN5,PIN_OUTPUT},
+	{PORTA_PIN6,PIN_OUTPUT}
+
+	
+	
 };
 /**********************************************************************************************************************
  *  LOCAL FUNCTION PROTOTYPES
