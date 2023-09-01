@@ -34,8 +34,8 @@
 const PIN_PARAMETERS PORT_Initialization[DEFINED_PINS] = {
 	/*Green LED Pins*/
 	{ PORTC_PIN1 , PIN_OUTPUT },
-	/*BTN0 Pins*/
-	{ PORTD_PIN2 , PIN_INPUT  }	
+	/*BTN0 Pins
+	{ PORTD_PIN2 , PIN_INPUT  }	*/
 };
 /**********************************************************************************************************************
  *  LOCAL FUNCTION PROTOTYPES
