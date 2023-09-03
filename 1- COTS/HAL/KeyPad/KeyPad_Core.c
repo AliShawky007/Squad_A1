@@ -1,13 +1,13 @@
 /*
- * PORT_LCFG.c
+ * KeyPad_Core.c
  *
- * Created: 8/19/2023 3:48:02 PM
+ * Created: 8/26/2023 2:34:47 PM
  *  Author: Mina
  */ 
 /**********************************************************************************************************************
  *  FILE DESCRIPTION
  *  -----------------------------------------------------------------------------------------------------------------*/
-/**        \file  PORT_LCFG.c
+/**        \file  KeyPad_Core.c
  *        \brief  
  *
  *      \details  
@@ -18,7 +18,7 @@
 /**********************************************************************************************************************
  *  INCLUDES
  *********************************************************************************************************************/
-#include "PORT_LCFG.h"
+#include "KeyPad_Core.h"
 
 /**********************************************************************************************************************
 *  LOCAL MACROS CONSTANT\FUNCTION
@@ -31,24 +31,7 @@
 /**********************************************************************************************************************
  *  GLOBAL DATA
  *********************************************************************************************************************/
-const PIN_PARAMETERS PORT_Initialization[DEFINED_PINS]={
-	/*****LCD E PIN******/
-	{ PORTA_PIN2, PIN_OUTPUT  },
-	/*****LCD RS PIN******/
-	{ PORTA_PIN1, PIN_OUTPUT  },
-	/*****LCD D4 PIN******/
-	{ PORTA_PIN3, PIN_OUTPUT  },
-	/*****LCD D5 PIN******/
-	{ PORTA_PIN4, PIN_OUTPUT  },
-	/*****LCD D6 PIN******/
-	{ PORTA_PIN5, PIN_OUTPUT  },
-	/*****LCD D7 PIN******/
-	{ PORTA_PIN6, PIN_OUTPUT  },
-	/*****KEYPAD COLUMN*******/
-    { PORTD_PIN2, PIN_INPUT  },{ PORTD_PIN3, PIN_INPUT  },{ PORTD_PIN4, PIN_INPUT  },{ PORTD_PIN5, PIN_INPUT  },
-	/*****KEYPAD ROWS*******/
-	{ PORTB_PIN4, PIN_OUTPUT  },{ PORTB_PIN5, PIN_OUTPUT },{ PORTB_PIN6, PIN_OUTPUT  },{ PORTB_PIN7, PIN_OUTPUT }
-};
+
 /**********************************************************************************************************************
  *  LOCAL FUNCTION PROTOTYPES
  *********************************************************************************************************************/
@@ -74,7 +57,50 @@ const PIN_PARAMETERS PORT_Initialization[DEFINED_PINS]={
 *                                    E_NOT_OK                                  
 *******************************************************************************/
 
+void KEYPAD_Init(void)
+{
+	DIO_WriteChannel( KEYPAD_ROW0 , PIN_HIGH );
+	DIO_WriteChannel( KEYPAD_ROW1 , PIN_HIGH );
+	DIO_WriteChannel( KEYPAD_ROW2 , PIN_HIGH );
+	DIO_WriteChannel( KEYPAD_ROW3 , PIN_HIGH );	
+}
+
+/******************************************************************************
+* \Syntax          : Std_ReturnType FunctionName(AnyType parameterName)
+* \Description     : Describe this service
+*
+* \Sync\Async      : Synchronous
+* \Reentrancy      : Non Reentrant
+* \Parameters (in) : parameterName   Parameter Describtion
+* \Parameters (out): None
+* \Return value:   : Std_ReturnType  E_OK
+*                                    E_NOT_OK
+*******************************************************************************/
+Uint_8 KEYPAD_GetValue(void)
+{
+	Uint_8 ROW_POS= 0 , COL_POS= 0 , Button_Val= 0 , Temp =0;
+	for(ROW_POS = ROW_INIT  ; ROW_POS<= ROW_FINAL  ; ROW_POS++ )
+	{
+		DIO_WriteChannel( ROW_POS , PIN_LOW);
+		for (COL_POS= COLUMN_INIT ; COL_POS<= COLUMN_FINAL ; COL_POS++ )
+		{
+			DIO_ReadChannel(COL_POS,&Temp);
+			if (Temp == 0)
+			{
+				Button_Val =KEYPAD_VALUE[ROW_POS-ROW_INIT][COL_POS-COLUMN_INIT];
+				while (Temp == 0)
+				{
+					DIO_ReadChannel(COL_POS,&Temp);
+				}
+				_delay_ms(10);
+			}
+		}
+		DIO_WriteChannel( ROW_POS , PIN_HIGH);
+	}
+	return Button_Val;
+}
+
 
 /**********************************************************************************************************************
- *  END OF FILE: PORT_LCFG.c
+ *  END OF FILE: KeyPad_Core.c
  *********************************************************************************************************************/

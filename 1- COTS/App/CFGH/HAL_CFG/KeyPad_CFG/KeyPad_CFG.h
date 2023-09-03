@@ -1,10 +1,9 @@
 /*
- * LCD_CFG.h
+ * KeyPad_CFG.h
  *
- * Created: 8/23/2023 9:40:51 PM
+ * Created: 8/26/2023 2:38:29 PM
  *  Author: Mina
  */ 
-
 
 
 
@@ -12,48 +11,44 @@
 
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------
- *         File:  <LCD_CFG.h>
+ *         File:  <KeyPad_CFG.h>
  *       Module:  -
  *
  *  Description:  <Write File DESCRIPTION here>     
  *  
  *********************************************************************************************************************/
-#ifndef LCD_CFG_H_
-#define LCD_CFG_H_
+#ifndef KEYPAD_CFG_H_
+#define KEYPAD_CFG_H_
 
 /**********************************************************************************************************************
  * INCLUDES
  *********************************************************************************************************************/
-
+#include "STD.h"
 
 /**********************************************************************************************************************
  *  GLOBAL CONSTANT MACROS
  *********************************************************************************************************************/
 
-#define LCD_4BIT_MODE 4
-#define LCD_8BIT_MODE 8
+#define ROWS_NUMBERS 4
+#define COLUMNS_NUMBERS 4
+
+#define ROW_INIT PORTB_PIN4
+#define ROW_FINAL PORTB_PIN7
+
+#define COLUMN_INIT  PORTD_PIN2
+#define COLUMN_FINAL PORTD_PIN5
 
 
-#define lCD_MODS  LCD_4BIT_MODE
+#define KEYPAD_ROW0 PORTB_PIN4
+#define KEYPAD_ROW1 PORTB_PIN5
+#define KEYPAD_ROW2 PORTB_PIN6
+#define KEYPAD_ROW3 PORTB_PIN7
 
-/*****CMD MACROS*********/
-#define LCD_RS_PIN  PORTA_PIN1
-#define LCD_E_PIN   PORTA_PIN2
 
-/*****DATA MACROS*******/
-#define LCD_D4_PIN   PORTA_PIN3				
-#define LCD_D5_PIN	 PORTA_PIN4
-#define LCD_D6_PIN	 PORTA_PIN5
-#define LCD_D7_PIN	 PORTA_PIN6
-
-/********IMPORTANT PINS**/
-#define DATA_PORT_MASK  0X87
-#define DATA_MASK       0X78
-
-/****CGRAM MACROS**********/
-#define C_CHAR_NO 8
-#define BYTES_NO  8 
-
+#define KEYPAD_COLUMN0 PORTD_PIN2
+#define KEYPAD_COLUMN1 PORTD_PIN3
+#define KEYPAD_COLUMN2 PORTD_PIN4
+#define KEYPAD_COLUMN3 PORTD_PIN5
 
 /**********************************************************************************************************************
  *  GLOBAL FUNCTION MACROS
@@ -68,20 +63,19 @@
 /**********************************************************************************************************************
  *  GLOBAL DATA PROTOTYPES
  *********************************************************************************************************************/
-
+extern Uint_8 KEYPAD_VALUE[ROWS_NUMBERS][COLUMNS_NUMBERS];
  
 /**********************************************************************************************************************
  *  GLOBAL FUNCTION PROTOTYPES
  *********************************************************************************************************************/
 
-
-
-
-#endif /* LCD_CFG_H_ */
+ 
+#endif /* KEYPAD_CFG_H_ */
 
 /**********************************************************************************************************************
- *  END OF FILE: LCD_CFG.h
+ *  END OF FILE: KeyPad_CFG.h
  *********************************************************************************************************************/
+
 
 
 

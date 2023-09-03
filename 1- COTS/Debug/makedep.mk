@@ -2,21 +2,17 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
+App\CFGH\HAL_CFG\KeyPad_CFG\KeyPad_CFG.c
+
 App\CFGH\MCAL_CFG\PORT_CFG\PORT_LCFG.c
 
 App\MAIN\main.c
 
-HAL\7-SEGMENT\Seven_Seg.c
+HAL\Calculator\Calculator.c
 
-HAL\BUTTON\Button.c
-
-HAL\BUZZER\Buzzer.c
+HAL\KeyPad\KeyPad_Core.c
 
 HAL\LCD\LCD_Core.c
-
-HAL\LED\LED.c
-
-HAL\RELAY\Relay.c
 
 MCAL\DIO\DIO_CORE.c
 

@@ -1,60 +1,42 @@
 /*
- * LCD_CFG.h
+ * CALCULATOR_CFG.h
  *
- * Created: 8/23/2023 9:40:51 PM
+ * Created: 8/26/2023 5:47:17 PM
  *  Author: Mina
  */ 
-
-
-
-
 /**********************************************************************************************************************
 
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------
- *         File:  <LCD_CFG.h>
+ *         File:  <CALCULATOR_CFG.h>
  *       Module:  -
  *
  *  Description:  <Write File DESCRIPTION here>     
  *  
  *********************************************************************************************************************/
-#ifndef LCD_CFG_H_
-#define LCD_CFG_H_
+#ifndef CALCULATOR_CFG_H_
+#define CALCULATOR_CFG_H_
 
 /**********************************************************************************************************************
  * INCLUDES
  *********************************************************************************************************************/
-
+#include "KeyPad_CFG.h"
 
 /**********************************************************************************************************************
  *  GLOBAL CONSTANT MACROS
  *********************************************************************************************************************/
+#define N1 KEYPAD_VALUE[0][1]
+#define N2 KEYPAD_VALUE[0][2]
+#define N3 KEYPAD_VALUE[0][3]
+#define N4 KEYPAD_VALUE[1][0]
+#define N5 KEYPAD_VALUE[1][1]
+#define N6 KEYPAD_VALUE[1][2]
+#define N7 KEYPAD_VALUE[2][0]
+#define N8 KEYPAD_VALUE[2][1]
+#define N9 KEYPAD_VALUE[2][2]
+#define N0 KEYPAD_VALUE[3][1]
 
-#define LCD_4BIT_MODE 4
-#define LCD_8BIT_MODE 8
-
-
-#define lCD_MODS  LCD_4BIT_MODE
-
-/*****CMD MACROS*********/
-#define LCD_RS_PIN  PORTA_PIN1
-#define LCD_E_PIN   PORTA_PIN2
-
-/*****DATA MACROS*******/
-#define LCD_D4_PIN   PORTA_PIN3				
-#define LCD_D5_PIN	 PORTA_PIN4
-#define LCD_D6_PIN	 PORTA_PIN5
-#define LCD_D7_PIN	 PORTA_PIN6
-
-/********IMPORTANT PINS**/
-#define DATA_PORT_MASK  0X87
-#define DATA_MASK       0X78
-
-/****CGRAM MACROS**********/
-#define C_CHAR_NO 8
-#define BYTES_NO  8 
-
-
+#define PLUS KEYPAD
 /**********************************************************************************************************************
  *  GLOBAL FUNCTION MACROS
  *********************************************************************************************************************/
@@ -74,13 +56,11 @@
  *  GLOBAL FUNCTION PROTOTYPES
  *********************************************************************************************************************/
 
-
-
-
-#endif /* LCD_CFG_H_ */
+ 
+#endif /* CALCULATOR_CFG_H_ */
 
 /**********************************************************************************************************************
- *  END OF FILE: LCD_CFG.h
+ *  END OF FILE: CALCULATOR_CFG.h
  *********************************************************************************************************************/
 
 

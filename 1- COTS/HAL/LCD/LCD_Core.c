@@ -33,7 +33,38 @@
 /**********************************************************************************************************************
  *  GLOBAL DATA
  *********************************************************************************************************************/
-
+Uint_8 Custom_Char_Arr[C_CHAR_NO][BYTES_NO]={
+	/*************Heart Custom1*************/
+{ 0x00,0x1B,0x15,0x11,0x0A,0x04,0x00,0x00},
+   /*************? Custom2*************/
+{ 0x00,0x00,0x06,0x1E,0x00,0x00,0x00,0x00},
+/*************? Custom2*************/
+{ 0x00,0x01,0x01,0x1F,0x00,0x06,0x00,0x00},
+/*************? Custom2*************/
+{ 0x04,
+	0x01,
+	0x01,
+	0x1F,
+	0x00,
+	0x00,
+	0x00,
+	0x00},
+/*************? Custom2*************/
+{0x04,
+	0x04,
+	0x04,
+	0x07,
+	0x00,
+	0x00,
+	0x00,
+	0x00}
+	
+	
+	
+	
+	
+	
+};
 /**********************************************************************************************************************
  *  LOCAL FUNCTION PROTOTYPES
  *********************************************************************************************************************/
@@ -239,9 +270,29 @@ void LCD_WriteString(Uint_8* chr)
 *                                    E_NOT_OK
 *******************************************************************************/
 
-void LCD_WriteInt(Uint_32 num)
+void LCD_WriteInt(Sint_32 num)
 {
-	
+Uint_32 temp=1;
+if(num==0)
+{
+	LCD_WriteChar('0');
+}
+if (num<0)
+{
+	LCD_WriteChar('-');
+	num*=-1;
+}
+while (num!=0)
+{
+	temp =(temp *10)+(num%10);
+	num/=10;
+}
+while(temp!=1)
+{
+	LCD_WriteChar((temp%10)+48);
+	temp/=10;
+}
+
 }
 
 
@@ -279,6 +330,32 @@ void LCD_GOTO(Uint_8 ROW , Uint_8 COLUMN)
 {
 	Uint_8 arr[2]= {0x80 , 0xc0};
 		LCD_WriteCommand(arr[ROW]+COLUMN);
+		
+}
+
+
+/******************************************************************************
+* \Syntax          : Std_ReturnType FunctionName(AnyType parameterName)
+* \Description     : Describe this service
+*
+* \Sync\Async      : Synchronous
+* \Reentrancy      : Non Reentrant
+* \Parameters (in) : parameterName   Parameter Describtion
+* \Parameters (out): None
+* \Return value:   : Std_ReturnType  E_OK
+*                                    E_NOT_OK
+*******************************************************************************/
+void Custom_Char (void)
+{
+	Uint_8 Custom_Char_Count = 0 , Bytes = 0;
+	for (Custom_Char_Count = 0 ; Custom_Char_Count < C_CHAR_NO ; Custom_Char_Count++)
+	{
+	       LCD_WriteCommand(0X40+(Custom_Char_Count*8));
+		   for(Bytes = 0 ; Bytes < BYTES_NO ; Bytes++)
+		   {
+			   LCD_WriteChar(Custom_Char_Arr[Custom_Char_Count][Bytes]);
+		   }
+	}
 }
 
 /**********************************************************************************************************************

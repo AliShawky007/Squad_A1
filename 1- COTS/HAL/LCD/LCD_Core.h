@@ -59,12 +59,13 @@ void LCD_WriteChar(Uint_8 chr);
 
 void LCD_WriteString(Uint_8* chr);
 
-void LCD_WriteInt(Uint_32 num);
+void LCD_WriteInt(Sint_32 num);
 
 void LCD_Clear(void);
 
 void LCD_GOTO(Uint_8 ROW , Uint_8 COLUMN);
 
+void Custom_Char (void);
 
 
 
