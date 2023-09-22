@@ -1,13 +1,9 @@
 /*
- * MCU.h
+ * ADC_Core.h
  *
- * Created: 8/16/2023 6:21:13 PM
+ * Created: 9/8/2023 6:11:22 PM
  *  Author: Mina
  */ 
-
-
-
-
 /**********************************************************************************************************************
 
  *  FILE DESCRIPTION
@@ -18,66 +14,64 @@
  *  Description:  <Write File DESCRIPTION here>     
  *  
  *********************************************************************************************************************/
-#ifndef MCU_H_
-#define MCU_H_
+#ifndef ADC_CORE_H_
+#define ADC_CORE_H_
 
 /**********************************************************************************************************************
  * INCLUDES
  *********************************************************************************************************************/
-#include "STD.h"
+#include "ADC_CFG.h"
+#include "MCU.h"
+#include "BIT_MATH.h"
 
 /**********************************************************************************************************************
  *  GLOBAL CONSTANT MACROS
  *********************************************************************************************************************/
-/*************************GPIO REGISTERS******************************/
-#define PHYSICAL_GPIO_ACCESS(addr) (*(volatile Uint_8*)(addr))
-
-#define GPIOA_BASE_ADDRESS    (0X39)
-#define GPIOB_BASE_ADDRESS    (0X36)
-#define GPIOC_BASE_ADDRESS    (0X33)
-#define GPIOD_BASE_ADDRESS    (0X30)
-
-#define GPIO_INPUT_REGISTER_PIN (0X00)
-#define GPIO_DIRECTION_REGISTER_DDR (0X01)
-#define GPIO_OUTPUT_REGISTER_PORT (0X02)
-
-/*******************************************************************/
+#define   ADC_VREF_VCC                      0U
+#define   ADC_VREF_AREF                     1U
+#define   ADC_VREF_INTERNAL                 2U
 
 
-
-/*************************INTERRUPT REGISTERS******************************/
-#define SREG       (*(volatile Uint_8*)(0X5F))
-#define GICR       (*(volatile Uint_8*)(0X5B))
-#define MCUCR      (*(volatile Uint_8*)(0X55))
-#define MCUCSR     (*(volatile Uint_8*)(0X54))
-
-/*************************************************************************/
-
-/****************************ADC REGISTERS********************************/
-#define ADCSRA          (*(volatile Uint_8*) (0X26))
-#define ADMUX           (*(volatile Uint_8*) (0X27))
-#define ADCL            (*(volatile Uint_8*) (0X24))
-#define ADCH            (*(volatile Uint_8*) (0X25))
-#define Right_Adjust    (*(volatile Uint_16*)(0X24))
-#define SFIOR           (*(volatile Uint_8*) (0X50))
-/*************************************************************************/
+#define   ADC_CHANNEL_0                     0U
+#define   ADC_CHANNEL_1                     1U
+#define   ADC_CHANNEL_2                     2U
+#define   ADC_CHANNEL_3                     3U
+#define   ADC_CHANNEL_4                     4U
+#define   ADC_CHANNEL_5                     5U
+#define   ADC_CHANNEL_6                     6U
+#define   ADC_CHANNEL_7                     7U
 
 
-/****************************TIMER REGISTERS********************************/
-#define TCCR0          (*(volatile Uint_8*) (0X53))
-#define TIMSK          (*(volatile Uint_8*) (0X59))
-#define TCNT0          (*(volatile Uint_8*) (0X52))
-#define OCR1AL         (*(volatile Uint_8*) (0X4A))
-#define OCR1AH         (*(volatile Uint_8*) (0X4B))
-#define OCRA1          (*(volatile Uint_16*)(0X4A))
-#define TCCR1A         (*(volatile Uint_8*) (0X4F))
-#define TCCR1B         (*(volatile Uint_8*) (0X4E))
-#define OCR0           (*(volatile Uint_8*) (0X5C))
-#define ICR1L          (*(volatile Uint_8*) (0X46))
-#define ICR1H          (*(volatile Uint_8*) (0X47))
-#define ICR1           (*(volatile Uint_16*)(0X46))
+#define   ADC_PRESCALER_2                   0U
+#define   ADC_PRESCALER_4                   1U
+#define   ADC_PRESCALER_8                   2U
+#define   ADC_PRESCALER_16                  3U
+#define   ADC_PRESCALER_32                  4U
+#define   ADC_PRESCALER_64                  5U
+#define   ADC_PRESCALER_128                 6U
 
-/*************************************************************************/
+#define   ADC_CONVERSION_SINGLE_CONVERSION               0U
+#define   ADC_CONVERSION_FREE_RUNNING                    1U
+#define   ADC_CONVERSION_Analog_Comparator               2U
+#define   ADC_CONVERSION_External_Interrupt_Request_0    3U
+#define   ADC_CONVERSION_Timer_Counter0_Compare_Match    4U
+#define   ADC_CONVERSION_Timer_Counter0_Overflow         5U
+#define   ADC_CONVERSION_Timer_Counter_Compare_Match_B   6U
+#define   ADC_CONVERSION_Timer_Counter1_Overflow         7U
+#define   ADC_CONVERSION_Timer_Counter1_Capture_Event    8U
+
+
+
+#define   ADC_INTERRUPT_DISABLED            0U
+#define   ADC_INTERRUPT_ENABLED             1U
+
+#define   ADC_LEFT_ADJUST                   0U
+#define   ADC_RIGHT_ADJUST                  1U
+
+#define   ADC_RESOLUTION                    10U
+
+#define   ADC_Vref_Value                    5U
+
 /**********************************************************************************************************************
  *  GLOBAL FUNCTION MACROS
  *********************************************************************************************************************/
@@ -91,17 +85,22 @@
 /**********************************************************************************************************************
  *  GLOBAL DATA PROTOTYPES
  *********************************************************************************************************************/
-
+extern Uint_32 ADC_Vin_Value_mV ;
  
 /**********************************************************************************************************************
  *  GLOBAL FUNCTION PROTOTYPES
  *********************************************************************************************************************/
+void ADC_Init(void);
 
+void ADC_Read(void);
  
-#endif /* MCU_H_ */
+#endif /* ADC_CORE_H_ */
 
 /**********************************************************************************************************************
  *  END OF FILE: Std_Types.h
  *********************************************************************************************************************/
+
+
+
 
 

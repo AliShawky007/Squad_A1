@@ -1,13 +1,9 @@
 /*
- * MCU.h
+ * IRQH_CORE.h
  *
- * Created: 8/16/2023 6:21:13 PM
+ * Created: 9/1/2023 5:47:23 PM
  *  Author: Mina
  */ 
-
-
-
-
 /**********************************************************************************************************************
 
  *  FILE DESCRIPTION
@@ -18,66 +14,48 @@
  *  Description:  <Write File DESCRIPTION here>     
  *  
  *********************************************************************************************************************/
-#ifndef MCU_H_
-#define MCU_H_
+#ifndef IRQH_CORE_H_
+#define IRQH_CORE_H_
 
 /**********************************************************************************************************************
  * INCLUDES
  *********************************************************************************************************************/
-#include "STD.h"
+#include "MCU.h"
+#include "BIT_MATH.h"
+#include "IRQH_CFG.h"
+#include <avr/interrupt.h>
 
 /**********************************************************************************************************************
  *  GLOBAL CONSTANT MACROS
  *********************************************************************************************************************/
-/*************************GPIO REGISTERS******************************/
-#define PHYSICAL_GPIO_ACCESS(addr) (*(volatile Uint_8*)(addr))
+#define INT_ENABLE    1
+#define INT_DISABLE   0
 
-#define GPIOA_BASE_ADDRESS    (0X39)
-#define GPIOB_BASE_ADDRESS    (0X36)
-#define GPIOC_BASE_ADDRESS    (0X33)
-#define GPIOD_BASE_ADDRESS    (0X30)
+#define EXT_INT_TRIGGER_FALLING_EDGE        0
+#define EXT_INT_TRIGGER_RISING_EDGE         1
+#define EXT_INT_TRIGGER_LOW_LEVEL           2
+#define EXT_INT_TRIGGER_ANY_LOGICAL_CHANGE  3
 
-#define GPIO_INPUT_REGISTER_PIN (0X00)
-#define GPIO_DIRECTION_REGISTER_DDR (0X01)
-#define GPIO_OUTPUT_REGISTER_PORT (0X02)
-
-/*******************************************************************/
-
-
-
-/*************************INTERRUPT REGISTERS******************************/
-#define SREG       (*(volatile Uint_8*)(0X5F))
-#define GICR       (*(volatile Uint_8*)(0X5B))
-#define MCUCR      (*(volatile Uint_8*)(0X55))
-#define MCUCSR     (*(volatile Uint_8*)(0X54))
-
-/*************************************************************************/
-
-/****************************ADC REGISTERS********************************/
-#define ADCSRA          (*(volatile Uint_8*) (0X26))
-#define ADMUX           (*(volatile Uint_8*) (0X27))
-#define ADCL            (*(volatile Uint_8*) (0X24))
-#define ADCH            (*(volatile Uint_8*) (0X25))
-#define Right_Adjust    (*(volatile Uint_16*)(0X24))
-#define SFIOR           (*(volatile Uint_8*) (0X50))
-/*************************************************************************/
-
-
-/****************************TIMER REGISTERS********************************/
-#define TCCR0          (*(volatile Uint_8*) (0X53))
-#define TIMSK          (*(volatile Uint_8*) (0X59))
-#define TCNT0          (*(volatile Uint_8*) (0X52))
-#define OCR1AL         (*(volatile Uint_8*) (0X4A))
-#define OCR1AH         (*(volatile Uint_8*) (0X4B))
-#define OCRA1          (*(volatile Uint_16*)(0X4A))
-#define TCCR1A         (*(volatile Uint_8*) (0X4F))
-#define TCCR1B         (*(volatile Uint_8*) (0X4E))
-#define OCR0           (*(volatile Uint_8*) (0X5C))
-#define ICR1L          (*(volatile Uint_8*) (0X46))
-#define ICR1H          (*(volatile Uint_8*) (0X47))
-#define ICR1           (*(volatile Uint_16*)(0X46))
-
-/*************************************************************************/
+#define  External_Interrupt_Request_0_VECTOR_INDEX      0U
+#define  External_Interrupt_Request_1_VECTOR_INDEX      1U
+#define  External_Interrupt_Request_2_VECTOR_INDEX		2U
+#define  Timer_Counter2_Compare_Match_VECTOR_INDEX		3U
+#define  Timer_Counter2_Overflow_VECTOR_INDEX			4U
+#define  Timer_Counter1_Capture_Event_VECTOR_INDEX		5U
+#define  Timer_Counter1_Compare_Match_A_VECTOR_INDEX	6U
+#define  Timer_Counter1_Compare_Match_B_VECTOR_INDEX	7U
+#define  Timer_Counter1_Overflow_VECTOR_INDEX			8U
+#define  Timer_Counter0_Compare_Match_VECTOR_INDEX		9U
+#define  Timer_Counter0_Overflow_VECTOR_INDEX			10U
+#define  Serial_Transfer_Complete_VECTOR_INDEX			11U
+#define  USART_Rx_Complete_VECTOR_INDEX					12U
+#define  USART_Data_Register_Empty_VECTOR_INDEX			13U
+#define  USART_Tx_Complete_VECTOR_INDEX					14U
+#define  ADC_Conversion_Complete_VECTOR_INDEX			15U
+#define  EE_RDY_EEPROM_Ready_VECTOR_INDEX				16U
+#define  ANA_COMP_Analog_Comparator_VECTOR_INDEX		17U
+#define  Two_wire_Serial_Interface_VECTOR_INDEX			18U
+#define  Store_Program_Memory_Ready_VECTOR_INDEX		19U
 /**********************************************************************************************************************
  *  GLOBAL FUNCTION MACROS
  *********************************************************************************************************************/
@@ -86,7 +64,7 @@
 /**********************************************************************************************************************
  *  GLOBAL DATA TYPES AND STRUCTURES
  *********************************************************************************************************************/
-
+extern Uint_32 ADC_Vin_Value_mV ;
 
 /**********************************************************************************************************************
  *  GLOBAL DATA PROTOTYPES
@@ -96,12 +74,19 @@
 /**********************************************************************************************************************
  *  GLOBAL FUNCTION PROTOTYPES
  *********************************************************************************************************************/
+void IRQH_SetGlobalINT(Uint_8);
 
+void IRQH_SetExternalINT(void);
+
+void IRQH_SetCallBack(Uint_8 Interrupt_Vector_Index , void(*p)(void));
  
-#endif /* MCU_H_ */
+#endif /* IRQH_CORE_H_ */
 
 /**********************************************************************************************************************
  *  END OF FILE: Std_Types.h
  *********************************************************************************************************************/
+
+
+
 
 

@@ -1,13 +1,13 @@
 /*
- * PORT_LCFG.c
+ * DC_MOTOR_CORE.c
  *
- * Created: 8/19/2023 3:48:02 PM
+ * Created: 9/22/2023 5:38:48 PM
  *  Author: Mina
  */ 
 /**********************************************************************************************************************
  *  FILE DESCRIPTION
  *  -----------------------------------------------------------------------------------------------------------------*/
-/**        \file  PORT_LCFG.c
+/**        \file  FileName.c
  *        \brief  
  *
  *      \details  
@@ -18,7 +18,7 @@
 /**********************************************************************************************************************
  *  INCLUDES
  *********************************************************************************************************************/
-#include "PORT_LCFG.h"
+#include "DC_MOTOR_CORE.h"
 
 /**********************************************************************************************************************
 *  LOCAL MACROS CONSTANT\FUNCTION
@@ -31,64 +31,7 @@
 /**********************************************************************************************************************
  *  GLOBAL DATA
  *********************************************************************************************************************/
-const PIN_PARAMETERS PORT_Initialization[DEFINED_PINS]={
-	/*****GREEN LED***/
-	{ PORTC_PIN1, PIN_OUTPUT  },
-		/*****PUSH BUTTON 1***
-	{ PORTD_PIN2, PIN_INPUT  },*/
-		/*****BLUE LED***
-	{ PORTC_PIN2, PIN_OUTPUT  },*/
-	/*****PUSH BUTTON 2***
-	{ PORTD_PIN3, PIN_INPUT  },*/
-		/*****PUSH BUTTON 3***
-	{ PORTD_PIN4, PIN_INPUT  },*/
-	/*****PUSH BUTTON 4***
-	{ PORTD_PIN5, PIN_INPUT  },*/
-	/*****Relay 1***
-	{ PORTC_PIN4, PIN_OUTPUT  },*/
-	/*****Buzzer***
-	{ PORTC_PIN3, PIN_OUTPUT  },*/
-	/*****Enable Right 7-Segment***
-	{ PORTC_PIN6, PIN_OUTPUT  },*/
-	/*****Enable Left 7-Segment***
-	{ PORTC_PIN7, PIN_OUTPUT  },*/
-	/*****Enable PORTA_PIN0 7-Segment**
-	{ PORTA_PIN1, PIN_OUTPUT  },*/
-	/*****Enable B 7-Segment***
-	{ PORTA_PIN2, PIN_OUTPUT  },
-	/*****Enable C 7-Segment***
-	{ PORTA_PIN3, PIN_OUTPUT  },*/
-	/*****Enable D 7-Segment***
-	{ PORTA_PIN4, PIN_OUTPUT  },*/
-	/*****Enable E 7-Segment***
-	{ PORTA_PIN5, PIN_OUTPUT  },*/
-	/*****Enable F 7-Segment***
-	{ PORTA_PIN6, PIN_OUTPUT  },*/
-	/*****Enable G 7-Segment***
-	{ PORTA_PIN7, PIN_OUTPUT  },*/
-	/*****Enable DOT 7-Segment***
-	{ PORTB_PIN0, PIN_OUTPUT  },*/
-	/*****LCD E PIN******/
-	{ PORTA_PIN2, PIN_OUTPUT  },
-	/*****LCD RS PIN******/
-	{ PORTA_PIN1, PIN_OUTPUT  },
-	/*****LCD D4 PIN******/
-	{ PORTA_PIN3, PIN_OUTPUT  },
-	/*****LCD D5 PIN******/
-	{ PORTA_PIN4, PIN_OUTPUT  },
-	/*****LCD D6 PIN******/
-	{ PORTA_PIN5, PIN_OUTPUT  },
-	/*****LCD D7 PIN******/
-	{ PORTA_PIN6, PIN_OUTPUT  },
-	/*****KEYPAD COLUMN*******/
-    { PORTD_PIN2, PIN_INPUT  },{ PORTD_PIN3, PIN_INPUT  },{ PORTD_PIN4, PIN_INPUT  },/*{ PORTD_PIN5, PIN_INPUT  },*/
-	/*****KEYPAD ROWS*******/
-	{ PORTB_PIN4, PIN_OUTPUT  },{ PORTB_PIN5, PIN_OUTPUT },{ PORTB_PIN6, PIN_OUTPUT  },{ PORTB_PIN7, PIN_OUTPUT },
-	/****pwm0**************/
-	{PORTB_PIN3,PIN_OUTPUT},
-		/******** dc motor************************/
-		{PORTC_PIN0 , PIN_OUTPUT},{PORTC_PIN1 , PIN_OUTPUT},{PORTD_PIN5 , PIN_OUTPUT}
-};
+
 /**********************************************************************************************************************
  *  LOCAL FUNCTION PROTOTYPES
  *********************************************************************************************************************/
@@ -113,8 +56,70 @@ const PIN_PARAMETERS PORT_Initialization[DEFINED_PINS]={
 * \Return value:   : Std_ReturnType  E_OK
 *                                    E_NOT_OK                                  
 *******************************************************************************/
+void DCMOTOR_Init(void)
+{
+	PWM_Init();
+}
 
+/******************************************************************************
+* \Syntax          : Std_ReturnType FunctionName(AnyType parameterName)
+* \Description     : Describe this service
+*
+* \Sync\Async      : Synchronous
+* \Reentrancy      : Non Reentrant
+* \Parameters (in) : parameterName   Parameter Describtion
+* \Parameters (out): None
+* \Return value:   : Std_ReturnType  E_OK
+*                                    E_NOT_OK
+*******************************************************************************/
+void DCMOTOR_ForDirection(Motor_Dir_e Direction)
+{
+	switch (Direction)
+	{
+		case RIGHT:
+		DIO_WriteChannel(PORTC_PIN0,PIN_HIGH);
+		DIO_WriteChannel(PORTC_PIN1,PIN_LOW);
+		break;
+		case LEFT:
+		DIO_WriteChannel(PORTC_PIN0,PIN_LOW);
+		DIO_WriteChannel(PORTC_PIN1,PIN_HIGH);
+		break;
+		default:
+		break;
+	}
+}
 
+/******************************************************************************
+* \Syntax          : Std_ReturnType FunctionName(AnyType parameterName)
+* \Description     : Describe this service
+*
+* \Sync\Async      : Synchronous
+* \Reentrancy      : Non Reentrant
+* \Parameters (in) : parameterName   Parameter Describtion
+* \Parameters (out): None
+* \Return value:   : Std_ReturnType  E_OK
+*                                    E_NOT_OK
+*******************************************************************************/
+void DCMOTOR_ForSpeed(Uint_8 Speed)
+{
+	PWM0_Generate(Speed);
+}
+/******************************************************************************
+* \Syntax          : Std_ReturnType FunctionName(AnyType parameterName)
+* \Description     : Describe this service
+*
+* \Sync\Async      : Synchronous
+* \Reentrancy      : Non Reentrant
+* \Parameters (in) : parameterName   Parameter Describtion
+* \Parameters (out): None
+* \Return value:   : Std_ReturnType  E_OK
+*                                    E_NOT_OK
+*******************************************************************************/
+void DCMOTOR_Stop(void)
+{
+	DIO_WriteChannel(PORTC_PIN0,PIN_HIGH);
+	DIO_WriteChannel(PORTC_PIN1,PIN_HIGH);
+}
 /**********************************************************************************************************************
- *  END OF FILE: PORT_LCFG.c
+ *  END OF FILE: FileName.c
  *********************************************************************************************************************/
