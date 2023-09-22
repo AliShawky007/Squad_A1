@@ -34,8 +34,21 @@
 const PIN_PARAMETERS PORT_Initialization[DEFINED_PINS] = {
 	/*Green LED Pins*/
 	{ PORTC_PIN1 , PIN_OUTPUT },
-	/*BTN0 Pins
-	{ PORTD_PIN2 , PIN_INPUT  }	*/
+	/*BTN0 Pins*/
+	{ PORTD_PIN2 , PIN_INPUT  }	,
+	/*{ PORTA_PIN1 , PIN_OUTPUT },
+	{ PORTA_PIN2 , PIN_OUTPUT },
+	{ PORTA_PIN3 , PIN_OUTPUT },
+	{ PORTA_PIN4 , PIN_OUTPUT },
+	{ PORTA_PIN5 , PIN_OUTPUT },
+	{ PORTA_PIN6 , PIN_OUTPUT }*/
+	/*PWM0 Pins
+	{ PORTB_PIN3 , PIN_OUTPUT },*/
+	/*DC Motor Pins
+    { PORTB_PIN2 , PIN_OUTPUT },
+	{ PORTB_PIN1 , PIN_OUTPUT },*/
+	/*PWM1 Pins*/
+	{ PORTD_PIN5 , PIN_OUTPUT }
 };
 /**********************************************************************************************************************
  *  LOCAL FUNCTION PROTOTYPES

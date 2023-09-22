@@ -1,9 +1,11 @@
 /*
- * IRQH_Core.h
+ * GPT_Core.h
  *
- * Created: 9/1/2023 5:47:44 PM
+ * Created: 9/15/2023 5:02:20 PM
  *  Author: Ali
  */ 
+
+
 
 
 
@@ -17,52 +19,49 @@
  *  Description:  <Write File DESCRIPTION here>     
  *  
  *********************************************************************************************************************/
-
-#ifndef IRQH_CORE_H_
-#define IRQH_CORE_H_
-
+#ifndef GPT_CORE_H_
+#define GPT_CORE_H_
 
 /**********************************************************************************************************************
  * INCLUDES
  *********************************************************************************************************************/
+#include "GPT_Cfg.h"
 #include "MCU.h"
-#include "BIT_Math.h"
-#include "IRQH_Cfg.h"
-#include <avr/interrupt.h>
-
+#include "BIT_MATH.h"
 /**********************************************************************************************************************
  *  GLOBAL CONSTANT MACROS
  *********************************************************************************************************************/
+#define TIMER_ENABLE                 1U
+#define TIMER_DISABLE                0U
 
-#define  INT_ENABLE       1
-#define  INT_DISABLE      0
+#define NORMAL_MODE                  0U
+#define CTC_MODE                     1U
+#define PWM_Phase_Frequency_Correct  2U
+#define PWM_Phase_Correct            3U
+#define Fast_PWM                     4U
 
-#define  EXT_INT_TRIGGER_FALLING_EDGE          0
-#define  EXT_INT_TRIGGER_RISING_EDGE           1
-#define  EXT_INT_TRIGGER_LOW_LEVEL             2
-#define  EXT_INT_TRIGGER_ANY_LOGICAL_CHANGE    3
+#define NO_CLK_SRC                   0U
+#define CLK_SRC_WITH_NO_PRESCALING	 1U
+#define CLK_SRC_PRESCALING_8		 8U
+#define CLK_SRC_PRESCALING_32 		 32U
+#define CLK_SRC_PRESCALING_64 		 64U
+#define CLK_SRC_PRESCALING_128 		 128U
+#define CLK_SRC_PRESCALING_256 		 256U
+#define CLK_SRC_PRESCALING_1024      1024U
 
+#define INTERRUPT_ENABLED            1U
+#define INTERRUPT_DISABLED           0U
 
-#define  External_Interrupt_Request_0_VECTOR_INDEX      0U
-#define  External_Interrupt_Request_1_VECTOR_INDEX      1U
-#define  External_Interrupt_Request_2_VECTOR_INDEX		2U
-#define  Timer_Counter2_Compare_Match_VECTOR_INDEX		3U
-#define  Timer_Counter2_Overflow_VECTOR_INDEX			4U
-#define  Timer_Counter1_Capture_Event_VECTOR_INDEX		5U
-#define  Timer_Counter1_Compare_Match_A_VECTOR_INDEX	6U
-#define  Timer_Counter1_Compare_Match_B_VECTOR_INDEX	7U
-#define  Timer_Counter1_Overflow_VECTOR_INDEX			8U
-#define  Timer_Counter0_Compare_Match_VECTOR_INDEX		9U
-#define  Timer_Counter0_Overflow_VECTOR_INDEX			10U
-#define  Serial_Transfer_Complete_VECTOR_INDEX			11U
-#define  USART_Rx_Complete_VECTOR_INDEX					12U
-#define  USART_Data_Register_Empty_VECTOR_INDEX			13U
-#define  USART_Tx_Complete_VECTOR_INDEX					14U
-#define  ADC_Conversion_Complete_VECTOR_INDEX			15U
-#define  EE_RDY_EEPROM_Ready_VECTOR_INDEX				16U
-#define  ANA_COMP_Analog_Comparator_VECTOR_INDEX		17U
-#define  Two_wire_Serial_Interface_VECTOR_INDEX			18U
-#define  Store_Program_Memory_Ready_VECTOR_INDEX		19U
+#define TIMER0_OVF_INTERRUPT_BIT     0U
+#define TIMER0_OC_INTERRUPT_BIT      1U
+#define TIMER1_OVF_INTERRUPT_BIT     2U
+#define TIMER1_OC_INTERRUPT_BIT      4U
+#define TIMER2_OVF_INTERRUPT_BIT     6U
+#define TIMER2_OC_INTERRUPT_BIT      7U
+
+#define TIMER0_COUNTING_REG_CAPACITY   256U
+#define TIMER1_COUNTING_REG_CAPACITY   65535U
+#define TIMER2_COUNTING_REG_CAPACITY   256U
 
 /**********************************************************************************************************************
  *  GLOBAL FUNCTION MACROS
@@ -77,19 +76,14 @@
 /**********************************************************************************************************************
  *  GLOBAL DATA PROTOTYPES
  *********************************************************************************************************************/
-extern uint32 ADC_Vin_Value_mv ;
 
  
 /**********************************************************************************************************************
  *  GLOBAL FUNCTION PROTOTYPES
  *********************************************************************************************************************/
-void IRQH_SetGlobalINT(uint8 );
 
-void IRQH_SetExternalINT(void);
-
-void IRQH_Set_CallBack(uint8 Interrupt_Vector_Index , void(*p)(void));
  
-#endif /* IRQH_CORE_H_ */
+#endif /* GPT_CORE_H_ */
 
 /**********************************************************************************************************************
  *  END OF FILE: Std_Types.h

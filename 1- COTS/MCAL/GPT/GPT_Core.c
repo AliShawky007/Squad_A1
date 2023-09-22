@@ -1,9 +1,10 @@
 /*
- * IRQH_Core.c
+ * GPT_Core.c
  *
- * Created: 9/1/2023 5:47:29 PM
+ * Created: 9/15/2023 5:03:21 PM
  *  Author: Ali
  */ 
+
 /**********************************************************************************************************************
  *  FILE DESCRIPTION
  *  -----------------------------------------------------------------------------------------------------------------*/
@@ -18,7 +19,7 @@
 /**********************************************************************************************************************
  *  INCLUDES
  *********************************************************************************************************************/
-#include "IRQH_Core.h"
+#include "GPT_Core.h"
 
 /**********************************************************************************************************************
 *  LOCAL MACROS CONSTANT\FUNCTION
@@ -27,12 +28,12 @@
 /**********************************************************************************************************************
  *  LOCAL DATA 
  *********************************************************************************************************************/
-void(*CallBack_PtrFunc[20])(void) = {Null};
+
 /**********************************************************************************************************************
  *  GLOBAL DATA
  *********************************************************************************************************************/
-extern uint32 TIMER0_Number_OVRflows_g ;
-extern uint32 TIMER0_Init_Value_g ;
+uint32 TIMER0_Number_OVRflows_g = 0;
+uint32 TIMER0_Init_Value_g = 0;
 /**********************************************************************************************************************
  *  LOCAL FUNCTION PROTOTYPES
  *********************************************************************************************************************/
@@ -57,21 +58,61 @@ extern uint32 TIMER0_Init_Value_g ;
 * \Return value:   : Std_ReturnType  E_OK
 *                                    E_NOT_OK                                  
 *******************************************************************************/
-void IRQH_SetGlobalINT(uint8 Global_INT_Status)
+void GPT_Init(void)
 {
-	switch(Global_INT_Status)
-	{
-		case INT_ENABLE:
-		SET_BIT(SREG , 7);
-		break;
+		#if(Timer0_State == TIMER_ENABLE)
+		/** Timer0 Operation Mode **/
+		   #if (TIMER0_MODE == NORMAL_MODE)
+	         CLR_BIT(TCCR0 , 3);
+	         CLR_BIT(TCCR0 , 6);
+			  #if (TIMER0_INTERRUPT_STATE == INTERRUPT_ENABLED)
+			   SET_BIT(TIMSK,0);
+			  #elif (TIMER0_INTERRUPT_STATE == INTERRUPT_DISABLED)	
+			   CLR_BIT(TIMSK,0);
+			  #endif	/*(TIMER0_INTERRUPT_STATE == INTERRUPT_ENABLED)*/
+		   #elif (TIMER0_MODE == CTC_MODE)
+		   
+		   #endif /*if(TIMER0_MODE == NORMAL_MODE)*/
+		   
+		   #if (TIMER0_PRESCALER == CLK_SRC_WITH_NO_PRESCALING	 )
+		    TCCR0 |= 0X01;
+		   #elif (TIMER0_PRESCALER == CLK_SRC_PRESCALING_8		 )
+		    TCCR0 |= 0X02;
+		   #elif (TIMER0_PRESCALER == CLK_SRC_PRESCALING_64		 )
+		    TCCR0 |= 0X03;
+		   #elif (TIMER0_PRESCALER == CLK_SRC_PRESCALING_256		 )
+		    TCCR0 |= 0X04;
+		   #elif (TIMER0_PRESCALER == CLK_SRC_PRESCALING_1024		 )
+		    TCCR0 |= 0X05;
+		   #endif /*if(TIMER0_PRESCALER == CLK_SRC_WITH_NO_PRESCALING	 )*/
+		#endif /*if(Timer0_State == TIMER_ENABLE)*/
+		#if (Timer1_State == TIMER_ENABLE)
+		#if (TIMER1_MODE == NORMAL_MODE)
 		
-		case INT_DISABLE:
-		CLR_BIT(SREG , 7);
-		break;
-		
-		default:
-		break;
-	}
+		#elif (TIMER1_MODE == CTC_MODE)
+		CLR_BIT(TCCR1A , 0);
+		CLR_BIT(TCCR1A , 1);
+		SET_BIT(TCCR1B , 3);
+		CLR_BIT(TCCR1B , 4);
+		#if (TIMER1_INTERRUPT_STATE == INTERRUPT_ENABLED)
+		SET_BIT(TIMSK,4);
+		#elif (TIMER1_INTERRUPT_STATE == INTERRUPT_DISABLED)
+		CLR_BIT(TIMSK,4);
+		#endif /*end #if(TIMER1_INTERRUPT_STATE == INTERRUPT_ENABLED) */
+		#endif /*end #if (TIMER0_MODE == NORMAL_MODE)*/
+		/** Timer1 Prescaler value **/
+		#if (TIMER1_PRESCALER == CLK_SRC_WITH_NO_PRESCALING	 )
+		TCCR1B |= 0X01;
+		#elif (TIMER1_PRESCALER == CLK_SRC_PRESCALING_8		 )
+		TCCR1B |= 0X02;
+		#elif (TIMER1_PRESCALER == CLK_SRC_PRESCALING_64		 )
+		TCCR1B |= 0X03;
+		#elif (TIMER1_PRESCALER == CLK_SRC_PRESCALING_256	 )
+		TCCR1B |= 0X04;
+		#elif (TIMER1_PRESCALER == CLK_SRC_PRESCALING_1024	 )
+		TCCR1B |= 0X05;
+		#endif /*end #if(TIMER1_PRESCALER == CLK_SRC_WITH_NO_PRESCALING) */
+		#endif /*if (Timer1_State == TIMER_ENABLE)*/
 }
 
 /******************************************************************************
@@ -85,121 +126,43 @@ void IRQH_SetGlobalINT(uint8 Global_INT_Status)
 * \Return value:   : Std_ReturnType  E_OK
 *                                    E_NOT_OK
 *******************************************************************************/
-void IRQH_SetExternalINT(void)
+void GPT_SetTime(void)
 {
-	#if (EXT_INT_0 == INT_ENABLE)
-	SET_BIT(GICR , 6);
+	uint8 MCU_CLK_us = 16000000 / 1000000 ;
 	
-	  #if (EXT_INT0_TRIGGER   ==  EXT_INT_TRIGGER_LOW_LEVEL)
-	   CLR_BIT(MCUCR , 0);
-	   CLR_BIT(MCUCR , 1);
-	  #elif (EXT_INT0_TRIGGER   ==  EXT_INT_TRIGGER_ANY_LOGICAL_CHANGE)
-	   SET_BIT(MCUCR , 0);
-	   CLR_BIT(MCUCR , 1);	  
-	  #elif (EXT_INT0_TRIGGER   ==  EXT_INT_TRIGGER_FALLING_EDGE)
-	   CLR_BIT(MCUCR , 0);
-	   SET_BIT(MCUCR , 1);	  
-	  #elif (EXT_INT0_TRIGGER   ==  EXT_INT_TRIGGER_RISING_EDGE)
-	   SET_BIT(MCUCR , 0);
-	   SET_BIT(MCUCR , 1);	
+	#if (Timer0_State == TIMER_ENABLE)
+	uint8 Timer0Tick_Time_us = TIMER0_PRESCALER / MCU_CLK_us ; 
+	 #if (TIMER0_MODE == NORMAL_MODE)
+	 uint32 Time_ms = TIMER0_COUNTED_MS;
+	 uint32 Timer0Total_Ticks = (Time_ms*1000) / Timer0Tick_Time_us;
+	 TIMER0_Number_OVRflows_g = Timer0Total_Ticks / 256 ;
+	 TIMER0_Init_Value_g = 256 -( Timer0Total_Ticks % 256) ;
+	 
+	  TCNT0 = TIMER0_Init_Value_g ;
+	  if( Timer0Total_Ticks % 256 != 0)
+	  {
+		 TIMER0_Number_OVRflows_g++; 
+	  }
+	  
+	 #elif(TIMER0_MODE == CTC_MODE)
+	 
+	 #endif /*if  (TIMER0_MODE == NORMAL_MODE)*/
+	#endif /*if (Timer0_State == TIMER_ENABLE)*/
 	
-	 #endif /*if (EXT_INT0_TRIGGER   ==  EXT_INT_TRIGGER_FALLING_EDGE)*/
-	#endif /*if (EXT_INT_0 == INT_ENABLE)*/
+	#if (Timer1_State == TIMER_ENABLE)
+	uint8 Timer1Tick_Time_us_l = (TIMER1_PRESCALER / MCU_CLK_us) ;
 	
-	#if (EXT_INT_1 == INT_ENABLE)
-	SET_BIT(GICR , 7);
+	#if (TIMER1_MODE == NORMAL_MODE)
 	
-	  #if (EXT_INT1_TRIGGER   ==  EXT_INT_TRIGGER_LOW_LEVEL)
-	   CLR_BIT(MCUCR , 2);
-	   CLR_BIT(MCUCR , 3);
-	  #elif (EXT_INT1_TRIGGER   ==  EXT_INT_TRIGGER_ANY_LOGICAL_CHANGE)
-	   SET_BIT(MCUCR , 2);
-	   CLR_BIT(MCUCR , 3);
-	  #elif (EXT_INT1_TRIGGER   ==  EXT_INT_TRIGGER_FALLING_EDGE)
-	   CLR_BIT(MCUCR , 2);
-	   SET_BIT(MCUCR , 3);
-	  #elif (EXT_INT1_TRIGGER   ==  EXT_INT_TRIGGER_RISING_EDGE)
-	   SET_BIT(MCUCR , 2);
-	   SET_BIT(MCUCR , 3);	
-	 #endif /*#if (EXT_INT1_TRIGGER   ==  EXT_INT_TRIGGER_LOW_LEVEL)*/
-	#endif /*#if (EXT_INT_1 == INT_ENABLE)*/
-		
-	#if (EXT_INT_2 == INT_ENABLE)
-	SET_BIT(GICR , 5);
-	
-	 #if (EXT_INT2_TRIGGER   ==  EXT_INT_TRIGGER_FALLING_EDGE)
-	  CLR_BIT(MCUCSR , 6);
-	 #elif (EXT_INT2_TRIGGER   ==  EXT_INT_TRIGGER_RISING_EDGE)
-	  SET_BIT(MCUCSR , 6);
-	 #endif /*#if (EXT_INT2_TRIGGER   ==  EXT_INT_TRIGGER_FALLING_EDGE)*/	
-	#endif /*(EXT_INT_2 == INT_ENABLE)*/
+	#elif (TIMER1_MODE == CTC_MODE)
+	uint32 Time_1_ms = TIMER1_COUNTED_MS;
+	 uint32 Timer1Total_Ticks = (Time_1_ms*1000) / Timer1Tick_Time_us_l;
+	 OCR1A_16BIT_ACCESS = Timer1Total_Ticks - 1;
+	#endif /*if (TIMER1_MODE == NORMAL_MODE)*/
+	#endif /*if (Timer1_State == TIMER_ENABLE)*/
+
 }
-
-/******************************************************************************
-* \Syntax          : Std_ReturnType FunctionName(AnyType parameterName)
-* \Description     : Describe this service
-*
-* \Sync\Async      : Synchronous
-* \Reentrancy      : Non Reentrant
-* \Parameters (in) : parameterName   Parameter Describtion
-* \Parameters (out): None
-* \Return value:   : Std_ReturnType  E_OK
-*                                    E_NOT_OK
-*******************************************************************************/
-
-
-void IRQH_Set_CallBack(uint8 Interrupt_Vector_Index , void(*p)(void))
-{
-	CallBack_PtrFunc[Interrupt_Vector_Index] = p;
-}
-
-
-
-ISR(INT0_vect)
-{
-	
-	if(CallBack_PtrFunc[External_Interrupt_Request_0_VECTOR_INDEX] != Null)
-	{
-		(*CallBack_PtrFunc[External_Interrupt_Request_0_VECTOR_INDEX])();
-	}
-}
-
-ISR(ADC_vect)
-{
-	
-	if(CallBack_PtrFunc[ADC_Conversion_Complete_VECTOR_INDEX] != Null)
-	{
-		uint32 ADC_Digital_Value = ADC_INPUT_16BIT_ACCESS;
-		ADC_Vin_Value_mv = (ADC_Digital_Value * 5000) / 1023;
-		(*CallBack_PtrFunc[ADC_Conversion_Complete_VECTOR_INDEX])();
-	}
-}
-
-ISR(TIMER0_OVF_vect)
-{
-	static uint8 INT_CNT_l = 0;
-	
-	INT_CNT_l++;
-	
-	if(INT_CNT_l == TIMER0_Number_OVRflows_g)
-	{
-		(*CallBack_PtrFunc[Timer_Counter0_Overflow_VECTOR_INDEX])();
-		INT_CNT_l = 0;
-		TCNT0 = TIMER0_Init_Value_g ;
-	}
-}
-
-ISR(TIMER1_COMPA_vect)
-{
-	static uint8 INT_CNT_l = 0;
-	INT_CNT_l++;
-	if(INT_CNT_l == 1)
-	{
-		(*CallBack_PtrFunc[Timer_Counter1_Compare_Match_A_VECTOR_INDEX])();
-		INT_CNT_l = 0;
-	}
-}
-
 /**********************************************************************************************************************
  *  END OF FILE: FileName.c
  *********************************************************************************************************************/
+

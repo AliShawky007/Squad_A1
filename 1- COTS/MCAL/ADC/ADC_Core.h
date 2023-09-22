@@ -1,7 +1,7 @@
 /*
- * IRQH_Core.h
+ * ADC_Core.h
  *
- * Created: 9/1/2023 5:47:44 PM
+ * Created: 9/8/2023 6:11:22 PM
  *  Author: Ali
  */ 
 
@@ -17,52 +17,63 @@
  *  Description:  <Write File DESCRIPTION here>     
  *  
  *********************************************************************************************************************/
-
-#ifndef IRQH_CORE_H_
-#define IRQH_CORE_H_
-
+#ifndef ADC_CORE_H_
+#define ADC_CORE_H_
 
 /**********************************************************************************************************************
  * INCLUDES
  *********************************************************************************************************************/
+#include "ADC_Cfg.h"
 #include "MCU.h"
 #include "BIT_Math.h"
-#include "IRQH_Cfg.h"
-#include <avr/interrupt.h>
 
 /**********************************************************************************************************************
  *  GLOBAL CONSTANT MACROS
  *********************************************************************************************************************/
-
-#define  INT_ENABLE       1
-#define  INT_DISABLE      0
-
-#define  EXT_INT_TRIGGER_FALLING_EDGE          0
-#define  EXT_INT_TRIGGER_RISING_EDGE           1
-#define  EXT_INT_TRIGGER_LOW_LEVEL             2
-#define  EXT_INT_TRIGGER_ANY_LOGICAL_CHANGE    3
+#define   ADC_VREF_VCC                      0U
+#define   ADC_VREF_AREF                     1U
+#define   ADC_VREF_INTERNAL                 2U
 
 
-#define  External_Interrupt_Request_0_VECTOR_INDEX      0U
-#define  External_Interrupt_Request_1_VECTOR_INDEX      1U
-#define  External_Interrupt_Request_2_VECTOR_INDEX		2U
-#define  Timer_Counter2_Compare_Match_VECTOR_INDEX		3U
-#define  Timer_Counter2_Overflow_VECTOR_INDEX			4U
-#define  Timer_Counter1_Capture_Event_VECTOR_INDEX		5U
-#define  Timer_Counter1_Compare_Match_A_VECTOR_INDEX	6U
-#define  Timer_Counter1_Compare_Match_B_VECTOR_INDEX	7U
-#define  Timer_Counter1_Overflow_VECTOR_INDEX			8U
-#define  Timer_Counter0_Compare_Match_VECTOR_INDEX		9U
-#define  Timer_Counter0_Overflow_VECTOR_INDEX			10U
-#define  Serial_Transfer_Complete_VECTOR_INDEX			11U
-#define  USART_Rx_Complete_VECTOR_INDEX					12U
-#define  USART_Data_Register_Empty_VECTOR_INDEX			13U
-#define  USART_Tx_Complete_VECTOR_INDEX					14U
-#define  ADC_Conversion_Complete_VECTOR_INDEX			15U
-#define  EE_RDY_EEPROM_Ready_VECTOR_INDEX				16U
-#define  ANA_COMP_Analog_Comparator_VECTOR_INDEX		17U
-#define  Two_wire_Serial_Interface_VECTOR_INDEX			18U
-#define  Store_Program_Memory_Ready_VECTOR_INDEX		19U
+#define   ADC_CHANNEL_0                     0U
+#define   ADC_CHANNEL_1                     1U
+#define   ADC_CHANNEL_2                     2U
+#define   ADC_CHANNEL_3                     3U
+#define   ADC_CHANNEL_4                     4U
+#define   ADC_CHANNEL_5                     5U
+#define   ADC_CHANNEL_6                     6U
+#define   ADC_CHANNEL_7                     7U
+
+
+#define   ADC_PRESCALER_2                   0U
+#define   ADC_PRESCALER_4                   1U
+#define   ADC_PRESCALER_8                   2U
+#define   ADC_PRESCALER_16                  3U
+#define   ADC_PRESCALER_32                  4U
+#define   ADC_PRESCALER_64                  5U
+#define   ADC_PRESCALER_128                 6U
+
+#define   ADC_CONVERSION_SINGLE_CONVERSION               0U
+#define   ADC_CONVERSION_FREE_RUNNING                    1U
+#define   ADC_CONVERSION_Analog_Comparator               2U
+#define   ADC_CONVERSION_External_Interrupt_Request_0    3U
+#define   ADC_CONVERSION_Timer_Counter0_Compare_Match    4U
+#define   ADC_CONVERSION_Timer_Counter0_Overflow         5U
+#define   ADC_CONVERSION_Timer_Counter_Compare_Match_B   6U
+#define   ADC_CONVERSION_Timer_Counter1_Overflow         7U
+#define   ADC_CONVERSION_Timer_Counter1_Capture_Event    8U
+
+
+
+#define   ADC_INTERRUPT_DISABLED            0U
+#define   ADC_INTERRUPT_ENABLED             1U
+
+#define   ADC_LEFT_ADJUCT                   0U
+#define   ADC_RIGHT_ADJUCT                  1U
+
+#define   ADC_RESOLUTION                    10U
+
+#define   ADC_Vref_Value                    5U
 
 /**********************************************************************************************************************
  *  GLOBAL FUNCTION MACROS
@@ -77,23 +88,22 @@
 /**********************************************************************************************************************
  *  GLOBAL DATA PROTOTYPES
  *********************************************************************************************************************/
-extern uint32 ADC_Vin_Value_mv ;
-
+extern uint32  ADC_Vin_Value_mv ;
  
 /**********************************************************************************************************************
  *  GLOBAL FUNCTION PROTOTYPES
  *********************************************************************************************************************/
-void IRQH_SetGlobalINT(uint8 );
+void ADC_Init(void);
 
-void IRQH_SetExternalINT(void);
-
-void IRQH_Set_CallBack(uint8 Interrupt_Vector_Index , void(*p)(void));
+void ADC_Read(void);
  
-#endif /* IRQH_CORE_H_ */
+#endif /* ADC_CORE_H_ */
 
 /**********************************************************************************************************************
  *  END OF FILE: Std_Types.h
  *********************************************************************************************************************/
+
+
 
 
 
