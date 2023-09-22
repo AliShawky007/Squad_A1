@@ -27,25 +27,69 @@
  *  GLOBAL DATA
  *********************************************************************************************************************/
 const PIN_PARAMETERS PORT_Initialization[DEFINED_PINS] = {
-	/*7seg dig1 and dig2 as outputs*/
-	{PORTC_PIN6 , PIN_OUTPUT},
-	{PORTC_PIN7 , PIN_OUTPUT},
-	/*output pins to the 7seg digits as outputs*/
-	{PORTA_PIN0 , PIN_OUTPUT},
-	{PORTA_PIN1 , PIN_OUTPUT},
-	{PORTA_PIN2 , PIN_OUTPUT},
-	{PORTA_PIN3 , PIN_OUTPUT},
-	{PORTA_PIN4 , PIN_OUTPUT},
-	{PORTA_PIN5 , PIN_OUTPUT},
-	{PORTA_PIN6 , PIN_OUTPUT},
-	{PORTA_PIN7 , PIN_OUTPUT},
-	/*BUZZER as output	*/
-	{PORTC_PIN5 , PIN_OUTPUT},
-	/*buttons as inputs*/	
-	{PORTD_PIN2 , PIN_INPUT},
-	{PORTD_PIN3 , PIN_INPUT},
-	{PORTD_PIN4 , PIN_INPUT},
-	{PORTD_PIN5 , PIN_INPUT}	
+// 	//REDLED
+// {PORTC_PIN0,PIN_OUTPUT},
+// GREENLED
+// {PORTC_PIN1,PIN_OUTPUT},
+// BLUELED
+// {PORTC_PIN2,PIN_OUTPUT},	
+
+//DCmotor pwm output
+{PORTC_PIN0,PIN_OUTPUT},
+{PORTC_PIN1,PIN_OUTPUT},
+
+//servo pwm output
+{PORTB_PIN3,PIN_OUTPUT},
+{PORTD_PIN5,PIN_OUTPUT},
+
+
+// 	//LCD PINS
+// 	{PORTA_PIN1 , PIN_OUTPUT},
+// 	{PORTA_PIN2 , PIN_OUTPUT},
+// 	{PORTA_PIN3 , PIN_OUTPUT},
+// 	{PORTA_PIN4 , PIN_OUTPUT},
+// 	{PORTA_PIN5 , PIN_OUTPUT},
+// 	{PORTA_PIN6 , PIN_OUTPUT},
+// 	
+// 	//KEYPAD PINS
+		/*Row0*/
+// 	{PORTB_PIN4 , PIN_OUTPUT},
+// 		/*Row1*/
+// 	{PORTB_PIN5 , PIN_OUTPUT},
+// 		/*Row2*/
+// 	{PORTB_PIN6 , PIN_OUTPUT},
+// 		/*Row3*/
+// 	{PORTB_PIN7 , PIN_OUTPUT},
+// 		/*Col0*/
+// 	{PORTD_PIN2 , PIN_INPUT},
+// 		/*Col1*/
+// 	{PORTD_PIN3 , PIN_INPUT},
+// 		/*Col2*/
+// 	{PORTD_PIN4 , PIN_INPUT},
+// 		/*Col3*/
+// 	{PORTD_PIN5 , PIN_INPUT}	
+	
+	
+	
+// 	/*7seg dig1 and dig2 as outputs*/
+// 	{PORTC_PIN6 , PIN_OUTPUT},
+// 	{PORTC_PIN7 , PIN_OUTPUT},
+// 	/*output pins to the 7seg digits as outputs*/
+// 	{PORTA_PIN0 , PIN_OUTPUT},
+// 	{PORTA_PIN1 , PIN_OUTPUT},
+// 	{PORTA_PIN2 , PIN_OUTPUT},
+// 	{PORTA_PIN3 , PIN_OUTPUT},
+// 	{PORTA_PIN4 , PIN_OUTPUT},
+// 	{PORTA_PIN5 , PIN_OUTPUT},
+// 	{PORTA_PIN6 , PIN_OUTPUT},
+// 	{PORTA_PIN7 , PIN_OUTPUT},
+// 	/*BUZZER as output	*/
+// 	{PORTC_PIN5 , PIN_OUTPUT},
+// 	/*buttons as inputs*/	
+// 	{PORTD_PIN2 , PIN_INPUT},
+// 	{PORTD_PIN3 , PIN_INPUT},
+// 	{PORTD_PIN4 , PIN_INPUT},
+// 	{PORTD_PIN5 , PIN_INPUT}	
 };
 /**********************************************************************************************************************
  *  LOCAL FUNCTION PROTOTYPES

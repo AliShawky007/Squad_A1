@@ -263,21 +263,60 @@ void DIO_ReadPort(uint8 Pin_Num , uint8 * Port_value )
 		break;
 		
 		case 1:
-		*Port_value = PHYSICAL_GPIO_ACCESS(GPIOA_BASE_ADDRRESS + GPIO_INPUT_REGISTER_PIN);
+		*Port_value = PHYSICAL_GPIO_ACCESS(GPIOB_BASE_ADDRRESS + GPIO_INPUT_REGISTER_PIN);
 		break;
 		
 		case 2:
-		*Port_value = PHYSICAL_GPIO_ACCESS(GPIOA_BASE_ADDRRESS + GPIO_INPUT_REGISTER_PIN);
+		*Port_value = PHYSICAL_GPIO_ACCESS(GPIOC_BASE_ADDRRESS + GPIO_INPUT_REGISTER_PIN);
 		break;
 		
 		case 3:
-		*Port_value = PHYSICAL_GPIO_ACCESS(GPIOA_BASE_ADDRRESS + GPIO_INPUT_REGISTER_PIN);
+		*Port_value = PHYSICAL_GPIO_ACCESS(GPIOD_BASE_ADDRRESS + GPIO_INPUT_REGISTER_PIN);
 		break;
 		
 		default:
 		break;
 	}	
 }
+/******************************************************************************
+* \Syntax          : void DIO_ReadPort(uint8 Pin_Num , uint8 * Port_value )
+* \Description     : read from ports
+*
+* \Sync\Async      : Synchronous
+* \Reentrancy      : Non Reentrant
+* \Parameters (in) : parameterName   Parameter Describtion
+* \Parameters (out): None
+* \Return value:   : void  E_OK
+*                                    E_NOT_OK
+*******************************************************************************/
+void DIO_ReadOutPutPort(uint8 Pin_Num , uint8 * Port_value )
+{
+	uint8 Port = 0;
+	Port = Pin_Num / NUMBER_OF_EACH_PORT_PINS ;
+	
+	switch(Port)
+	{
+		case 0:
+		*Port_value = PHYSICAL_GPIO_ACCESS(GPIOA_BASE_ADDRRESS + GPIO_OUTPUT_REGISTER_PORT);
+		break;
+		
+		case 1:
+		*Port_value = PHYSICAL_GPIO_ACCESS(GPIOB_BASE_ADDRRESS + GPIO_OUTPUT_REGISTER_PORT);
+		break;
+		
+		case 2:
+		*Port_value = PHYSICAL_GPIO_ACCESS(GPIOC_BASE_ADDRRESS + GPIO_OUTPUT_REGISTER_PORT);
+		break;
+		
+		case 3:
+		*Port_value = PHYSICAL_GPIO_ACCESS(GPIOD_BASE_ADDRRESS + GPIO_OUTPUT_REGISTER_PORT);
+		break;
+		
+		default:
+		break;
+	}
+}
+
 
 /**********************************************************************************************************************
  *  END OF FILE: DIO_Core.c

@@ -39,33 +39,61 @@ SUBDIRS :=  \
 ../App/CFGH/HAL_CFG/BUZZER_CFG/ \
 ../App/CFGH/HAL_CFG/LED_Cfg \
 ../App/CFGH/HAL_CFG/BTN_Cfg \
+../App/CFGH/HAL_CFG/LCD_Cfg \
+../App/CFGH/HAL_CFG/KeyPad_Cfg \
+../App/CFGH/HAL_CFG/DC_MOTOR_Cfg \
 ../App/CFGH/HAL_CFG/SevSeg_Cfg/ \
 ../App/CFGH/MCAL_CFG \
-../App/CFGH/MCAL_CFG/PORT_CFG \
+../App/CFGH/MCAL_CFG/IRQH_CFG \
+../App/CFGH/MCAL_CFG/ADC_CFG \
+../App/CFGH/MCAL_CFG/PWM_CFG \
+../App/CFGH/MCAL_CFG/TIMER_CFG \
+../App/CFGH/MCAL_CFG/PORT_CFG/ \
 ../App/Main \
 ../Common/ \
 ../HAL/ \
 ../HAL/BTN/ \
 ../HAL/BUZZER/ \
 ../HAL/LED/ \
-../HAL/Timer \
+../HAL/LCD \
+../HAL/KeyPad \
+../HAL/Calculator \
+../HAL/Battery_Volt_Management \
+../HAL/DC_MOTOR \
+../HAL/SERVO_MOTOR \
+../HAL/TempSensor \
 ../HAL/SevSeg/ \
 ../MCAL \
 ../MCAL/DIO \
-../MCAL/PORT
+../MCAL/IRQH \
+../MCAL/ADC \
+../MCAL/PWM \
+../MCAL/PORT \
+../MCAL/TIMER/
 
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
+../App/CFGH/HAL_CFG/KeyPad_Cfg/KeyPad_Cfg.c \
 ../App/CFGH/MCAL_CFG/PORT_CFG/PORT_LCFG.c \
 ../App/Main/main.c \
+../HAL/Battery_Volt_Management/BVM_Core.c \
 ../HAL/BTN/BTN.c \
 ../HAL/BUZZER/BUZZER.c \
+../HAL/Calculator/Calculator_Core.c \
+../HAL/DC_MOTOR/DC_MOTOR_Core.c \
+../HAL/KeyPad/KeyPad_Core.c \
+../HAL/LCD/LCD_Core.c \
 ../HAL/LED/LED.c \
+../HAL/SERVO_MOTOR/SERVO_MOTOR_Core.c \
 ../HAL/SevSeg/SevSeg_Core.c \
-../HAL/Timer/Timer.c \
+../HAL/TempSensor/TempSesnor_Core.c \
+../MCAL/ADC/ADC_Core.c \
 ../MCAL/DIO/DIO_Core.c \
-../MCAL/PORT/PORT_Core.c
+../MCAL/IRQH/IRQH_Core.c \
+../MCAL/PORT/PORT_Core.c \
+../MCAL/PWM/PWM_Core.c \
+../MCAL/TIMER/TIMER_CORE.c
 
 
 PREPROCESSING_SRCS += 
@@ -75,48 +103,92 @@ ASM_SRCS +=
 
 
 OBJS +=  \
+App/CFGH/HAL_CFG/KeyPad_Cfg/KeyPad_Cfg.o \
 App/CFGH/MCAL_CFG/PORT_CFG/PORT_LCFG.o \
 App/Main/main.o \
+HAL/Battery_Volt_Management/BVM_Core.o \
 HAL/BTN/BTN.o \
 HAL/BUZZER/BUZZER.o \
+HAL/Calculator/Calculator_Core.o \
+HAL/DC_MOTOR/DC_MOTOR_Core.o \
+HAL/KeyPad/KeyPad_Core.o \
+HAL/LCD/LCD_Core.o \
 HAL/LED/LED.o \
+HAL/SERVO_MOTOR/SERVO_MOTOR_Core.o \
 HAL/SevSeg/SevSeg_Core.o \
-HAL/Timer/Timer.o \
+HAL/TempSensor/TempSesnor_Core.o \
+MCAL/ADC/ADC_Core.o \
 MCAL/DIO/DIO_Core.o \
-MCAL/PORT/PORT_Core.o
+MCAL/IRQH/IRQH_Core.o \
+MCAL/PORT/PORT_Core.o \
+MCAL/PWM/PWM_Core.o \
+MCAL/TIMER/TIMER_CORE.o
 
 OBJS_AS_ARGS +=  \
+App/CFGH/HAL_CFG/KeyPad_Cfg/KeyPad_Cfg.o \
 App/CFGH/MCAL_CFG/PORT_CFG/PORT_LCFG.o \
 App/Main/main.o \
+HAL/Battery_Volt_Management/BVM_Core.o \
 HAL/BTN/BTN.o \
 HAL/BUZZER/BUZZER.o \
+HAL/Calculator/Calculator_Core.o \
+HAL/DC_MOTOR/DC_MOTOR_Core.o \
+HAL/KeyPad/KeyPad_Core.o \
+HAL/LCD/LCD_Core.o \
 HAL/LED/LED.o \
+HAL/SERVO_MOTOR/SERVO_MOTOR_Core.o \
 HAL/SevSeg/SevSeg_Core.o \
-HAL/Timer/Timer.o \
+HAL/TempSensor/TempSesnor_Core.o \
+MCAL/ADC/ADC_Core.o \
 MCAL/DIO/DIO_Core.o \
-MCAL/PORT/PORT_Core.o
+MCAL/IRQH/IRQH_Core.o \
+MCAL/PORT/PORT_Core.o \
+MCAL/PWM/PWM_Core.o \
+MCAL/TIMER/TIMER_CORE.o
 
 C_DEPS +=  \
+App/CFGH/HAL_CFG/KeyPad_Cfg/KeyPad_Cfg.d \
 App/CFGH/MCAL_CFG/PORT_CFG/PORT_LCFG.d \
 App/Main/main.d \
+HAL/Battery_Volt_Management/BVM_Core.d \
 HAL/BTN/BTN.d \
 HAL/BUZZER/BUZZER.d \
+HAL/Calculator/Calculator_Core.d \
+HAL/DC_MOTOR/DC_MOTOR_Core.d \
+HAL/KeyPad/KeyPad_Core.d \
+HAL/LCD/LCD_Core.d \
 HAL/LED/LED.d \
+HAL/SERVO_MOTOR/SERVO_MOTOR_Core.d \
 HAL/SevSeg/SevSeg_Core.d \
-HAL/Timer/Timer.d \
+HAL/TempSensor/TempSesnor_Core.d \
+MCAL/ADC/ADC_Core.d \
 MCAL/DIO/DIO_Core.d \
-MCAL/PORT/PORT_Core.d
+MCAL/IRQH/IRQH_Core.d \
+MCAL/PORT/PORT_Core.d \
+MCAL/PWM/PWM_Core.d \
+MCAL/TIMER/TIMER_CORE.d
 
 C_DEPS_AS_ARGS +=  \
+App/CFGH/HAL_CFG/KeyPad_Cfg/KeyPad_Cfg.d \
 App/CFGH/MCAL_CFG/PORT_CFG/PORT_LCFG.d \
 App/Main/main.d \
+HAL/Battery_Volt_Management/BVM_Core.d \
 HAL/BTN/BTN.d \
 HAL/BUZZER/BUZZER.d \
+HAL/Calculator/Calculator_Core.d \
+HAL/DC_MOTOR/DC_MOTOR_Core.d \
+HAL/KeyPad/KeyPad_Core.d \
+HAL/LCD/LCD_Core.d \
 HAL/LED/LED.d \
+HAL/SERVO_MOTOR/SERVO_MOTOR_Core.d \
 HAL/SevSeg/SevSeg_Core.d \
-HAL/Timer/Timer.d \
+HAL/TempSensor/TempSesnor_Core.d \
+MCAL/ADC/ADC_Core.d \
 MCAL/DIO/DIO_Core.d \
-MCAL/PORT/PORT_Core.d
+MCAL/IRQH/IRQH_Core.d \
+MCAL/PORT/PORT_Core.d \
+MCAL/PWM/PWM_Core.d \
+MCAL/TIMER/TIMER_CORE.d
 
 OUTPUT_FILE_PATH +=COTS.elf
 
@@ -132,66 +204,143 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+App/CFGH/HAL_CFG/KeyPad_Cfg/KeyPad_Cfg.o: ../App/CFGH/HAL_CFG/KeyPad_Cfg/KeyPad_Cfg.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../Common" -I"../HAL/BTN" -I"../HAL/LED" -I"../HAL/SevSeg" -I"../MCAL/PORT" -I"../App/Main" -I"../App/CFGH/HAL_CFG" -I"../App/CFGH/MCAL_CFG/PORT_CFG" -I"../MCAL/DIO" -I"../App/CFGH/HAL_CFG/LED_Cfg" -I"../App/CFGH/HAL_CFG/BTN_Cfg" -I"../App/CFGH/HAL_CFG/BUZZER_CFG" -I"../App/CFGH/HAL_CFG/SevSeg_Cfg" -I"../HAL/BUZZER" -I"../App/CFGH/HAL_CFG/LCD_Cfg" -I"../HAL/LCD" -I"../HAL/KeyPad" -I"../App/CFGH/HAL_CFG/KeyPad_Cfg" -I"../HAL/Calculator" -I"../MCAL/IRQH" -I"../App/CFGH/MCAL_CFG/IRQH_CFG" -I"../App/CFGH/MCAL_CFG/ADC_CFG" -I"../MCAL/ADC" -I"../HAL/TempSensor" -I"../App/CFGH/HAL_CFG/TempSensor_CFG" -I"../MCAL/TIMER" -I"../App/CFGH/MCAL_CFG/TIMER_CFG" -I"../HAL/Battery_Volt_Management" -I"../MCAL/PWM" -I"../App/CFGH/MCAL_CFG/PWM_CFG" -I"../HAL/DC_MOTOR" -I"../App/CFGH/HAL_CFG/DC_MOTOR_Cfg" -I"../HAL/SERVO_MOTOR"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
 App/CFGH/MCAL_CFG/PORT_CFG/PORT_LCFG.o: ../App/CFGH/MCAL_CFG/PORT_CFG/PORT_LCFG.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../Common" -I"../HAL/BTN" -I"../HAL/LED" -I"../HAL/SevSeg" -I"../MCAL/PORT" -I"../App/Main" -I"../App/CFGH/HAL_CFG" -I"../App/CFGH/MCAL_CFG/PORT_CFG" -I"../MCAL/DIO" -I"../App/CFGH/HAL_CFG/LED_Cfg" -I"../App/CFGH/HAL_CFG/BTN_Cfg" -I"../App/CFGH/HAL_CFG/BUZZER_CFG" -I"../App/CFGH/HAL_CFG/SevSeg_Cfg" -I"../HAL/BUZZER" -I"../HAL/Timer"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../Common" -I"../HAL/BTN" -I"../HAL/LED" -I"../HAL/SevSeg" -I"../MCAL/PORT" -I"../App/Main" -I"../App/CFGH/HAL_CFG" -I"../App/CFGH/MCAL_CFG/PORT_CFG" -I"../MCAL/DIO" -I"../App/CFGH/HAL_CFG/LED_Cfg" -I"../App/CFGH/HAL_CFG/BTN_Cfg" -I"../App/CFGH/HAL_CFG/BUZZER_CFG" -I"../App/CFGH/HAL_CFG/SevSeg_Cfg" -I"../HAL/BUZZER" -I"../App/CFGH/HAL_CFG/LCD_Cfg" -I"../HAL/LCD" -I"../HAL/KeyPad" -I"../App/CFGH/HAL_CFG/KeyPad_Cfg" -I"../HAL/Calculator" -I"../MCAL/IRQH" -I"../App/CFGH/MCAL_CFG/IRQH_CFG" -I"../App/CFGH/MCAL_CFG/ADC_CFG" -I"../MCAL/ADC" -I"../HAL/TempSensor" -I"../App/CFGH/HAL_CFG/TempSensor_CFG" -I"../MCAL/TIMER" -I"../App/CFGH/MCAL_CFG/TIMER_CFG" -I"../HAL/Battery_Volt_Management" -I"../MCAL/PWM" -I"../App/CFGH/MCAL_CFG/PWM_CFG" -I"../HAL/DC_MOTOR" -I"../App/CFGH/HAL_CFG/DC_MOTOR_Cfg" -I"../HAL/SERVO_MOTOR"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 App/Main/main.o: ../App/Main/main.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../Common" -I"../HAL/BTN" -I"../HAL/LED" -I"../HAL/SevSeg" -I"../MCAL/PORT" -I"../App/Main" -I"../App/CFGH/HAL_CFG" -I"../App/CFGH/MCAL_CFG/PORT_CFG" -I"../MCAL/DIO" -I"../App/CFGH/HAL_CFG/LED_Cfg" -I"../App/CFGH/HAL_CFG/BTN_Cfg" -I"../App/CFGH/HAL_CFG/BUZZER_CFG" -I"../App/CFGH/HAL_CFG/SevSeg_Cfg" -I"../HAL/BUZZER" -I"../HAL/Timer"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../Common" -I"../HAL/BTN" -I"../HAL/LED" -I"../HAL/SevSeg" -I"../MCAL/PORT" -I"../App/Main" -I"../App/CFGH/HAL_CFG" -I"../App/CFGH/MCAL_CFG/PORT_CFG" -I"../MCAL/DIO" -I"../App/CFGH/HAL_CFG/LED_Cfg" -I"../App/CFGH/HAL_CFG/BTN_Cfg" -I"../App/CFGH/HAL_CFG/BUZZER_CFG" -I"../App/CFGH/HAL_CFG/SevSeg_Cfg" -I"../HAL/BUZZER" -I"../App/CFGH/HAL_CFG/LCD_Cfg" -I"../HAL/LCD" -I"../HAL/KeyPad" -I"../App/CFGH/HAL_CFG/KeyPad_Cfg" -I"../HAL/Calculator" -I"../MCAL/IRQH" -I"../App/CFGH/MCAL_CFG/IRQH_CFG" -I"../App/CFGH/MCAL_CFG/ADC_CFG" -I"../MCAL/ADC" -I"../HAL/TempSensor" -I"../App/CFGH/HAL_CFG/TempSensor_CFG" -I"../MCAL/TIMER" -I"../App/CFGH/MCAL_CFG/TIMER_CFG" -I"../HAL/Battery_Volt_Management" -I"../MCAL/PWM" -I"../App/CFGH/MCAL_CFG/PWM_CFG" -I"../HAL/DC_MOTOR" -I"../App/CFGH/HAL_CFG/DC_MOTOR_Cfg" -I"../HAL/SERVO_MOTOR"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+HAL/Battery_Volt_Management/BVM_Core.o: ../HAL/Battery_Volt_Management/BVM_Core.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../Common" -I"../HAL/BTN" -I"../HAL/LED" -I"../HAL/SevSeg" -I"../MCAL/PORT" -I"../App/Main" -I"../App/CFGH/HAL_CFG" -I"../App/CFGH/MCAL_CFG/PORT_CFG" -I"../MCAL/DIO" -I"../App/CFGH/HAL_CFG/LED_Cfg" -I"../App/CFGH/HAL_CFG/BTN_Cfg" -I"../App/CFGH/HAL_CFG/BUZZER_CFG" -I"../App/CFGH/HAL_CFG/SevSeg_Cfg" -I"../HAL/BUZZER" -I"../App/CFGH/HAL_CFG/LCD_Cfg" -I"../HAL/LCD" -I"../HAL/KeyPad" -I"../App/CFGH/HAL_CFG/KeyPad_Cfg" -I"../HAL/Calculator" -I"../MCAL/IRQH" -I"../App/CFGH/MCAL_CFG/IRQH_CFG" -I"../App/CFGH/MCAL_CFG/ADC_CFG" -I"../MCAL/ADC" -I"../HAL/TempSensor" -I"../App/CFGH/HAL_CFG/TempSensor_CFG" -I"../MCAL/TIMER" -I"../App/CFGH/MCAL_CFG/TIMER_CFG" -I"../HAL/Battery_Volt_Management" -I"../MCAL/PWM" -I"../App/CFGH/MCAL_CFG/PWM_CFG" -I"../HAL/DC_MOTOR" -I"../App/CFGH/HAL_CFG/DC_MOTOR_Cfg" -I"../HAL/SERVO_MOTOR"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 HAL/BTN/BTN.o: ../HAL/BTN/BTN.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../Common" -I"../HAL/BTN" -I"../HAL/LED" -I"../HAL/SevSeg" -I"../MCAL/PORT" -I"../App/Main" -I"../App/CFGH/HAL_CFG" -I"../App/CFGH/MCAL_CFG/PORT_CFG" -I"../MCAL/DIO" -I"../App/CFGH/HAL_CFG/LED_Cfg" -I"../App/CFGH/HAL_CFG/BTN_Cfg" -I"../App/CFGH/HAL_CFG/BUZZER_CFG" -I"../App/CFGH/HAL_CFG/SevSeg_Cfg" -I"../HAL/BUZZER" -I"../HAL/Timer"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../Common" -I"../HAL/BTN" -I"../HAL/LED" -I"../HAL/SevSeg" -I"../MCAL/PORT" -I"../App/Main" -I"../App/CFGH/HAL_CFG" -I"../App/CFGH/MCAL_CFG/PORT_CFG" -I"../MCAL/DIO" -I"../App/CFGH/HAL_CFG/LED_Cfg" -I"../App/CFGH/HAL_CFG/BTN_Cfg" -I"../App/CFGH/HAL_CFG/BUZZER_CFG" -I"../App/CFGH/HAL_CFG/SevSeg_Cfg" -I"../HAL/BUZZER" -I"../App/CFGH/HAL_CFG/LCD_Cfg" -I"../HAL/LCD" -I"../HAL/KeyPad" -I"../App/CFGH/HAL_CFG/KeyPad_Cfg" -I"../HAL/Calculator" -I"../MCAL/IRQH" -I"../App/CFGH/MCAL_CFG/IRQH_CFG" -I"../App/CFGH/MCAL_CFG/ADC_CFG" -I"../MCAL/ADC" -I"../HAL/TempSensor" -I"../App/CFGH/HAL_CFG/TempSensor_CFG" -I"../MCAL/TIMER" -I"../App/CFGH/MCAL_CFG/TIMER_CFG" -I"../HAL/Battery_Volt_Management" -I"../MCAL/PWM" -I"../App/CFGH/MCAL_CFG/PWM_CFG" -I"../HAL/DC_MOTOR" -I"../App/CFGH/HAL_CFG/DC_MOTOR_Cfg" -I"../HAL/SERVO_MOTOR"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 HAL/BUZZER/BUZZER.o: ../HAL/BUZZER/BUZZER.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../Common" -I"../HAL/BTN" -I"../HAL/LED" -I"../HAL/SevSeg" -I"../MCAL/PORT" -I"../App/Main" -I"../App/CFGH/HAL_CFG" -I"../App/CFGH/MCAL_CFG/PORT_CFG" -I"../MCAL/DIO" -I"../App/CFGH/HAL_CFG/LED_Cfg" -I"../App/CFGH/HAL_CFG/BTN_Cfg" -I"../App/CFGH/HAL_CFG/BUZZER_CFG" -I"../App/CFGH/HAL_CFG/SevSeg_Cfg" -I"../HAL/BUZZER" -I"../HAL/Timer"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../Common" -I"../HAL/BTN" -I"../HAL/LED" -I"../HAL/SevSeg" -I"../MCAL/PORT" -I"../App/Main" -I"../App/CFGH/HAL_CFG" -I"../App/CFGH/MCAL_CFG/PORT_CFG" -I"../MCAL/DIO" -I"../App/CFGH/HAL_CFG/LED_Cfg" -I"../App/CFGH/HAL_CFG/BTN_Cfg" -I"../App/CFGH/HAL_CFG/BUZZER_CFG" -I"../App/CFGH/HAL_CFG/SevSeg_Cfg" -I"../HAL/BUZZER" -I"../App/CFGH/HAL_CFG/LCD_Cfg" -I"../HAL/LCD" -I"../HAL/KeyPad" -I"../App/CFGH/HAL_CFG/KeyPad_Cfg" -I"../HAL/Calculator" -I"../MCAL/IRQH" -I"../App/CFGH/MCAL_CFG/IRQH_CFG" -I"../App/CFGH/MCAL_CFG/ADC_CFG" -I"../MCAL/ADC" -I"../HAL/TempSensor" -I"../App/CFGH/HAL_CFG/TempSensor_CFG" -I"../MCAL/TIMER" -I"../App/CFGH/MCAL_CFG/TIMER_CFG" -I"../HAL/Battery_Volt_Management" -I"../MCAL/PWM" -I"../App/CFGH/MCAL_CFG/PWM_CFG" -I"../HAL/DC_MOTOR" -I"../App/CFGH/HAL_CFG/DC_MOTOR_Cfg" -I"../HAL/SERVO_MOTOR"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+HAL/Calculator/Calculator_Core.o: ../HAL/Calculator/Calculator_Core.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../Common" -I"../HAL/BTN" -I"../HAL/LED" -I"../HAL/SevSeg" -I"../MCAL/PORT" -I"../App/Main" -I"../App/CFGH/HAL_CFG" -I"../App/CFGH/MCAL_CFG/PORT_CFG" -I"../MCAL/DIO" -I"../App/CFGH/HAL_CFG/LED_Cfg" -I"../App/CFGH/HAL_CFG/BTN_Cfg" -I"../App/CFGH/HAL_CFG/BUZZER_CFG" -I"../App/CFGH/HAL_CFG/SevSeg_Cfg" -I"../HAL/BUZZER" -I"../App/CFGH/HAL_CFG/LCD_Cfg" -I"../HAL/LCD" -I"../HAL/KeyPad" -I"../App/CFGH/HAL_CFG/KeyPad_Cfg" -I"../HAL/Calculator" -I"../MCAL/IRQH" -I"../App/CFGH/MCAL_CFG/IRQH_CFG" -I"../App/CFGH/MCAL_CFG/ADC_CFG" -I"../MCAL/ADC" -I"../HAL/TempSensor" -I"../App/CFGH/HAL_CFG/TempSensor_CFG" -I"../MCAL/TIMER" -I"../App/CFGH/MCAL_CFG/TIMER_CFG" -I"../HAL/Battery_Volt_Management" -I"../MCAL/PWM" -I"../App/CFGH/MCAL_CFG/PWM_CFG" -I"../HAL/DC_MOTOR" -I"../App/CFGH/HAL_CFG/DC_MOTOR_Cfg" -I"../HAL/SERVO_MOTOR"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+HAL/DC_MOTOR/DC_MOTOR_Core.o: ../HAL/DC_MOTOR/DC_MOTOR_Core.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../Common" -I"../HAL/BTN" -I"../HAL/LED" -I"../HAL/SevSeg" -I"../MCAL/PORT" -I"../App/Main" -I"../App/CFGH/HAL_CFG" -I"../App/CFGH/MCAL_CFG/PORT_CFG" -I"../MCAL/DIO" -I"../App/CFGH/HAL_CFG/LED_Cfg" -I"../App/CFGH/HAL_CFG/BTN_Cfg" -I"../App/CFGH/HAL_CFG/BUZZER_CFG" -I"../App/CFGH/HAL_CFG/SevSeg_Cfg" -I"../HAL/BUZZER" -I"../App/CFGH/HAL_CFG/LCD_Cfg" -I"../HAL/LCD" -I"../HAL/KeyPad" -I"../App/CFGH/HAL_CFG/KeyPad_Cfg" -I"../HAL/Calculator" -I"../MCAL/IRQH" -I"../App/CFGH/MCAL_CFG/IRQH_CFG" -I"../App/CFGH/MCAL_CFG/ADC_CFG" -I"../MCAL/ADC" -I"../HAL/TempSensor" -I"../App/CFGH/HAL_CFG/TempSensor_CFG" -I"../MCAL/TIMER" -I"../App/CFGH/MCAL_CFG/TIMER_CFG" -I"../HAL/Battery_Volt_Management" -I"../MCAL/PWM" -I"../App/CFGH/MCAL_CFG/PWM_CFG" -I"../HAL/DC_MOTOR" -I"../App/CFGH/HAL_CFG/DC_MOTOR_Cfg" -I"../HAL/SERVO_MOTOR"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+HAL/KeyPad/KeyPad_Core.o: ../HAL/KeyPad/KeyPad_Core.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../Common" -I"../HAL/BTN" -I"../HAL/LED" -I"../HAL/SevSeg" -I"../MCAL/PORT" -I"../App/Main" -I"../App/CFGH/HAL_CFG" -I"../App/CFGH/MCAL_CFG/PORT_CFG" -I"../MCAL/DIO" -I"../App/CFGH/HAL_CFG/LED_Cfg" -I"../App/CFGH/HAL_CFG/BTN_Cfg" -I"../App/CFGH/HAL_CFG/BUZZER_CFG" -I"../App/CFGH/HAL_CFG/SevSeg_Cfg" -I"../HAL/BUZZER" -I"../App/CFGH/HAL_CFG/LCD_Cfg" -I"../HAL/LCD" -I"../HAL/KeyPad" -I"../App/CFGH/HAL_CFG/KeyPad_Cfg" -I"../HAL/Calculator" -I"../MCAL/IRQH" -I"../App/CFGH/MCAL_CFG/IRQH_CFG" -I"../App/CFGH/MCAL_CFG/ADC_CFG" -I"../MCAL/ADC" -I"../HAL/TempSensor" -I"../App/CFGH/HAL_CFG/TempSensor_CFG" -I"../MCAL/TIMER" -I"../App/CFGH/MCAL_CFG/TIMER_CFG" -I"../HAL/Battery_Volt_Management" -I"../MCAL/PWM" -I"../App/CFGH/MCAL_CFG/PWM_CFG" -I"../HAL/DC_MOTOR" -I"../App/CFGH/HAL_CFG/DC_MOTOR_Cfg" -I"../HAL/SERVO_MOTOR"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+HAL/LCD/LCD_Core.o: ../HAL/LCD/LCD_Core.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../Common" -I"../HAL/BTN" -I"../HAL/LED" -I"../HAL/SevSeg" -I"../MCAL/PORT" -I"../App/Main" -I"../App/CFGH/HAL_CFG" -I"../App/CFGH/MCAL_CFG/PORT_CFG" -I"../MCAL/DIO" -I"../App/CFGH/HAL_CFG/LED_Cfg" -I"../App/CFGH/HAL_CFG/BTN_Cfg" -I"../App/CFGH/HAL_CFG/BUZZER_CFG" -I"../App/CFGH/HAL_CFG/SevSeg_Cfg" -I"../HAL/BUZZER" -I"../App/CFGH/HAL_CFG/LCD_Cfg" -I"../HAL/LCD" -I"../HAL/KeyPad" -I"../App/CFGH/HAL_CFG/KeyPad_Cfg" -I"../HAL/Calculator" -I"../MCAL/IRQH" -I"../App/CFGH/MCAL_CFG/IRQH_CFG" -I"../App/CFGH/MCAL_CFG/ADC_CFG" -I"../MCAL/ADC" -I"../HAL/TempSensor" -I"../App/CFGH/HAL_CFG/TempSensor_CFG" -I"../MCAL/TIMER" -I"../App/CFGH/MCAL_CFG/TIMER_CFG" -I"../HAL/Battery_Volt_Management" -I"../MCAL/PWM" -I"../App/CFGH/MCAL_CFG/PWM_CFG" -I"../HAL/DC_MOTOR" -I"../App/CFGH/HAL_CFG/DC_MOTOR_Cfg" -I"../HAL/SERVO_MOTOR"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 HAL/LED/LED.o: ../HAL/LED/LED.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../Common" -I"../HAL/BTN" -I"../HAL/LED" -I"../HAL/SevSeg" -I"../MCAL/PORT" -I"../App/Main" -I"../App/CFGH/HAL_CFG" -I"../App/CFGH/MCAL_CFG/PORT_CFG" -I"../MCAL/DIO" -I"../App/CFGH/HAL_CFG/LED_Cfg" -I"../App/CFGH/HAL_CFG/BTN_Cfg" -I"../App/CFGH/HAL_CFG/BUZZER_CFG" -I"../App/CFGH/HAL_CFG/SevSeg_Cfg" -I"../HAL/BUZZER" -I"../HAL/Timer"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../Common" -I"../HAL/BTN" -I"../HAL/LED" -I"../HAL/SevSeg" -I"../MCAL/PORT" -I"../App/Main" -I"../App/CFGH/HAL_CFG" -I"../App/CFGH/MCAL_CFG/PORT_CFG" -I"../MCAL/DIO" -I"../App/CFGH/HAL_CFG/LED_Cfg" -I"../App/CFGH/HAL_CFG/BTN_Cfg" -I"../App/CFGH/HAL_CFG/BUZZER_CFG" -I"../App/CFGH/HAL_CFG/SevSeg_Cfg" -I"../HAL/BUZZER" -I"../App/CFGH/HAL_CFG/LCD_Cfg" -I"../HAL/LCD" -I"../HAL/KeyPad" -I"../App/CFGH/HAL_CFG/KeyPad_Cfg" -I"../HAL/Calculator" -I"../MCAL/IRQH" -I"../App/CFGH/MCAL_CFG/IRQH_CFG" -I"../App/CFGH/MCAL_CFG/ADC_CFG" -I"../MCAL/ADC" -I"../HAL/TempSensor" -I"../App/CFGH/HAL_CFG/TempSensor_CFG" -I"../MCAL/TIMER" -I"../App/CFGH/MCAL_CFG/TIMER_CFG" -I"../HAL/Battery_Volt_Management" -I"../MCAL/PWM" -I"../App/CFGH/MCAL_CFG/PWM_CFG" -I"../HAL/DC_MOTOR" -I"../App/CFGH/HAL_CFG/DC_MOTOR_Cfg" -I"../HAL/SERVO_MOTOR"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+HAL/SERVO_MOTOR/SERVO_MOTOR_Core.o: ../HAL/SERVO_MOTOR/SERVO_MOTOR_Core.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../Common" -I"../HAL/BTN" -I"../HAL/LED" -I"../HAL/SevSeg" -I"../MCAL/PORT" -I"../App/Main" -I"../App/CFGH/HAL_CFG" -I"../App/CFGH/MCAL_CFG/PORT_CFG" -I"../MCAL/DIO" -I"../App/CFGH/HAL_CFG/LED_Cfg" -I"../App/CFGH/HAL_CFG/BTN_Cfg" -I"../App/CFGH/HAL_CFG/BUZZER_CFG" -I"../App/CFGH/HAL_CFG/SevSeg_Cfg" -I"../HAL/BUZZER" -I"../App/CFGH/HAL_CFG/LCD_Cfg" -I"../HAL/LCD" -I"../HAL/KeyPad" -I"../App/CFGH/HAL_CFG/KeyPad_Cfg" -I"../HAL/Calculator" -I"../MCAL/IRQH" -I"../App/CFGH/MCAL_CFG/IRQH_CFG" -I"../App/CFGH/MCAL_CFG/ADC_CFG" -I"../MCAL/ADC" -I"../HAL/TempSensor" -I"../App/CFGH/HAL_CFG/TempSensor_CFG" -I"../MCAL/TIMER" -I"../App/CFGH/MCAL_CFG/TIMER_CFG" -I"../HAL/Battery_Volt_Management" -I"../MCAL/PWM" -I"../App/CFGH/MCAL_CFG/PWM_CFG" -I"../HAL/DC_MOTOR" -I"../App/CFGH/HAL_CFG/DC_MOTOR_Cfg" -I"../HAL/SERVO_MOTOR"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 HAL/SevSeg/SevSeg_Core.o: ../HAL/SevSeg/SevSeg_Core.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../Common" -I"../HAL/BTN" -I"../HAL/LED" -I"../HAL/SevSeg" -I"../MCAL/PORT" -I"../App/Main" -I"../App/CFGH/HAL_CFG" -I"../App/CFGH/MCAL_CFG/PORT_CFG" -I"../MCAL/DIO" -I"../App/CFGH/HAL_CFG/LED_Cfg" -I"../App/CFGH/HAL_CFG/BTN_Cfg" -I"../App/CFGH/HAL_CFG/BUZZER_CFG" -I"../App/CFGH/HAL_CFG/SevSeg_Cfg" -I"../HAL/BUZZER" -I"../HAL/Timer"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../Common" -I"../HAL/BTN" -I"../HAL/LED" -I"../HAL/SevSeg" -I"../MCAL/PORT" -I"../App/Main" -I"../App/CFGH/HAL_CFG" -I"../App/CFGH/MCAL_CFG/PORT_CFG" -I"../MCAL/DIO" -I"../App/CFGH/HAL_CFG/LED_Cfg" -I"../App/CFGH/HAL_CFG/BTN_Cfg" -I"../App/CFGH/HAL_CFG/BUZZER_CFG" -I"../App/CFGH/HAL_CFG/SevSeg_Cfg" -I"../HAL/BUZZER" -I"../App/CFGH/HAL_CFG/LCD_Cfg" -I"../HAL/LCD" -I"../HAL/KeyPad" -I"../App/CFGH/HAL_CFG/KeyPad_Cfg" -I"../HAL/Calculator" -I"../MCAL/IRQH" -I"../App/CFGH/MCAL_CFG/IRQH_CFG" -I"../App/CFGH/MCAL_CFG/ADC_CFG" -I"../MCAL/ADC" -I"../HAL/TempSensor" -I"../App/CFGH/HAL_CFG/TempSensor_CFG" -I"../MCAL/TIMER" -I"../App/CFGH/MCAL_CFG/TIMER_CFG" -I"../HAL/Battery_Volt_Management" -I"../MCAL/PWM" -I"../App/CFGH/MCAL_CFG/PWM_CFG" -I"../HAL/DC_MOTOR" -I"../App/CFGH/HAL_CFG/DC_MOTOR_Cfg" -I"../HAL/SERVO_MOTOR"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-HAL/Timer/Timer.o: ../HAL/Timer/Timer.c
+HAL/TempSensor/TempSesnor_Core.o: ../HAL/TempSensor/TempSesnor_Core.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../Common" -I"../HAL/BTN" -I"../HAL/LED" -I"../HAL/SevSeg" -I"../MCAL/PORT" -I"../App/Main" -I"../App/CFGH/HAL_CFG" -I"../App/CFGH/MCAL_CFG/PORT_CFG" -I"../MCAL/DIO" -I"../App/CFGH/HAL_CFG/LED_Cfg" -I"../App/CFGH/HAL_CFG/BTN_Cfg" -I"../App/CFGH/HAL_CFG/BUZZER_CFG" -I"../App/CFGH/HAL_CFG/SevSeg_Cfg" -I"../HAL/BUZZER" -I"../HAL/Timer"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../Common" -I"../HAL/BTN" -I"../HAL/LED" -I"../HAL/SevSeg" -I"../MCAL/PORT" -I"../App/Main" -I"../App/CFGH/HAL_CFG" -I"../App/CFGH/MCAL_CFG/PORT_CFG" -I"../MCAL/DIO" -I"../App/CFGH/HAL_CFG/LED_Cfg" -I"../App/CFGH/HAL_CFG/BTN_Cfg" -I"../App/CFGH/HAL_CFG/BUZZER_CFG" -I"../App/CFGH/HAL_CFG/SevSeg_Cfg" -I"../HAL/BUZZER" -I"../App/CFGH/HAL_CFG/LCD_Cfg" -I"../HAL/LCD" -I"../HAL/KeyPad" -I"../App/CFGH/HAL_CFG/KeyPad_Cfg" -I"../HAL/Calculator" -I"../MCAL/IRQH" -I"../App/CFGH/MCAL_CFG/IRQH_CFG" -I"../App/CFGH/MCAL_CFG/ADC_CFG" -I"../MCAL/ADC" -I"../HAL/TempSensor" -I"../App/CFGH/HAL_CFG/TempSensor_CFG" -I"../MCAL/TIMER" -I"../App/CFGH/MCAL_CFG/TIMER_CFG" -I"../HAL/Battery_Volt_Management" -I"../MCAL/PWM" -I"../App/CFGH/MCAL_CFG/PWM_CFG" -I"../HAL/DC_MOTOR" -I"../App/CFGH/HAL_CFG/DC_MOTOR_Cfg" -I"../HAL/SERVO_MOTOR"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+MCAL/ADC/ADC_Core.o: ../MCAL/ADC/ADC_Core.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../Common" -I"../HAL/BTN" -I"../HAL/LED" -I"../HAL/SevSeg" -I"../MCAL/PORT" -I"../App/Main" -I"../App/CFGH/HAL_CFG" -I"../App/CFGH/MCAL_CFG/PORT_CFG" -I"../MCAL/DIO" -I"../App/CFGH/HAL_CFG/LED_Cfg" -I"../App/CFGH/HAL_CFG/BTN_Cfg" -I"../App/CFGH/HAL_CFG/BUZZER_CFG" -I"../App/CFGH/HAL_CFG/SevSeg_Cfg" -I"../HAL/BUZZER" -I"../App/CFGH/HAL_CFG/LCD_Cfg" -I"../HAL/LCD" -I"../HAL/KeyPad" -I"../App/CFGH/HAL_CFG/KeyPad_Cfg" -I"../HAL/Calculator" -I"../MCAL/IRQH" -I"../App/CFGH/MCAL_CFG/IRQH_CFG" -I"../App/CFGH/MCAL_CFG/ADC_CFG" -I"../MCAL/ADC" -I"../HAL/TempSensor" -I"../App/CFGH/HAL_CFG/TempSensor_CFG" -I"../MCAL/TIMER" -I"../App/CFGH/MCAL_CFG/TIMER_CFG" -I"../HAL/Battery_Volt_Management" -I"../MCAL/PWM" -I"../App/CFGH/MCAL_CFG/PWM_CFG" -I"../HAL/DC_MOTOR" -I"../App/CFGH/HAL_CFG/DC_MOTOR_Cfg" -I"../HAL/SERVO_MOTOR"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 MCAL/DIO/DIO_Core.o: ../MCAL/DIO/DIO_Core.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../Common" -I"../HAL/BTN" -I"../HAL/LED" -I"../HAL/SevSeg" -I"../MCAL/PORT" -I"../App/Main" -I"../App/CFGH/HAL_CFG" -I"../App/CFGH/MCAL_CFG/PORT_CFG" -I"../MCAL/DIO" -I"../App/CFGH/HAL_CFG/LED_Cfg" -I"../App/CFGH/HAL_CFG/BTN_Cfg" -I"../App/CFGH/HAL_CFG/BUZZER_CFG" -I"../App/CFGH/HAL_CFG/SevSeg_Cfg" -I"../HAL/BUZZER" -I"../HAL/Timer"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../Common" -I"../HAL/BTN" -I"../HAL/LED" -I"../HAL/SevSeg" -I"../MCAL/PORT" -I"../App/Main" -I"../App/CFGH/HAL_CFG" -I"../App/CFGH/MCAL_CFG/PORT_CFG" -I"../MCAL/DIO" -I"../App/CFGH/HAL_CFG/LED_Cfg" -I"../App/CFGH/HAL_CFG/BTN_Cfg" -I"../App/CFGH/HAL_CFG/BUZZER_CFG" -I"../App/CFGH/HAL_CFG/SevSeg_Cfg" -I"../HAL/BUZZER" -I"../App/CFGH/HAL_CFG/LCD_Cfg" -I"../HAL/LCD" -I"../HAL/KeyPad" -I"../App/CFGH/HAL_CFG/KeyPad_Cfg" -I"../HAL/Calculator" -I"../MCAL/IRQH" -I"../App/CFGH/MCAL_CFG/IRQH_CFG" -I"../App/CFGH/MCAL_CFG/ADC_CFG" -I"../MCAL/ADC" -I"../HAL/TempSensor" -I"../App/CFGH/HAL_CFG/TempSensor_CFG" -I"../MCAL/TIMER" -I"../App/CFGH/MCAL_CFG/TIMER_CFG" -I"../HAL/Battery_Volt_Management" -I"../MCAL/PWM" -I"../App/CFGH/MCAL_CFG/PWM_CFG" -I"../HAL/DC_MOTOR" -I"../App/CFGH/HAL_CFG/DC_MOTOR_Cfg" -I"../HAL/SERVO_MOTOR"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+MCAL/IRQH/IRQH_Core.o: ../MCAL/IRQH/IRQH_Core.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../Common" -I"../HAL/BTN" -I"../HAL/LED" -I"../HAL/SevSeg" -I"../MCAL/PORT" -I"../App/Main" -I"../App/CFGH/HAL_CFG" -I"../App/CFGH/MCAL_CFG/PORT_CFG" -I"../MCAL/DIO" -I"../App/CFGH/HAL_CFG/LED_Cfg" -I"../App/CFGH/HAL_CFG/BTN_Cfg" -I"../App/CFGH/HAL_CFG/BUZZER_CFG" -I"../App/CFGH/HAL_CFG/SevSeg_Cfg" -I"../HAL/BUZZER" -I"../App/CFGH/HAL_CFG/LCD_Cfg" -I"../HAL/LCD" -I"../HAL/KeyPad" -I"../App/CFGH/HAL_CFG/KeyPad_Cfg" -I"../HAL/Calculator" -I"../MCAL/IRQH" -I"../App/CFGH/MCAL_CFG/IRQH_CFG" -I"../App/CFGH/MCAL_CFG/ADC_CFG" -I"../MCAL/ADC" -I"../HAL/TempSensor" -I"../App/CFGH/HAL_CFG/TempSensor_CFG" -I"../MCAL/TIMER" -I"../App/CFGH/MCAL_CFG/TIMER_CFG" -I"../HAL/Battery_Volt_Management" -I"../MCAL/PWM" -I"../App/CFGH/MCAL_CFG/PWM_CFG" -I"../HAL/DC_MOTOR" -I"../App/CFGH/HAL_CFG/DC_MOTOR_Cfg" -I"../HAL/SERVO_MOTOR"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 MCAL/PORT/PORT_Core.o: ../MCAL/PORT/PORT_Core.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../Common" -I"../HAL/BTN" -I"../HAL/LED" -I"../HAL/SevSeg" -I"../MCAL/PORT" -I"../App/Main" -I"../App/CFGH/HAL_CFG" -I"../App/CFGH/MCAL_CFG/PORT_CFG" -I"../MCAL/DIO" -I"../App/CFGH/HAL_CFG/LED_Cfg" -I"../App/CFGH/HAL_CFG/BTN_Cfg" -I"../App/CFGH/HAL_CFG/BUZZER_CFG" -I"../App/CFGH/HAL_CFG/SevSeg_Cfg" -I"../HAL/BUZZER" -I"../HAL/Timer"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../Common" -I"../HAL/BTN" -I"../HAL/LED" -I"../HAL/SevSeg" -I"../MCAL/PORT" -I"../App/Main" -I"../App/CFGH/HAL_CFG" -I"../App/CFGH/MCAL_CFG/PORT_CFG" -I"../MCAL/DIO" -I"../App/CFGH/HAL_CFG/LED_Cfg" -I"../App/CFGH/HAL_CFG/BTN_Cfg" -I"../App/CFGH/HAL_CFG/BUZZER_CFG" -I"../App/CFGH/HAL_CFG/SevSeg_Cfg" -I"../HAL/BUZZER" -I"../App/CFGH/HAL_CFG/LCD_Cfg" -I"../HAL/LCD" -I"../HAL/KeyPad" -I"../App/CFGH/HAL_CFG/KeyPad_Cfg" -I"../HAL/Calculator" -I"../MCAL/IRQH" -I"../App/CFGH/MCAL_CFG/IRQH_CFG" -I"../App/CFGH/MCAL_CFG/ADC_CFG" -I"../MCAL/ADC" -I"../HAL/TempSensor" -I"../App/CFGH/HAL_CFG/TempSensor_CFG" -I"../MCAL/TIMER" -I"../App/CFGH/MCAL_CFG/TIMER_CFG" -I"../HAL/Battery_Volt_Management" -I"../MCAL/PWM" -I"../App/CFGH/MCAL_CFG/PWM_CFG" -I"../HAL/DC_MOTOR" -I"../App/CFGH/HAL_CFG/DC_MOTOR_Cfg" -I"../HAL/SERVO_MOTOR"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+MCAL/PWM/PWM_Core.o: ../MCAL/PWM/PWM_Core.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../Common" -I"../HAL/BTN" -I"../HAL/LED" -I"../HAL/SevSeg" -I"../MCAL/PORT" -I"../App/Main" -I"../App/CFGH/HAL_CFG" -I"../App/CFGH/MCAL_CFG/PORT_CFG" -I"../MCAL/DIO" -I"../App/CFGH/HAL_CFG/LED_Cfg" -I"../App/CFGH/HAL_CFG/BTN_Cfg" -I"../App/CFGH/HAL_CFG/BUZZER_CFG" -I"../App/CFGH/HAL_CFG/SevSeg_Cfg" -I"../HAL/BUZZER" -I"../App/CFGH/HAL_CFG/LCD_Cfg" -I"../HAL/LCD" -I"../HAL/KeyPad" -I"../App/CFGH/HAL_CFG/KeyPad_Cfg" -I"../HAL/Calculator" -I"../MCAL/IRQH" -I"../App/CFGH/MCAL_CFG/IRQH_CFG" -I"../App/CFGH/MCAL_CFG/ADC_CFG" -I"../MCAL/ADC" -I"../HAL/TempSensor" -I"../App/CFGH/HAL_CFG/TempSensor_CFG" -I"../MCAL/TIMER" -I"../App/CFGH/MCAL_CFG/TIMER_CFG" -I"../HAL/Battery_Volt_Management" -I"../MCAL/PWM" -I"../App/CFGH/MCAL_CFG/PWM_CFG" -I"../HAL/DC_MOTOR" -I"../App/CFGH/HAL_CFG/DC_MOTOR_Cfg" -I"../HAL/SERVO_MOTOR"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+MCAL/TIMER/TIMER_CORE.o: ../MCAL/TIMER/TIMER_CORE.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../App" -I"../Common" -I"../HAL/BTN" -I"../HAL/LED" -I"../HAL/SevSeg" -I"../MCAL/PORT" -I"../App/Main" -I"../App/CFGH/HAL_CFG" -I"../App/CFGH/MCAL_CFG/PORT_CFG" -I"../MCAL/DIO" -I"../App/CFGH/HAL_CFG/LED_Cfg" -I"../App/CFGH/HAL_CFG/BTN_Cfg" -I"../App/CFGH/HAL_CFG/BUZZER_CFG" -I"../App/CFGH/HAL_CFG/SevSeg_Cfg" -I"../HAL/BUZZER" -I"../App/CFGH/HAL_CFG/LCD_Cfg" -I"../HAL/LCD" -I"../HAL/KeyPad" -I"../App/CFGH/HAL_CFG/KeyPad_Cfg" -I"../HAL/Calculator" -I"../MCAL/IRQH" -I"../App/CFGH/MCAL_CFG/IRQH_CFG" -I"../App/CFGH/MCAL_CFG/ADC_CFG" -I"../MCAL/ADC" -I"../HAL/TempSensor" -I"../App/CFGH/HAL_CFG/TempSensor_CFG" -I"../MCAL/TIMER" -I"../App/CFGH/MCAL_CFG/TIMER_CFG" -I"../HAL/Battery_Volt_Management" -I"../MCAL/PWM" -I"../App/CFGH/MCAL_CFG/PWM_CFG" -I"../HAL/DC_MOTOR" -I"../App/CFGH/HAL_CFG/DC_MOTOR_Cfg" -I"../HAL/SERVO_MOTOR"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 

@@ -47,7 +47,7 @@ static const uint8 Seven_Segment_Values_g[10] = { 0x7E , 0x0C , 0xB6 , 0x9E , 0x
 * \Reentrancy      : Non Reentrant
 * \Parameters (in) : parameterName   Parameter Describtion
 * \Parameters (out): None
-* \Return value:   : void  E_OK
+* \Return value:   : Std_ReturnType  E_OK
 *                                    E_NOT_OK
 *******************************************************************************/
 void SevSeg_Display(uint8 Value)

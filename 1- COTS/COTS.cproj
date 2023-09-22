@@ -113,7 +113,25 @@
       <Value>../App/CFGH/HAL_CFG/BUZZER_CFG</Value>
       <Value>../App/CFGH/HAL_CFG/SevSeg_Cfg</Value>
       <Value>../HAL/BUZZER</Value>
-      <Value>../HAL/Timer</Value>
+      <Value>../App/CFGH/HAL_CFG/LCD_Cfg</Value>
+      <Value>../HAL/LCD</Value>
+      <Value>../HAL/KeyPad</Value>
+      <Value>../App/CFGH/HAL_CFG/KeyPad_Cfg</Value>
+      <Value>../HAL/Calculator</Value>
+      <Value>../MCAL/IRQH</Value>
+      <Value>../App/CFGH/MCAL_CFG/IRQH_CFG</Value>
+      <Value>../App/CFGH/MCAL_CFG/ADC_CFG</Value>
+      <Value>../MCAL/ADC</Value>
+      <Value>../HAL/TempSensor</Value>
+      <Value>../App/CFGH/HAL_CFG/TempSensor_CFG</Value>
+      <Value>../MCAL/TIMER</Value>
+      <Value>../App/CFGH/MCAL_CFG/TIMER_CFG</Value>
+      <Value>../HAL/Battery_Volt_Management</Value>
+      <Value>../MCAL/PWM</Value>
+      <Value>../App/CFGH/MCAL_CFG/PWM_CFG</Value>
+      <Value>../HAL/DC_MOTOR</Value>
+      <Value>../App/CFGH/HAL_CFG/DC_MOTOR_Cfg</Value>
+      <Value>../HAL/SERVO_MOTOR</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.level>Optimize debugging experience (-Og)</avrgcc.compiler.optimization.level>
@@ -142,20 +160,37 @@
     <Folder Include="App\CFGH\HAL_CFG\BUZZER_CFG\" />
     <Folder Include="App\CFGH\HAL_CFG\LED_Cfg" />
     <Folder Include="App\CFGH\HAL_CFG\BTN_Cfg" />
+    <Folder Include="App\CFGH\HAL_CFG\LCD_Cfg" />
+    <Folder Include="App\CFGH\HAL_CFG\KeyPad_Cfg" />
+    <Folder Include="App\CFGH\HAL_CFG\DC_MOTOR_Cfg" />
     <Folder Include="App\CFGH\HAL_CFG\SevSeg_Cfg\" />
     <Folder Include="App\CFGH\MCAL_CFG" />
-    <Folder Include="App\CFGH\MCAL_CFG\PORT_CFG" />
+    <Folder Include="App\CFGH\MCAL_CFG\IRQH_CFG" />
+    <Folder Include="App\CFGH\MCAL_CFG\ADC_CFG" />
+    <Folder Include="App\CFGH\MCAL_CFG\PWM_CFG" />
+    <Folder Include="App\CFGH\MCAL_CFG\TIMER_CFG" />
+    <Folder Include="App\CFGH\MCAL_CFG\PORT_CFG\" />
     <Folder Include="App\Main" />
     <Folder Include="Common\" />
     <Folder Include="HAL\" />
     <Folder Include="HAL\BTN\" />
     <Folder Include="HAL\BUZZER\" />
     <Folder Include="HAL\LED\" />
-    <Folder Include="HAL\Timer" />
+    <Folder Include="HAL\LCD" />
+    <Folder Include="HAL\KeyPad" />
+    <Folder Include="HAL\Calculator" />
+    <Folder Include="HAL\Battery_Volt_Management" />
+    <Folder Include="HAL\DC_MOTOR" />
+    <Folder Include="HAL\SERVO_MOTOR" />
+    <Folder Include="HAL\TempSensor" />
     <Folder Include="HAL\SevSeg\" />
     <Folder Include="MCAL" />
     <Folder Include="MCAL\DIO" />
+    <Folder Include="MCAL\IRQH" />
+    <Folder Include="MCAL\ADC" />
+    <Folder Include="MCAL\PWM" />
     <Folder Include="MCAL\PORT" />
+    <Folder Include="MCAL\TIMER\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App\CFGH\HAL_CFG\BTN_Cfg\BTN_Cfg.h">
@@ -164,16 +199,40 @@
     <Compile Include="App\CFGH\HAL_CFG\BUZZER_CFG\BUZZER_CFG.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="App\CFGH\HAL_CFG\DC_MOTOR_Cfg\DC_MOTOR_CFG.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="App\CFGH\HAL_CFG\KeyPad_Cfg\KeyPad_Cfg.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="App\CFGH\HAL_CFG\KeyPad_Cfg\KeyPad_Cfg.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="App\CFGH\HAL_CFG\LCD_Cfg\LCD_Cfg.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="App\CFGH\HAL_CFG\LED_Cfg\LED_Cfg.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="App\CFGH\HAL_CFG\SevSeg_Cfg\SevSeg_Cfg.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="App\CFGH\MCAL_CFG\PORT_CFG\PORT_LCFG.h">
+    <Compile Include="App\CFGH\MCAL_CFG\ADC_CFG\ADC_CFG.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="App\CFGH\MCAL_CFG\IRQH_CFG\IRQH_CFG.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="App\CFGH\MCAL_CFG\PORT_CFG\PORT_LCFG.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="App\CFGH\MCAL_CFG\PORT_CFG\PORT_LCFG.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="App\CFGH\MCAL_CFG\PWM_CFG\PWM_CFG.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="App\CFGH\MCAL_CFG\TIMER_CFG\TIMER_CFG.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="App\Main\main.c">
@@ -188,6 +247,12 @@
     <Compile Include="Common\STD.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="HAL\Battery_Volt_Management\BVM_Core.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\Battery_Volt_Management\BVM_Core.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="HAL\BTN\BTN.c">
       <SubType>compile</SubType>
     </Compile>
@@ -200,10 +265,40 @@
     <Compile Include="HAL\BUZZER\BUZZER.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="HAL\Calculator\Calculator_Core.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\Calculator\Calculator_Core.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\DC_MOTOR\DC_MOTOR_Core.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\DC_MOTOR\DC_MOTOR_Core.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\KeyPad\KeyPad_Core.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\KeyPad\KeyPad_Core.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\LCD\LCD_Core.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\LCD\LCD_Core.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="HAL\LED\LED.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="HAL\LED\LED.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\SERVO_MOTOR\SERVO_MOTOR_Core.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\SERVO_MOTOR\SERVO_MOTOR_Core.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="HAL\SevSeg\SevSeg_Core.c">
@@ -212,10 +307,16 @@
     <Compile Include="HAL\SevSeg\SevSeg_Core.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="HAL\Timer\Timer.c">
+    <Compile Include="HAL\TempSensor\TempSensor_Core.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="HAL\Timer\Timer.h">
+    <Compile Include="HAL\TempSensor\TempSesnor_Core.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\ADC\ADC_Core.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\ADC\ADC_Core.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="MCAL\DIO\DIO_Core.c">
@@ -224,10 +325,28 @@
     <Compile Include="MCAL\DIO\DIO_Core.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="MCAL\IRQH\IRQH_Core.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\IRQH\IRQH_CORE.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="MCAL\PORT\PORT_Core.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="MCAL\PORT\PORT_Core.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\PWM\PWM_Core.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\PWM\PWM_Core.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\TIMER\TIMER_CORE.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\TIMER\TIMER_CORE.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>
