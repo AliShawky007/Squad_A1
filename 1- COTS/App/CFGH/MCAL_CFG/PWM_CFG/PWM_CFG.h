@@ -24,8 +24,8 @@
 /**********************************************************************************************************************
  * INCLUDES
  *********************************************************************************************************************/
-#define PWM0_STATE PWM_ENABLE
-#define PWM1_STATE PWM_DISABLE
+#define PWM0_STATE PWM_DISABLE
+#define PWM1_STATE PWM_ENABLE
 #define PWM2_STATE PWM_DISABLE
 
 #define PWM0_TYPE PWM_FAST
@@ -37,7 +37,7 @@
 #define PWM2_MODE PWM_INVERTED
 
 #define PWM0_PRESC PWM_PRESC8
-#define PWM1_PRESC PWM_PRESC1024
+#define PWM1_PRESC PWM_PRESC256
 #define PWM2_PRESC PWM_PRESC8
 
 /**********************************************************************************************************************

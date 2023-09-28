@@ -35,6 +35,7 @@ Uint_32 TIMER0_Number_OVRflows_g =0;
 Uint_32 TIMER0_Init_Value_g =0;
 Uint_32 TIMER1_Init_Value_g=0;
 
+
 /**********************************************************************************************************************
  *  LOCAL FUNCTION PROTOTYPES
  *********************************************************************************************************************/
@@ -170,6 +171,9 @@ void GPT_SetTime(void)
 	Uint_32 Timer1Total_Ticks = (Time1*1000) /Timer1Tick_Time_us;
 	TIMER1_Init_Value_g = Timer1Total_Ticks - 1 ;
 	OCRA1 = TIMER1_Init_Value_g;
+	
+	#elif (TIMER1_MODE == NORMAL_MODE)
+	
 	#endif /*(TIMER1_MODE == CTC_MODE)*/
 	#endif /*(Timer1_State == TIMER_ENABLE)*/
 }

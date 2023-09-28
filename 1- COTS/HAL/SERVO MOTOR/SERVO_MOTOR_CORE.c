@@ -1,15 +1,16 @@
 /*
- * KeyPad_CFG.c
+ * SERVO_MOTOR_CORE.c
  *
- * Created: 8/26/2023 2:38:44 PM
+ * Created: 9/23/2023 11:07:20 AM
  *  Author: Mina
  */ 
 /**********************************************************************************************************************
  *  FILE DESCRIPTION
  *  -----------------------------------------------------------------------------------------------------------------*/
-/**        \file  KeyPad_CFG.c
+/**        \file  SERVO_MOTOR_CORE.c
  *        \brief  
- *
+ * Created: 9/22/2023 11:04:38 PM
+ *  Author: Mina
  *      \details  
  *
  *
@@ -18,8 +19,7 @@
 /**********************************************************************************************************************
  *  INCLUDES
  *********************************************************************************************************************/
-
-#include "KeyPad_CFG.h"
+#include "SERVO_MOTOR_CORE.h"
 
 /**********************************************************************************************************************
 *  LOCAL MACROS CONSTANT\FUNCTION
@@ -32,14 +32,7 @@
 /**********************************************************************************************************************
  *  GLOBAL DATA
  *********************************************************************************************************************/
-Uint_8 KEYPAD_VALUE[ROWS_NUMBERS][COLUMNS_NUMBERS]=
-{
- /***********CALCULATOR***********/
-	{ '1' , '2' , '3' },
-	{ '4' , '5' , '6' },
-	{ '7' , '8' , '9' },
-	{ 'c' , '0' , '=' }
-};
+
 /**********************************************************************************************************************
  *  LOCAL FUNCTION PROTOTYPES
  *********************************************************************************************************************/
@@ -54,19 +47,53 @@ Uint_8 KEYPAD_VALUE[ROWS_NUMBERS][COLUMNS_NUMBERS]=
 
 
 /******************************************************************************
-* \Syntax          : Std_ReturnType FunctionName(AnyType parameterName)        
+* \Syntax          : void SERVO_Init(void)     
 * \Description     : Describe this service                                    
 *                                                                             
 * \Sync\Async      : Synchronous                                               
 * \Reentrancy      : Non Reentrant                                             
 * \Parameters (in) : parameterName   Parameter Describtion                     
 * \Parameters (out): None                                                      
-* \Return value:   : Std_ReturnType  E_OK
+* \Return value:   : void  E_OK
 *                                    E_NOT_OK                                  
 *******************************************************************************/
+void SERVO_Init(void)
+{
+	PWM_Init();
+}
+/******************************************************************************
+* \Syntax          : void SERVO_Generate(Uint_8 Duty_Cycle , Uint_8 Frequency)
+* \Description     : Describe this service
+*
+* \Sync\Async      : Synchronous
+* \Reentrancy      : Non Reentrant
+* \Parameters (in) : parameterName   Parameter Describtion
+* \Parameters (out): None
+* \Return value:   : void  E_OK
+*                                    E_NOT_OK
+*******************************************************************************/
+void SERVO_Generate(Uint_8 Duty_Cycle , Uint_8 Frequency)
+{
+	PWM1_Generate(Duty_Cycle,Frequency);
+}
 
-
+/******************************************************************************
+* \Syntax          : void SERVO_Generate(Uint_8 Duty_Cycle , Uint_8 Frequency)
+* \Description     : Describe this service
+*
+* \Sync\Async      : Synchronous
+* \Reentrancy      : Non Reentrant
+* \Parameters (in) : parameterName   Parameter Describtion
+* \Parameters (out): None
+* \Return value:   : void  E_OK
+*                                    E_NOT_OK
+*******************************************************************************/
+void SERVO_SetDegree(Uint_8 Degree)
+{
+	Uint_8 Duty_Cycle = (5+(Degree/15));
+	PWM1_Generate(Duty_Cycle,50);
+}
 
 /**********************************************************************************************************************
- *  END OF FILE: KeyPad_CFG.c
+ *  END OF FILE: SERVO_MOTOR_Core.c
  *********************************************************************************************************************/

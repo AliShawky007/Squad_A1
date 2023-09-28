@@ -33,6 +33,18 @@ void(*CallBack_PtrFunc[20])(void) = {Null};
  *********************************************************************************************************************/
 extern Uint_32 TIMER0_Number_OVRflows_g ;
 extern Uint_32 TIMER0_Init_Value_g ; 
+
+
+
+Uint_32 TIMER1_Number_OVRflows_g = 0;
+
+ extern volatile Uint_32 Captured_Readings_1;
+
+ extern volatile Uint_32 Captured_Readings_2;
+ 
+ extern volatile Uint_32 Captured_Readings_3;
+
+ extern volatile Uint_32 Capture_Flag;
 /**********************************************************************************************************************
  *  LOCAL FUNCTION PROTOTYPES
  *********************************************************************************************************************/
@@ -180,6 +192,10 @@ ISR(TIMER0_OVF_vect)
 		TCNT0 = TIMER0_Init_Value_g;
 	}
 }
+ISR(TIMER1_OVF_vect)
+{
+	TIMER1_Number_OVRflows_g++;
+}
 ISR(TIMER1_COMPA_vect)
 {
 	static Uint_8 INT_CNT_2=0;
@@ -192,6 +208,34 @@ ISR(TIMER1_COMPA_vect)
 	}
 }
 
+ISR(TIMER1_CAPT_vect)
+{
+	Capture_Flag++;
+
+	if(Capture_Flag == 1)
+	{
+		Captured_Readings_1 = ICR1;
+		TIMER1_Number_OVRflows_g = 0;
+		/*detect falling edge*/
+		CLR_BIT(TCCR1B,6);
+	}
+	else if(Capture_Flag == 2)
+	{
+		Captured_Readings_2 = ICR1 + (TIMER1_Number_OVRflows_g * 65535);
+        /*detect rising edge*/
+        SET_BIT(TCCR1B,6);
+		//CLR_BIT(TIMSK,5);
+	}
+	else if (Capture_Flag == 3)
+	{
+		
+		
+		Captured_Readings_3 = ICR1 + (TIMER1_Number_OVRflows_g * 65535);
+		
+		CLR_BIT(TIMSK,5);
+		
+	}
+}
 
 
 /******************************************************************************

@@ -36,7 +36,7 @@
 #define ROW_FINAL PORTB_PIN7
 
 #define COLUMN_INIT  PORTD_PIN2
-#define COLUMN_FINAL PORTD_PIN5
+#define COLUMN_FINAL PORTD_PIN4
 
 
 #define KEYPAD_ROW0 PORTB_PIN4
@@ -48,7 +48,7 @@
 #define KEYPAD_COLUMN0 PORTD_PIN2
 #define KEYPAD_COLUMN1 PORTD_PIN3
 #define KEYPAD_COLUMN2 PORTD_PIN4
-#define KEYPAD_COLUMN3 PORTD_PIN5
+
 
 /**********************************************************************************************************************
  *  GLOBAL FUNCTION MACROS

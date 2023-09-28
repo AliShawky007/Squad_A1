@@ -36,8 +36,8 @@ const PIN_PARAMETERS PORT_Initialization[DEFINED_PINS]={
 	{ PORTC_PIN1, PIN_OUTPUT  },
 		/*****PUSH BUTTON 1***
 	{ PORTD_PIN2, PIN_INPUT  },*/
-		/*****BLUE LED***
-	{ PORTC_PIN2, PIN_OUTPUT  },*/
+		/*****RED LED***/
+	{ PORTC_PIN0, PIN_OUTPUT  },
 	/*****PUSH BUTTON 2***
 	{ PORTD_PIN3, PIN_INPUT  },*/
 		/*****PUSH BUTTON 3***
@@ -46,8 +46,8 @@ const PIN_PARAMETERS PORT_Initialization[DEFINED_PINS]={
 	{ PORTD_PIN5, PIN_INPUT  },*/
 	/*****Relay 1***
 	{ PORTC_PIN4, PIN_OUTPUT  },*/
-	/*****Buzzer***
-	{ PORTC_PIN3, PIN_OUTPUT  },*/
+	/*****Buzzer***/
+	{ PORTC_PIN5, PIN_OUTPUT  },
 	/*****Enable Right 7-Segment***
 	{ PORTC_PIN6, PIN_OUTPUT  },*/
 	/*****Enable Left 7-Segment***
@@ -81,13 +81,17 @@ const PIN_PARAMETERS PORT_Initialization[DEFINED_PINS]={
 	/*****LCD D7 PIN******/
 	{ PORTA_PIN6, PIN_OUTPUT  },
 	/*****KEYPAD COLUMN*******/
-    { PORTD_PIN2, PIN_INPUT  },{ PORTD_PIN3, PIN_INPUT  },{ PORTD_PIN4, PIN_INPUT  },/*{ PORTD_PIN5, PIN_INPUT  },*/
+    { PORTD_PIN2, PIN_INPUT  },{ PORTD_PIN3, PIN_INPUT  },{ PORTD_PIN4, PIN_INPUT  },
 	/*****KEYPAD ROWS*******/
 	{ PORTB_PIN4, PIN_OUTPUT  },{ PORTB_PIN5, PIN_OUTPUT },{ PORTB_PIN6, PIN_OUTPUT  },{ PORTB_PIN7, PIN_OUTPUT },
 	/****pwm0**************/
 	{PORTB_PIN3,PIN_OUTPUT},
 		/******** dc motor************************/
-		{PORTC_PIN0 , PIN_OUTPUT},{PORTC_PIN1 , PIN_OUTPUT},{PORTD_PIN5 , PIN_OUTPUT}
+		/*{PORTC_PIN0 , PIN_OUTPUT},{PORTC_PIN1 , PIN_OUTPUT},{PORTD_PIN5 , PIN_OUTPUT},*/
+			/*ultrasonic trigger***/
+			/*{ PORTC_PIN6, PIN_OUTPUT  },{ PORTD_PIN6, PIN_INPUT  }*/
+			/****Servoooo*****/
+			{PORTD_PIN5,PIN_OUTPUT}	
 };
 /**********************************************************************************************************************
  *  LOCAL FUNCTION PROTOTYPES

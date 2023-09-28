@@ -1,58 +1,28 @@
 /*
- * TIMER_CFG.h
+ * SERVO_MOTOR_CORE.h
  *
- * Created: 9/15/2023 3:45:52 PM
+ * Created: 9/23/2023 11:07:30 AM
  *  Author: Mina
  */ 
 /**********************************************************************************************************************
 
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------
- *         File:  <Write File Name>
+ *         File:  <SERVO_MOTOR_CORE.h>
  *       Module:  -
- *
- *  Description:  <Write File DESCRIPTION here>     
+ * Created: 9/22/2023 11:04:37 PM
+ *  Author: Mina
+ *  Description:  <control the degree of servo motor>     
  *  
  *********************************************************************************************************************/
-#ifndef TIMER_CFG_H_
-#define TIMER_CFG_H_
+#ifndef SERVO_MOTOR_CORE_H_
+#define SERVO_MOTOR_CORE_H_
 
 /**********************************************************************************************************************
  * INCLUDES
  *********************************************************************************************************************/
-//#define Mode       Normal_Mode
-//#define Clock      prescaler_1024
-//#define time_1  1000000
-//#define  prescaler     1024
-//
-//#define Interrupt_Status   Interrupt_Enable
-
-#define Timer0_State TIMER_DISABLE
-#define Timer1_State TIMER_ENABLE
-#define Timer2_State TIMER_DISABLE
-
-#define TIMER0_MODE NORMAL_MODE
-#define TIMER1_MODE NORMAL_MODE
-#define TIMER2_MODE NORMAL_MODE
-
-#define  TIMER0_PRESCALER  CLK_SRC_PRESCALING_1024
-#define  TIMER1_PRESCALER  CLK_SRC_PRESCALING_8
-#define  TIMER2_PRESCALER  CLK_SRC_PRESCALING_8
-
-#define TIMER0_INTERRUPT_STATE  INTERRUPT_ENABLED
-#define TIMER1_INTERRUPT_STATE  INTERRUPT_ENABLED
-#define TIMER2_INTERRUPT_STATE  INTERRUPT_ENABLED
-
-#define TIMER0_COUNTED_MS  1000U
-#define TIMER1_COUNTED_MS  1000U
-#define TIMER2_COUNTED_MS  500U
-
-#define PWM_MODE  NON_INVERTING
-
-#define NON_INVERTING 0U
-#define INVERTING     1U 
-
-#define MCU_CLK 16000000
+#include "PWM_CORE.h"
+#include "PORT_CORE.h"
 
 /**********************************************************************************************************************
  *  GLOBAL CONSTANT MACROS
@@ -77,14 +47,14 @@
 /**********************************************************************************************************************
  *  GLOBAL FUNCTION PROTOTYPES
  *********************************************************************************************************************/
-
+void SERVO_Init(void);
+void SERVO_Generate(Uint_8 Duty_Cycle , Uint_8 Frequency);
+void SERVO_SetDegree(Uint_8 Degree);
  
-#endif /* TIMER_CFG_H_ */
-
+#endif /* SERVO_MOTOR_CORE_H_ */
 /**********************************************************************************************************************
- *  END OF FILE: Std_Types.h
+ *  END OF FILE: SERVO_MOTOR_CORE.h
  *********************************************************************************************************************/
-
 
 
 

@@ -1,7 +1,7 @@
 /*
- * TIMER_CFG.h
+ * SMARTDOOR_CORE.h
  *
- * Created: 9/15/2023 3:45:52 PM
+ * Created: 9/25/2023 7:45:18 PM
  *  Author: Mina
  */ 
 /**********************************************************************************************************************
@@ -14,46 +14,16 @@
  *  Description:  <Write File DESCRIPTION here>     
  *  
  *********************************************************************************************************************/
-#ifndef TIMER_CFG_H_
-#define TIMER_CFG_H_
+#ifndef SMARTDOOR_CORE_H_
+#define SMARTDOOR_CORE_H_
 
 /**********************************************************************************************************************
  * INCLUDES
  *********************************************************************************************************************/
-//#define Mode       Normal_Mode
-//#define Clock      prescaler_1024
-//#define time_1  1000000
-//#define  prescaler     1024
-//
-//#define Interrupt_Status   Interrupt_Enable
-
-#define Timer0_State TIMER_DISABLE
-#define Timer1_State TIMER_ENABLE
-#define Timer2_State TIMER_DISABLE
-
-#define TIMER0_MODE NORMAL_MODE
-#define TIMER1_MODE NORMAL_MODE
-#define TIMER2_MODE NORMAL_MODE
-
-#define  TIMER0_PRESCALER  CLK_SRC_PRESCALING_1024
-#define  TIMER1_PRESCALER  CLK_SRC_PRESCALING_8
-#define  TIMER2_PRESCALER  CLK_SRC_PRESCALING_8
-
-#define TIMER0_INTERRUPT_STATE  INTERRUPT_ENABLED
-#define TIMER1_INTERRUPT_STATE  INTERRUPT_ENABLED
-#define TIMER2_INTERRUPT_STATE  INTERRUPT_ENABLED
-
-#define TIMER0_COUNTED_MS  1000U
-#define TIMER1_COUNTED_MS  1000U
-#define TIMER2_COUNTED_MS  500U
-
-#define PWM_MODE  NON_INVERTING
-
-#define NON_INVERTING 0U
-#define INVERTING     1U 
-
-#define MCU_CLK 16000000
-
+#include "SERVO_MOTOR_CORE.h"
+#include "DIO_CORE.h"
+#include "LCD_Core.h"
+#include "LED.h"
 /**********************************************************************************************************************
  *  GLOBAL CONSTANT MACROS
  *********************************************************************************************************************/
@@ -77,14 +47,12 @@
 /**********************************************************************************************************************
  *  GLOBAL FUNCTION PROTOTYPES
  *********************************************************************************************************************/
-
+void Smart_Door_Init(Uint_8 button);
  
-#endif /* TIMER_CFG_H_ */
-
+#endif /* SMARTDOOR_CORE_H_ */
 /**********************************************************************************************************************
  *  END OF FILE: Std_Types.h
  *********************************************************************************************************************/
-
 
 
 

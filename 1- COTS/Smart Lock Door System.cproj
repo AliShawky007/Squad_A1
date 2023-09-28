@@ -12,9 +12,9 @@
     <OutputFileName>$(MSBuildProjectName)</OutputFileName>
     <OutputFileExtension>.elf</OutputFileExtension>
     <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
-    <AssemblyName>DC MOTOR</AssemblyName>
-    <Name>DC MOTOR</Name>
-    <RootNamespace>DC MOTOR</RootNamespace>
+    <AssemblyName>Smart Lock Door System</AssemblyName>
+    <Name>Smart Lock Door System</Name>
+    <RootNamespace>Smart Lock Door System</RootNamespace>
     <ToolchainFlavour>Native</ToolchainFlavour>
     <KeepTimersRunning>true</KeepTimersRunning>
     <OverrideVtor>false</OverrideVtor>
@@ -98,6 +98,9 @@
   <avrgcc.compiler.directories.IncludePaths>
     <ListValues>
       <Value>%24(PackRepoDir)\atmel\ATmega_DFP\1.7.374\include\</Value>
+      <Value>../App/CFGH/HAL_CFG/KeyPad_CFG</Value>
+      <Value>../App/CFGH/HAL_CFG/LCD_CFG</Value>
+      <Value>../App/CFGH/HAL_CFG/LED_CFG</Value>
       <Value>../App/CFGH/MCAL_CFG/ADC_CFG</Value>
       <Value>../App/CFGH/MCAL_CFG/IRQH_CFG</Value>
       <Value>../App/CFGH/MCAL_CFG/PORT_CFG</Value>
@@ -105,13 +108,18 @@
       <Value>../App/CFGH/MCAL_CFG/TIMER_CFG</Value>
       <Value>../App/MAIN</Value>
       <Value>../Common</Value>
-      <Value>../HAL/DC MOTOR</Value>
+      <Value>../HAL/KeyPad</Value>
+      <Value>../HAL/LCD</Value>
+      <Value>../HAL/LED</Value>
+      <Value>../HAL/SERVO MOTOR</Value>
       <Value>../MCAL/ADC</Value>
       <Value>../MCAL/DIO</Value>
+      <Value>../MCAL/ICU</Value>
       <Value>../MCAL/IRQH</Value>
       <Value>../MCAL/PORT</Value>
       <Value>../MCAL/PWM</Value>
       <Value>../MCAL/TIMER</Value>
+      <Value>../HAL/Smart Lock Door System</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.level>Optimize debugging experience (-Og)</avrgcc.compiler.optimization.level>
@@ -137,6 +145,9 @@
     <Folder Include="App\" />
     <Folder Include="App\CFGH\" />
     <Folder Include="App\CFGH\HAL_CFG\" />
+    <Folder Include="App\CFGH\HAL_CFG\KeyPad_CFG\" />
+    <Folder Include="App\CFGH\HAL_CFG\LCD_CFG\" />
+    <Folder Include="App\CFGH\HAL_CFG\LED_CFG\" />
     <Folder Include="App\CFGH\MCAL_CFG\" />
     <Folder Include="App\CFGH\MCAL_CFG\ADC_CFG\" />
     <Folder Include="App\CFGH\MCAL_CFG\IRQH_CFG\" />
@@ -146,16 +157,33 @@
     <Folder Include="App\MAIN\" />
     <Folder Include="Common\" />
     <Folder Include="HAL\" />
-    <Folder Include="HAL\DC MOTOR\" />
+    <Folder Include="HAL\KeyPad\" />
+    <Folder Include="HAL\LCD\" />
+    <Folder Include="HAL\LED\" />
+    <Folder Include="HAL\Smart Lock Door System" />
+    <Folder Include="HAL\SERVO MOTOR\" />
     <Folder Include="MCAL\" />
     <Folder Include="MCAL\ADC\" />
     <Folder Include="MCAL\DIO\" />
+    <Folder Include="MCAL\ICU\" />
     <Folder Include="MCAL\IRQH\" />
     <Folder Include="MCAL\PORT\" />
     <Folder Include="MCAL\PWM\" />
     <Folder Include="MCAL\TIMER\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App\CFGH\HAL_CFG\KeyPad_CFG\KeyPad_CFG.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="App\CFGH\HAL_CFG\KeyPad_CFG\KeyPad_CFG.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="App\CFGH\HAL_CFG\LCD_CFG\LCD_CFG.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="App\CFGH\HAL_CFG\LED_CFG\LED_CFG.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="App\CFGH\MCAL_CFG\ADC_CFG\ADC_CFG.h">
       <SubType>compile</SubType>
     </Compile>
@@ -186,10 +214,34 @@
     <Compile Include="Common\STD.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="HAL\DC MOTOR\DC_MOTOR_CORE.c">
+    <Compile Include="HAL\KeyPad\KeyPad_Core.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="HAL\DC MOTOR\DC_MOTOR_CORE.h">
+    <Compile Include="HAL\KeyPad\KeyPad_Core.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\LCD\LCD_Core.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\LCD\LCD_Core.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\LED\LED.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\LED\LED.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\SERVO MOTOR\SERVO_MOTOR_CORE.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\SERVO MOTOR\SERVO_MOTOR_CORE.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\Smart Lock Door System\SMARTDOOR_CORE.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\Smart Lock Door System\SMARTDOOR_CORE.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="MCAL\ADC\ADC_CORE.c">
@@ -202,6 +254,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="MCAL\DIO\DIO_CORE.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\ICU\ICU_CORE.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\ICU\ICU_CORE.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="MCAL\IRQH\IRQH_CORE.c">
